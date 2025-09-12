@@ -1,0 +1,89 @@
+console_title_template = "{{ .Shell }} in {{ .Folder }}"
+version = 3
+final_space = true
+
+[secondary_prompt]
+template = "❯❯ "
+foreground = "p:magenta"
+background = "transparent"
+
+[transient_prompt]
+template = "❯ "
+background = "transparent"
+foreground_templates = [
+    "{{if gt .Code 0}}p:red{{end}}",
+    "{{if eq .Code 0}}p:magenta{{end}}",
+]
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+[[blocks.segments]]
+template = "{{ .Path }}"
+foreground = "p:blue"
+background = "transparent"
+type = "path"
+style = "plain"
+
+[blocks.segments.properties]
+cache_duration = "none"
+style = "full"
+
+[[blocks.segments]]
+template = " {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
+foreground = "p:grey"
+background = "transparent"
+type = "git"
+style = "plain"
+
+[blocks.segments.properties]
+branch_icon = ""
+cache_duration = "none"
+commit_icon = "@"
+fetch_status = true
+
+[[blocks]]
+type = "rprompt"
+overflow = "hidden"
+
+[[blocks.segments]]
+template = "{{ .FormattedMs }}"
+foreground = "p:yellow"
+background = "transparent"
+type = "executiontime"
+style = "plain"
+
+[blocks.segments.properties]
+cache_duration = "none"
+threshold = 5000
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+[[blocks.segments]]
+template = "❯"
+background = "transparent"
+type = "text"
+style = "plain"
+foreground_templates = [
+    "{{if gt .Code 0}}p:red{{end}}",
+    "{{if eq .Code 0}}p:magenta{{end}}",
+]
+
+[blocks.segments.properties]
+cache_duration = "none"
+
+[palette]
+foreground = "#a9b1d6"
+background = "#1a1b26"
+blue = "#7aa2f7"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+magenta = "#ad8ee6"
+cyan = "#449dab"
+grey = "#444b6a"

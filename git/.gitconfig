@@ -1,0 +1,28 @@
+[user]
+	name = Raphael Grau
+	email = raphaelgrau@gmail.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[credential]
+	helper = osxkeychain
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[core]
+	excludesFile = ~/.gitignore_global
