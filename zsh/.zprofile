@@ -1,0 +1,10 @@
+
+# Zsh Profile Configuration
+# Environment setup for login shells
+
+# Add pipx-installed Python tools to PATH
+export PATH="$PATH:/Users/raphaelgrau/.local/bin"
+
+# Initialize Homebrew environment variables and PATH
+# Sets HOMEBREW_PREFIX, adds /opt/homebrew/bin to PATH, etc.
+eval "$(/opt/homebrew/bin/brew shellenv)"
