@@ -26,8 +26,8 @@ dotfiles/
 
 ```bash
 # Clone the repository
-git clone https://github.com/raaphhh/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/raaphhh/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 
 # Install specific packages
 stow zsh      # Creates ~/.zshrc
@@ -37,6 +37,9 @@ stow nvim     # Creates ~/.config/nvim/
 
 # Or install all at once using justfile
 just stow-all
+
+# Install Homebrew packages (optional)
+just brew-install
 ```
 
 ## Management
@@ -61,7 +64,7 @@ Since stow creates symlinks, just edit files normally:
 nvim ~/.zshrc
 
 # Or edit in the repo
-nvim ~/dotfiles/zsh/.zshrc
+nvim ~/.dotfiles/zsh/.zshrc
 ```
 
 ### Removing packages
@@ -71,6 +74,44 @@ stow -D zsh
 
 # Remove package directory
 rm -rf zsh/
+```
+
+## Brewfile Management
+
+This repository includes a curated `Brewfile` containing essential applications for macOS setup.
+
+### Installing packages
+```bash
+# Install all packages from Brewfile
+just brew-install
+
+# Or manually
+brew bundle install
+```
+
+### Updating Brewfile
+```bash
+# Update Brewfile with current packages (careful - this includes everything!)
+just brew-dump
+
+# Check what would be installed/removed
+just brew-check
+
+# Remove packages not in Brewfile
+just brew-cleanup
+```
+
+### New Mac Setup
+```bash
+# Complete setup on a new Mac
+git clone https://github.com/raaphhh/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
+# Install dotfiles
+just stow-all
+
+# Install applications
+just brew-install
 ```
 
 ## Troubleshooting
