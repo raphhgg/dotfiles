@@ -46,6 +46,7 @@ cask "zen"
 cask "zoom"
 
 # Fonts
+cask "font-caskaydia-cove-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
 

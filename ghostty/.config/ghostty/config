@@ -1,0 +1,44 @@
+### Theme
+theme = catppuccin-mocha
+
+### Fonts 
+# font-family = CaskaydiaCove Nerd Font
+# font-family = Meslo LGS Nerd Font Mono
+# font-family = CaskaydiaMono Nerd Font
+# font-family = CaskaydiaCove Nerd Font
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+### Background
+background-opacity = 0.9
+background-blur-radius = 10
+
+### Title bar
+gtk-titlebar = false
+macos-titlebar-style = hidden
+
+### Window
+window-decoration = true
+window-width = 120
+window-height = 40
+window-position-x = 325
+window-position-y = 50
+window-padding-balance = true
+window-padding-x = 12
+window-padding-y = 12
+
+### Mouse
+mouse-hide-while-typing = true
+
+### Copy & Paste
+copy-on-select = clipboard
+clipboard-paste-protection = true
+# right-click-action = paste  
+# https://github.com/ghostty-org/ghostty/issues/3359
+
+### Focus
+# Fade unfocused splits (great for productivity)
+unfocused-split-opacity = 0.7
+
+# Focus follows mouse for splits
+focus-follows-mouse = true
