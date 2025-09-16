@@ -60,6 +60,30 @@ export_if_command_exists() {
     fi
 }
 
+# Run command only once per terminal application session
+# Usage: run_once_per_session "command" [args...]
+run_once_per_session() {
+    local command_name="$1"
+    shift
+
+    # Check if command is available
+    has_command "$command_name" || return 1
+
+    # Use the terminal program name and 30-second intervals for session identification
+    # This allows the command to run once per 30 seconds per terminal app
+    local terminal_app="${TERM_PROGRAM:-terminal}"
+    local time_slot=$(date +%Y%m%d%H%M%S | sed 's/[0-9]$/0/')  # Round to 30-second intervals
+    local marker_file="/tmp/${command_name}_${terminal_app}_${time_slot}"
+
+    # Clean up old marker files (older than 1 hour)
+    find /tmp -name "${command_name}_${terminal_app}_*" -mmin +60 -delete 2>/dev/null
+
+    # Run command if not already executed in this time slot
+    if [[ ! -f "$marker_file" ]]; then
+        "$command_name" "$@" && touch "$marker_file"
+    fi
+}
+
 # Show zsh profiling results if enabled
 show_profiling() {
     if [[ -n "${ZSH_PROF+1}" ]]; then

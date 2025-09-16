@@ -33,8 +33,8 @@ init_tool "oh-my-posh" "oh-my-posh init zsh --config ~/.config/omp/config.toml"
 init_tool "fzf" "fzf --zsh"
 init_tool "zoxide" "zoxide init zsh"
 
-# Run fastfetch on terminal start
-run_if_available "fastfetch"
+# Run fastfetch only once per terminal session (universal approach)
+[[ -o interactive ]] && run_once_per_session "fastfetch"
 
 # Show profiling results if enabled
 show_profiling
