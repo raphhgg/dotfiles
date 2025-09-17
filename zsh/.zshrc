@@ -5,13 +5,12 @@
 # zmodload zsh/zprof
 
 # Source helper functions first
-source ~/helpers.zsh
+source ~/.zsh/helpers.zsh
 
 # Source configuration modules
-safe_source ~/history.zsh
-safe_source ~/completion.zsh
-safe_source ~/keybinds.zsh
-safe_source ~/aliases.zsh
+safe_source ~/.zsh/history.zsh
+safe_source ~/.zsh/completion.zsh
+safe_source ~/.zsh/aliases.zsh
 
 # Zsh Options
 setopt auto_cd              # cd into directory by typing its name
@@ -32,9 +31,6 @@ zinit load "zsh-users/zsh-syntax-highlighting"  # Load syntax highlighting last
 init_tool "oh-my-posh" "oh-my-posh init zsh --config ~/.config/omp/config.toml"
 init_tool "fzf" "fzf --zsh"
 init_tool "zoxide" "zoxide init zsh"
-
-# Run fastfetch only once per terminal session (universal approach)
-[[ -o interactive ]] && run_once_per_session "fastfetch"
 
 # Show profiling results if enabled
 show_profiling
