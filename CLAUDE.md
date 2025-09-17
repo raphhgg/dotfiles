@@ -58,7 +58,6 @@ The zsh configuration is split into focused modules:
 - `completion.zsh` - Tab completion setup
 - `helpers.zsh` - Utility functions for configuration
 - `history.zsh` - History configuration
-- `keybinds.zsh` - Key bindings
 
 Key helper functions in `helpers.zsh`:
 - `has_command()` - Check if command exists

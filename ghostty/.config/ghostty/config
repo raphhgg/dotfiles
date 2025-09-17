@@ -1,5 +1,6 @@
 ### Theme
 theme = catppuccin-mocha
+# theme = tokyonight_night
 
 ### Fonts 
 # font-family = CaskaydiaCove Nerd Font
@@ -49,7 +50,7 @@ keybind = super+d=new_split:right
 # New split down - ⌘+Shift+D                 
 keybind = super+shift+d=new_split:down               
 
-## Navigation
+### Navigation
 # Move to split left - ⌘+Opt+←
 keybind = super+alt+left=goto_split:left   
 # Move to split right - ⌘+Opt+→          
@@ -63,7 +64,7 @@ keybind = super+left_bracket=goto_split:previous
 # Next split - ⌘+]     
 keybind = super+right_bracket=goto_split:next        
 
-## Resize splits
+### Resize splits
 # Resize split left by 10 - ⌘+Ctrl+←
 keybind = super+ctrl+left=resize_split:left,10
 # Resize split right by 10 - ⌘+Ctrl+→       
@@ -76,4 +77,31 @@ keybind = super+ctrl+down=resize_split:down,10
 keybind = super+ctrl+equal=equalize_splits           
 
 # Toggle split zoom (maximize) - ⌘+Shift+Enter
-keybind = super+shift+enter=toggle_split_zoom       
+keybind = super+shift+enter=toggle_split_zoom
+
+### Hyper Key Configuration
+# Send F1 function key sequence for hyper key prefix
+# Using B as the trigger key, sends F1 which tmux can bind to
+# Hyper+B acts as tmux prefix
+keybind = super+ctrl+alt+shift+b=text:\x1bOP
+keybind = super+ctrl+alt+shift+f=ignore
+keybind = super+ctrl+alt+shift+g=ignore
+keybind = super+ctrl+alt+shift+h=ignore
+keybind = super+ctrl+alt+shift+i=ignore
+keybind = super+ctrl+alt+shift+j=ignore
+keybind = super+ctrl+alt+shift+k=ignore
+keybind = super+ctrl+alt+shift+l=ignore
+keybind = super+ctrl+alt+shift+m=ignore
+keybind = super+ctrl+alt+shift+n=ignore
+keybind = super+ctrl+alt+shift+o=ignore
+keybind = super+ctrl+alt+shift+p=ignore
+keybind = super+ctrl+alt+shift+q=ignore
+keybind = super+ctrl+alt+shift+r=ignore
+keybind = super+ctrl+alt+shift+s=ignore
+keybind = super+ctrl+alt+shift+t=ignore
+keybind = super+ctrl+alt+shift+u=ignore
+keybind = super+ctrl+alt+shift+v=ignore
+keybind = super+ctrl+alt+shift+w=ignore
+keybind = super+ctrl+alt+shift+x=ignore
+keybind = super+ctrl+alt+shift+y=ignore
+keybind = super+ctrl+alt+shift+z=ignore
