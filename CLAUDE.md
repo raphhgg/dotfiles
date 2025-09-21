@@ -6,6 +6,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a personal dotfiles repository managed with GNU Stow, containing configuration files for various development tools and applications.
 
+## tmux Session Persistence Setup
+
+To add session persistence to tmux (survive system restarts/updates):
+
+### Option 1: TPM via Homebrew (Recommended)
+```bash
+# TPM is installed via Homebrew in nix-darwin config (darwin/applications/homebrew/cli.nix)
+# After `just rebuild`, TPM will be available
+
+# Add to your ~/.tmux.conf:
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Plugin configuration
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '10'
+
+# Initialize TPM (keep at bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+# Reload tmux config and install plugins:
+tmux source-file ~/.tmux.conf
+# Press prefix + I (capital I) to install plugins
+```
+
+### Option 2: Manual Plugin Installation
+```bash
+# Clone repositories directly
+git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/resurrect
+git clone https://github.com/tmux-plugins/tmux-continuum ~/.tmux/plugins/continuum
+
+# Add to ~/.tmux.conf:
+run-shell ~/.tmux/plugins/resurrect/resurrect.tmux
+run-shell ~/.tmux/plugins/continuum/continuum.tmux
+```
+
+### Key Commands
+- **Manual save**: `prefix + Ctrl-s`
+- **Manual restore**: `prefix + Ctrl-r` (usually automatic)
+- **Auto-saves**: Every 10 minutes (configurable)
+
 ## Common Commands
 
 ### Stow Management
@@ -93,10 +136,46 @@ When stow reports conflicts with existing files:
 
 Use clean, standard commit messages that focus on the changes made. The commit history has been cleaned to remove previous Claude attribution lines and should remain that way.
 
+## macOS Application Management
+
+**IMPORTANT**: On macOS, applications must be installed through the separate `nix-darwin-config` repository BEFORE configuring them in this dotfiles repository.
+
+### Installation Process
+
+When you need to install a new application:
+
+1. **Navigate to nix-darwin config**: `cd ~/nix-darwin-config`
+2. **Add application to appropriate file**:
+   - GUI apps: `darwin/applications/homebrew/gui.nix`
+   - CLI tools: `darwin/applications/homebrew/cli.nix`
+   - Fonts: `darwin/applications/homebrew/fonts.nix`
+   - Mac App Store: `darwin/applications/mas.nix`
+3. **Rebuild configuration**: `darwin-rebuild switch --flake .`
+4. **Configure in dotfiles**: Only after installation, create configuration packages in this repository
+
+### Example: Adding Karabiner-Elements
+
+```nix
+# In ~/nix-darwin-config/darwin/applications/homebrew/gui.nix
+homebrew.casks = [
+  # System Utilities
+  "appcleaner"
+  "karabiner-elements"  # <-- Add here
+  "keka"
+];
+```
+
+### Why This Architecture
+
+- **Applications**: Managed by nix-darwin (declarative, version-controlled)
+- **Configurations**: Managed by this dotfiles repo (Stow packages)
+- **Brewfile**: Auto-generated from nix-darwin config for reference
+- **Consistent**: Same setup process across different machines
+
 ## Git Configuration
 
 This repository uses a specific SSH key configuration:
-- **Remote**: `github-personal:raaphhh/dotfiles.git`  
+- **Remote**: `github-personal:raaphhh/dotfiles.git`
 - **SSH Host**: `github-personal` (configured in ~/.ssh/config)
 - **SSH Key**: `~/.ssh/id_ed25519_personal`
 

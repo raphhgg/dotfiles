@@ -20,12 +20,18 @@ background-blur-radius = 10
 
 # Title bar
 gtk-titlebar = false
-macos-titlebar-style = hidden
+# macos-titlebar-style = hidden
 
 # Window
 window-decoration = true
 window-width = 140
 window-height = 50
+# Disable window state saving that might override position
+window-save-state = always
+# Test positioning at top-left
+window-position-x = 150
+window-position-y = 100
+# window-padding-balance = true
 window-padding-x = 12
 window-padding-y = 12
 
@@ -90,8 +96,8 @@ keybind = shift+enter=text:\x1b\x0d
 
 # Hyper Key Configuration
 # Send F1 function key sequence for hyper key prefix
-# Using A as the trigger key, sends F1 which tmux can bind to
-# Hyper+A acts as tmux prefix
+# Using B as the trigger key, sends F1 which tmux can bind to
+# Hyper+B acts as tmux prefix
 keybind = super+ctrl+alt+shift+a=text:\x1bOP
 keybind = super+ctrl+alt+shift+f=ignore
 keybind = super+ctrl+alt+shift+g=ignore

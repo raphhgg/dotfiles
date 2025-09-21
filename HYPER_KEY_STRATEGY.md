@@ -154,21 +154,22 @@ bind-key F1 send-prefix
 3. **Ghostty Power**: Can send custom escape sequences via `text:` action
 4. **Escape Sequence Mapping**: `\x1bOP` = F1, which tmux understands perfectly
 
-## ⏳ PLANNED: Karabiner-Elements Integration
+## ✅ COMPLETED: Karabiner-Elements Integration
 
-### Installation
-```bash
-brew install --cask karabiner-elements
-```
+### What We Built
 
-### Configuration Strategy
+**Installation** (via nix-darwin):
+- Added `"karabiner-elements"` to `~/nix-darwin-config/darwin/applications/homebrew/gui.nix`
+- Installed via `darwin-rebuild switch --flake .`
+- Configured system permissions (Input Monitoring, Login Items, Driver Extensions)
 
-**Option 1: Full Hyper Key** (Recommended)
+**Configuration** (`~/.dotfiles/karabiner/.config/karabiner/karabiner.json`):
 ```json
 {
-  "description": "Caps Lock to Hyper Key (Cmd+Ctrl+Alt+Shift)",
+  "description": "Caps Lock to Hyper Key (Cmd+Ctrl+Alt+Shift) with Escape if alone",
   "manipulators": [
     {
+      "type": "basic",
       "from": {
         "key_code": "caps_lock",
         "modifiers": {"optional": ["any"]}
@@ -179,34 +180,40 @@ brew install --cask karabiner-elements
           "modifiers": ["left_command", "left_control", "left_option"]
         }
       ],
-      "to_if_alone": [{"key_code": "escape"}],
-      "type": "basic"
+      "to_if_alone": [{"key_code": "escape"}]
     }
   ]
 }
 ```
 
-**Result**:
+**Dotfiles Integration**:
+- Created `karabiner/` Stow package following repository structure
+- Added to justfile for `stow-all` and `unstow-all` commands
+- Configuration managed via symlinks like other dotfiles
+
+**Current Working Chain**:
 - `Caps Lock + B` → `Cmd+Ctrl+Alt+Shift+B` → Ghostty → F1 → tmux
-- `Caps Lock + A` → `Cmd+Ctrl+Alt+Shift+A` → Ghostty → F3 → Raycast
-- `Caps Lock + S` → `Cmd+Ctrl+Alt+Shift+S` → Ghostty → F2 → Aerospace
+- `Caps Lock` (alone) → Escape
+- Ready for future expansions with other applications
 
-## ⏳ PLANNED: Raycast Integration
+## ✅ READY: Raycast Integration
 
-### Configuration
-Once Karabiner-Elements is installed:
+### Configuration Status
+With Karabiner-Elements now installed:
 
-1. **Raycast will auto-detect** the hyper key setup
-2. **Configure shortcuts** like:
+1. **Raycast auto-detects** the hyper key setup (Caps Lock → Cmd+Ctrl+Alt+Shift)
+2. **Available for configuration** in Raycast → Settings → Advanced → Hyper Key
+3. **Suggested shortcuts**:
    - `Caps Lock + Space` → Raycast launcher
    - `Caps Lock + C` → Calculator
    - `Caps Lock + T` → Terminal
    - `Caps Lock + F` → File search
 
-### No Conflicts
-- **tmux**: Uses `Caps Lock + B` specifically
-- **Raycast**: Uses `Caps Lock + [other keys]`
-- **Perfect separation** of concerns
+### Integration Notes
+- **tmux reserved**: `Caps Lock + B` is dedicated to tmux workflow
+- **Raycast available**: All other hyper key combinations available
+- **No conflicts**: Clean separation between applications
+- **System conflict**: Check System Settings → Keyboard → Keyboard Shortcuts → Services → "Convert Text to Simplified Chinese" (disable if needed)
 
 ## ⏳ PLANNED: Aerospace Window Manager
 
@@ -266,18 +273,18 @@ Aerospace will also use the hyper key for window management:
 ## Current Status
 
 - ✅ **tmux + Ghostty**: Fully working and tested
-- ⏳ **Karabiner-Elements**: Ready to install and configure
-- ⏳ **Raycast**: Waiting for Karabiner-Elements
-- ⏳ **Aerospace**: Waiting for Karabiner-Elements
+- ✅ **Karabiner-Elements**: Installed, configured, and integrated with dotfiles
+- ✅ **Caps Lock → Hyper Key**: Working with escape-if-alone functionality
+- ✅ **Raycast**: Ready for hyper key configuration (auto-detection enabled)
+- ⏳ **Aerospace**: Waiting for installation and configuration
 
 ## Next Steps
 
-1. **Install Karabiner-Elements** when ready
-2. **Configure Caps Lock → Hyper Key** mapping
-3. **Test tmux integration** still works through the full chain
-4. **Configure Raycast** hyper key shortcuts
-5. **Set up Aerospace** window management shortcuts
-6. **Document final working configuration**
+1. **Configure Raycast shortcuts** in Settings → Advanced → Hyper Key
+2. **Install and configure Aerospace** window management (if needed)
+3. **Test system shortcut conflicts** and disable conflicting ones
+4. **Expand system** with additional applications using the established pattern
+5. **Consider future applications** for remaining hyper key combinations
 
 ---
 

@@ -2,11 +2,11 @@
 
 # Install all dotfiles using stow
 stow-all:
-    stow alacritty git nvim omp ssh zsh ghostty tmux
+    stow alacritty git nvim omp ssh zsh ghostty tmux karabiner
 
 # Remove all dotfiles symlinks
 unstow-all:
-    stow -D alacritty git nvim omp ssh zsh ghostty tmux
+    stow -D alacritty git nvim omp ssh zsh ghostty tmux karabiner
 
 # Brewfile management commands
 
