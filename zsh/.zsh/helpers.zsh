@@ -67,3 +67,37 @@ show_profiling() {
     fi
 }
 
+# Check if we're already inside a tmux session
+is_in_tmux() {
+    [[ -n "$TMUX" ]]
+}
+
+# Get the first detached tmux session ID
+get_detached_session() {
+    tmux list-sessions 2>/dev/null | grep -v "(attached)" | head -1 | cut -d: -f1
+}
+
+# Auto-attach to tmux session or create new one
+tmux_auto_attach() {
+    # Skip if already in tmux or if SKIP_TMUX is set
+    if is_in_tmux || [[ -n "$SKIP_TMUX" ]]; then
+        return 0
+    fi
+
+    # Skip if tmux is not available
+    if ! has_command "tmux"; then
+        return 0
+    fi
+
+    # Try to attach to a detached session first
+    local detached_session
+    detached_session=$(get_detached_session)
+
+    if [[ -n "$detached_session" ]]; then
+        tmux attach-session -t "$detached_session"
+    else
+        # No detached sessions, create a new one
+        tmux new-session
+    fi
+}
+
