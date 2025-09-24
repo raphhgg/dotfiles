@@ -3,14 +3,13 @@ tap "homebrew/services"
 tap "jandedobbeleer/oh-my-posh"
 
 # Development Tools
-brew "claude-cmd"
+brew "entr"
 brew "fastfetch"
 brew "fswatch"
 brew "mas"
 brew "node"
 brew "npm"
 brew "oh-my-posh"
-brew "tpm"
 brew "watch"
 
 # GUI Applications
