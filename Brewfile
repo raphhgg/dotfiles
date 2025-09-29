@@ -3,6 +3,7 @@ tap "homebrew/services"
 tap "jandedobbeleer/oh-my-posh"
 
 # Development Tools
+brew "borders"
 brew "entr"
 brew "fastfetch"
 brew "fswatch"
@@ -10,9 +11,11 @@ brew "mas"
 brew "node"
 brew "npm"
 brew "oh-my-posh"
+brew "sketchybar"
 brew "watch"
 
 # GUI Applications
+cask "aerospace"
 cask "alacritty"
 cask "appcleaner"
 cask "blockstream"
@@ -52,6 +55,7 @@ cask "zoom"
 
 # Fonts
 cask "font-caskaydia-cove-nerd-font"
+cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
 

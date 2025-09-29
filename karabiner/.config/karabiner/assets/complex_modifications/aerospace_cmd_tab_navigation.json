@@ -1,0 +1,34 @@
+{
+  "title": "AeroSpace cmd+tab Workspace Navigation",
+  "rules": [
+    {
+      "description": "cmd+tab for AeroSpace workspace navigation (skip empty workspaces)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "tab",
+            "modifiers": { "mandatory": ["left_command"] }
+          },
+          "to": [
+            {
+              "shell_command": "current=$(/opt/homebrew/bin/aerospace list-workspaces --focused); non_empty=$(/opt/homebrew/bin/aerospace list-workspaces --monitor focused --empty no); next=$(echo \"$non_empty\" | grep -A999 \"$current\" | tail -n +2 | head -n 1); if [ -z \"$next\" ]; then next=$(echo \"$non_empty\" | head -n 1); fi; /opt/homebrew/bin/aerospace workspace \"$next\""
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "tab",
+            "modifiers": { "mandatory": ["left_option"] }
+          },
+          "to": [
+            {
+              "shell_command": "current=$(/opt/homebrew/bin/aerospace list-workspaces --focused); non_empty=$(/opt/homebrew/bin/aerospace list-workspaces --monitor focused --empty no); current_line=$(echo \"$non_empty\" | grep -n \"^$current$\" | cut -d: -f1); total=$(echo \"$non_empty\" | wc -l); if [ \"$current_line\" = \"1\" ]; then prev_line=$total; else prev_line=$((current_line - 1)); fi; prev=$(echo \"$non_empty\" | sed -n \"${prev_line}p\"); /opt/homebrew/bin/aerospace workspace \"$prev\""
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
