@@ -1,0 +1,13 @@
+# Zsh Profile Configuration for Synology Server
+# Environment setup for login shells
+
+# Add system paths first (for tmux and other system binaries)
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+
+# Initialize Homebrew environment variables and PATH
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Source .zshrc for interactive login shells
+if [[ -o interactive ]]; then
+    source "${ZDOTDIR:-$HOME}/.zshrc"
+fi

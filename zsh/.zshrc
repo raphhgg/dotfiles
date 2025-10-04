@@ -4,6 +4,13 @@
 # Enable zsh profiling (uncomment for debugging startup speed)
 # zmodload zsh/zprof
 
+# Fix TERM if it's set to dumb (happens with SSH RemoteCommand)
+if [[ "$TERM" == "dumb" && -n "$TMUX" ]]; then
+    export TERM=tmux-256color
+elif [[ "$TERM" == "dumb" ]]; then
+    export TERM=xterm-256color
+fi
+
 # Source helper functions first
 source ~/.zsh/helpers.zsh
 
@@ -23,9 +30,10 @@ setopt interactive_comments # allow comments in interactive shells
 setopt long_list_jobs       # show job information in long format
 
 # Initialize zinit and load plugins
-init_zinit
-zinit load "zsh-users/zsh-autosuggestions"
-zinit load "zsh-users/zsh-syntax-highlighting"  # Load syntax highlighting last
+if init_zinit; then
+    zinit load "zsh-users/zsh-autosuggestions"
+    zinit load "zsh-users/zsh-syntax-highlighting"  # Load syntax highlighting last
+fi
 
 # Tool Initialization (system tools managed by nix-darwin)
 init_tool "oh-my-posh" "oh-my-posh init zsh --config ~/.config/omp/config.toml"

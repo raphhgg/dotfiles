@@ -26,9 +26,16 @@ safe_source() {
 
 # Initialize zinit (assumes it's properly installed)
 init_zinit() {
-    source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
+    local zinit_home="${HOME:-/var/services/homes/raphh}/.local/share/zinit/zinit.git"
+
+    if [[ -f "${zinit_home}/zinit.zsh" ]]; then
+        source "${zinit_home}/zinit.zsh"
+        autoload -Uz _zinit
+        (( ${+_comps} )) && _comps[zinit]=_zinit
+    else
+        echo "Warning: zinit not found at ${zinit_home}/zinit.zsh" >&2
+        return 1
+    fi
 }
 
 # Add directory to PATH if it exists and isn't already there
@@ -89,6 +96,11 @@ is_in_editor_terminal() {
     [[ -n "$NVIM" ]] || [[ -n "$VIM" ]] ||
     # Check parent process names for editors
     ps -o comm= $PPID 2>/dev/null | grep -qE "(code|cursor|zed|nvim|vim)"
+}
+
+# Check if we're connected via SSH
+is_ssh_session() {
+    [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]
 }
 
 # Auto-attach to tmux session or create new one

@@ -10,3 +10,6 @@
 
 # Claude Code
 .claude/
+
+# Tmux plugins (managed by TPM)
+tmux/.config/tmux/plugins/
