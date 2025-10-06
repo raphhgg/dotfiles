@@ -1,0 +1,43 @@
+{
+  "$schema": "https://docs.claude.com/schemas/settings.json",
+  "_comment": "User-level Claude Code settings (~/.claude/settings.json)",
+  "_comment2": "These settings apply globally across ALL projects",
+  "_comment3": "For machine-specific values, edit this file directly or use environment variables",
+
+  "model": "claude-sonnet-4-5-20250929",
+
+  "env": {
+    "_comment": "Global environment variables - edit for machine-specific paths",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1"
+  },
+
+  "permissions": {
+    "_comment": "Global permissions that apply to all projects",
+    "allow": [
+      "Bash(git:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(just:*)",
+      "Bash(stow:*)",
+      "Read(~/.dotfiles/**)",
+      "Read(~/.zshrc)",
+      "Read(~/.gitconfig)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(**/.env)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(~/.ssh/id_*)",
+      "Read(~/.aws/credentials)",
+      "Bash(rm -rf:*)"
+    ]
+  },
+
+  "hooks": {
+    "_comment": "Global hooks - add your custom hooks here"
+  }
+}

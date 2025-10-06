@@ -19,6 +19,9 @@ dotfiles/
 │   └── .gitignore_global
 ├── nvim/         # Neovim configuration
 │   └── .config/nvim/
+├── claude/       # Claude Code configuration
+│   ├── .claude/
+│   └── .mcp.json.example
 └── ...           # Other configurations
 ```
 
@@ -135,4 +138,91 @@ ls -la ~/.config/ | grep "\->"
 ```bash
 # See what packages are stowed
 stow --verbose --no-folding --simulate *
+```
+
+## Claude Code Setup
+
+This repository includes **user-level** Claude Code configuration for sharing settings across machines.
+
+### Structure
+```
+claude/
+└── .claude/                          # User-level config (~/.claude/)
+    ├── settings.json                 # Global settings for all projects
+    ├── plugins/
+    │   └── config.json               # MCP plugin config
+    └── .gitignore                    # Ignores credentials & session data
+```
+
+### Initial Setup
+
+```bash
+# Install Claude configuration
+stow claude
+
+# Edit settings.json directly for machine-specific values if needed
+nvim ~/.claude/settings.json
+```
+
+### What Gets Version Controlled
+
+**User-level (this repo):**
+- `~/.claude/settings.json` - Global permissions, hooks, environment variables
+- `~/.claude/plugins/config.json` - MCP plugin configuration
+
+**NOT version controlled (managed by Claude):**
+- `~/.claude/.credentials.json` - OAuth tokens (auto-managed)
+- `~/.claude.json` - Main config file (contains project state and tokens)
+- Session data (history, todos, cache, shell-snapshots, etc.)
+
+**Project-level (each project's repo):**
+- `.claude/settings.json` - Project-specific settings (checked into that project)
+- `.claude/settings.local.json` - Personal overrides (gitignored in that project)
+- `.mcp.json` - Project MCP servers (checked into that project)
+
+### MCP Server Configuration
+
+MCP servers are managed via the `claude mcp` CLI, not configuration files in .dotfiles.
+
+**Add user-level MCP server (available in all projects):**
+```bash
+# Linear integration
+claude mcp add linear-server --scope user --transport sse https://mcp.linear.app/sse
+
+# GitHub integration
+claude mcp add github-server --scope user npx -y @modelcontextprotocol/server-github
+```
+
+OAuth credentials are automatically managed by Claude in `~/.claude/.credentials.json`.
+
+**Add project-level MCP server (specific to one project):**
+```bash
+cd /your/project
+claude mcp add project-server --scope project /path/to/server
+# Creates .mcp.json in the project (commit this to project's git)
+```
+
+### Machine-Specific Settings
+
+For machine-specific paths or values, edit `~/.claude/settings.json` directly:
+```json
+{
+  "env": {
+    "DOCKER_APPDATA_PATH": "/your/machine/specific/path",
+    "MEDIAS_PATH": "/your/media/path"
+  }
+}
+```
+
+### Adding to New Machine
+
+```bash
+cd ~/.dotfiles
+stow claude
+
+# Add MCP servers (they're per-machine, not in dotfiles)
+claude mcp add linear-server --scope user --transport sse https://mcp.linear.app/sse
+
+# Customize settings.json for this machine if needed
+nvim ~/.claude/settings.json
 ```

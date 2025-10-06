@@ -7,6 +7,9 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # Initialize Homebrew environment variables and PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# Add Claude CLI to PATH (installed via curl install script)
+export PATH="$HOME/.local/bin:$PATH"
+
 # Source .zshrc for interactive login shells
 if [[ -o interactive ]]; then
     source "${ZDOTDIR:-$HOME}/.zshrc"

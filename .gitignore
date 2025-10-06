@@ -8,8 +8,7 @@
 .vscode/
 .cursor/
 
-# Claude Code
-.claude/
+# Claude Code - selective ignores handled by claude/.claude/.gitignore
 
 # Tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/

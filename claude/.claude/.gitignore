@@ -1,0 +1,17 @@
+# Sensitive credentials - NEVER commit
+.credentials.json
+
+# Local overrides (machine-specific)
+settings.local.json
+
+# Session and cache files
+history.jsonl
+shell-snapshots/
+statsig/
+todos/
+ide/
+projects/
+downloads/
+
+# Plugins repos (managed separately)
+plugins/repos/
