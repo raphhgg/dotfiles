@@ -184,6 +184,21 @@ homebrew.casks = [
 
 Use clean, standard commit messages that focus on the changes made. The commit history has been cleaned to remove previous Claude attribution lines and should remain that way.
 
+## Linear Issue Creation Guidelines
+
+When creating Linear issues:
+
+- **Always assign to**: `raphaelgrau` (assignee parameter)
+- **Always ask for priority**: Confirm priority level before creating (Urgent/High/Normal/Low)
+- **Always propose labels**: Suggest relevant labels based on the issue type and ask for confirmation
+
+**Example workflow:**
+1. Draft the issue details
+2. Propose priority (e.g., "This seems like a Normal priority task, is that correct?")
+3. Propose labels (e.g., "I suggest adding labels: 'automation', 'infrastructure' - does that work?")
+4. Wait for confirmation before creating the issue
+5. Create issue with confirmed priority, labels, and assignee
+
 ## Git Configuration
 
 This repository uses a specific SSH key configuration:
