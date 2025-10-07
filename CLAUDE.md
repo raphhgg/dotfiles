@@ -126,17 +126,6 @@ When stow reports conflicts with existing files:
 - For Homebrew packages: `just brew-install`
 - Check symlink creation: `ls -la ~ | grep "->"`
 
-## Commit Message Guidelines
-
-**Important**: This repository does NOT use Claude Code's default commit message format. When making commits:
-
-- **DO NOT** include "🤖 Generated with [Claude Code](https://claude.ai/code)" lines
-- **DO NOT** include "Co-Authored-By: Claude <noreply@anthropic.com>" lines
-- **DO NOT** add any Claude attribution or generation markers
-- **DO NOT** commit files or lines containing TODO or WIP comments - keep them in the working copy for future work
-
-Use clean, standard commit messages that focus on the changes made. The commit history has been cleaned to remove previous Claude attribution lines and should remain that way.
-
 ## macOS Application Management
 
 **IMPORTANT**: On macOS, applications must be installed through the separate `nix-darwin-config` repository BEFORE configuring them in this dotfiles repository.
@@ -173,31 +162,11 @@ homebrew.casks = [
 - **Brewfile**: Auto-generated from nix-darwin config for reference
 - **Consistent**: Same setup process across different machines
 
+## Linear Issue Management
 
-## Commit Message Guidelines
+**Default Project:** All Linear issues for this dotfiles repository should be created in the **"local machine"** project unless otherwise specified.
 
-**Important**: This repository does NOT use Claude Code's default commit message format. When making commits:
-
-- **DO NOT** include "🤖 Generated with [Claude Code](https://claude.ai/code)" lines
-- **DO NOT** include "Co-Authored-By: Claude <noreply@anthropic.com>" lines
-- **DO NOT** add any Claude attribution or generation markers
-
-Use clean, standard commit messages that focus on the changes made. The commit history has been cleaned to remove previous Claude attribution lines and should remain that way.
-
-## Linear Issue Creation Guidelines
-
-When creating Linear issues:
-
-- **Always assign to**: `raphaelgrau` (assignee parameter)
-- **Always ask for priority**: Confirm priority level before creating (Urgent/High/Normal/Low)
-- **Always propose labels**: Suggest relevant labels based on the issue type and ask for confirmation
-
-**Example workflow:**
-1. Draft the issue details
-2. Propose priority (e.g., "This seems like a Normal priority task, is that correct?")
-3. Propose labels (e.g., "I suggest adding labels: 'automation', 'infrastructure' - does that work?")
-4. Wait for confirmation before creating the issue
-5. Create issue with confirmed priority, labels, and assignee
+When creating issues related to this repository, always use the "local machine" project by default.
 
 ## Git Configuration
 
@@ -207,4 +176,3 @@ This repository uses a specific SSH key configuration:
 - **SSH Key**: `~/.ssh/id_ed25519_personal`
 
 When cloning or working with this repository, ensure you're using the `github-personal` SSH host alias, not the direct `github.com` URL.
-
