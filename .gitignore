@@ -9,6 +9,7 @@
 .cursor/
 
 # Claude Code - selective ignores handled by claude/.claude/.gitignore
+.claude/
 
 # Tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/
