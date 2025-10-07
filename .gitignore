@@ -12,3 +12,6 @@
 
 # Tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/
+
+# Zsh cache
+zsh/.zsh/cache/

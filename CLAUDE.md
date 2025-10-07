@@ -133,6 +133,7 @@ When stow reports conflicts with existing files:
 - **DO NOT** include "🤖 Generated with [Claude Code](https://claude.ai/code)" lines
 - **DO NOT** include "Co-Authored-By: Claude <noreply@anthropic.com>" lines
 - **DO NOT** add any Claude attribution or generation markers
+- **DO NOT** commit files or lines containing TODO or WIP comments - keep them in the working copy for future work
 
 Use clean, standard commit messages that focus on the changes made. The commit history has been cleaned to remove previous Claude attribution lines and should remain that way.
 
@@ -172,6 +173,17 @@ homebrew.casks = [
 - **Brewfile**: Auto-generated from nix-darwin config for reference
 - **Consistent**: Same setup process across different machines
 
+
+## Commit Message Guidelines
+
+**Important**: This repository does NOT use Claude Code's default commit message format. When making commits:
+
+- **DO NOT** include "🤖 Generated with [Claude Code](https://claude.ai/code)" lines
+- **DO NOT** include "Co-Authored-By: Claude <noreply@anthropic.com>" lines
+- **DO NOT** add any Claude attribution or generation markers
+
+Use clean, standard commit messages that focus on the changes made. The commit history has been cleaned to remove previous Claude attribution lines and should remain that way.
+
 ## Git Configuration
 
 This repository uses a specific SSH key configuration:
@@ -180,3 +192,4 @@ This repository uses a specific SSH key configuration:
 - **SSH Key**: `~/.ssh/id_ed25519_personal`
 
 When cloning or working with this repository, ensure you're using the `github-personal` SSH host alias, not the direct `github.com` URL.
+

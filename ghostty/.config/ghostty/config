@@ -4,7 +4,10 @@ theme = Catppuccin Mocha
 
 # Terminal
 # Fallback TERM for SSH compatibility (fixes backspace issues)
-term = xterm-256color
+# term = xterm-256color
+
+# Enable SSH shell integration features
+shell-integration-features = ssh-env
 
 # Fonts
 # font-family = CaskaydiaCove Nerd Font
