@@ -1,5 +1,7 @@
 name: Sync to NAS Server
 
+# TODO: Remove this comment - testing workflow trigger
+
 on:
   push:
     branches:
