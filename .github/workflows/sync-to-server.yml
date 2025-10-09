@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Sync dotfiles to NAS
         env:
-          ACCESS_TOKEN: ${{ env.ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
         run: |
           set -e
           git config --global --add safe.directory /dotfiles
           cd /dotfiles
           echo "📥 Pulling latest changes from main branch..."
-          git remote set-url origin https://x-access-token:${ACCESS_TOKEN}@github.com/raaphhh/dotfiles.git
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/raaphhh/dotfiles.git
           git pull origin main
           echo "✅ Dotfiles sync completed successfully!"
