@@ -19,4 +19,6 @@ jobs:
           cd /dotfiles
           echo "📥 Pulling latest changes from main branch..."
           git -c credential.helper='!f() { echo "username=x-access-token"; echo "password=$GH_TOKEN"; }; f' pull origin main
+          echo "🔧 Fixing file permissions..."
+          chown -R ${{ secrets.SERVER_PUID }}:${{ secrets.SERVER_PGID }} /dotfiles
           echo "✅ Dotfiles sync completed successfully!"
