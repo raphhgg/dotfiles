@@ -18,6 +18,5 @@ jobs:
           git config --global --add safe.directory /dotfiles
           cd /dotfiles
           echo "📥 Pulling latest changes from main branch..."
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/raaphhh/dotfiles.git
-          git pull origin main
+          git -c credential.helper='!f() { echo "username=x-access-token"; echo "password=$GH_TOKEN"; }; f' pull origin main
           echo "✅ Dotfiles sync completed successfully!"
