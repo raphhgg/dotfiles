@@ -13,6 +13,7 @@ jobs:
       - name: Sync dotfiles to NAS
         run: |
           set -e
+          git config --global --add safe.directory /dotfiles
           cd /dotfiles
           echo "📥 Pulling latest changes from main branch..."
           git pull origin main
