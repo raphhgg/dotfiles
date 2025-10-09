@@ -176,3 +176,18 @@ This repository uses a specific SSH key configuration:
 - **SSH Key**: `~/.ssh/id_ed25519_personal`
 
 When cloning or working with this repository, ensure you're using the `github-personal` SSH host alias, not the direct `github.com` URL.
+
+### Commit Message Guidelines
+
+**Prefix commits with scope** using the format `[scope] message`:
+
+- Use the most relevant scope for the commit (e.g., package name, feature area, or topic)
+- Common scopes: package names (`[zsh]`, `[nvim]`, `[ssh]`), feature areas (`[github]`, `[stow]`, `[docs]`), or `[global]` for repository-wide changes
+- Keep scope names lowercase
+
+**Examples:**
+```bash
+[zsh] Add alias for docker compose
+[github] Fix workflow to use self-hosted runner
+[global] Update repository structure
+```
