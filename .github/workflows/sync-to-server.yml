@@ -13,7 +13,7 @@ jobs:
       - name: Sync dotfiles to NAS
         run: |
           set -e
-          cd ~/.dotfiles
+          cd /var/services/homes/raphh/.dotfiles
           echo "📥 Pulling latest changes from main branch..."
           git pull origin main
           echo "✅ Dotfiles sync completed successfully!"
