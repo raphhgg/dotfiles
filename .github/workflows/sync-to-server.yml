@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync:
-    runs-on: ds423plus-runner-dotfiles
+    runs-on: [self-hosted, dotfiles]
 
     steps:
       - name: Sync dotfiles to NAS
