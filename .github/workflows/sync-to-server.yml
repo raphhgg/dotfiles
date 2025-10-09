@@ -16,6 +16,6 @@ jobs:
           git config --global --add safe.directory /dotfiles
           cd /dotfiles
           echo "📥 Pulling latest changes from main branch..."
-          git remote set-url origin https://github.com/raaphhh/dotfiles.git
+          git remote set-url origin https://x-access-token:${ACCESS_TOKEN}@github.com/raaphhh/dotfiles.git
           git pull origin main
           echo "✅ Dotfiles sync completed successfully!"
