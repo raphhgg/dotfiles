@@ -1,7 +1,7 @@
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-	'exec-and-forget sketchybar',
+	'exec-and-forget sketchybar & dark-notify -c "sketchybar --reload || echo "',
 	'exec-and-forget borders',
 	'layout tiles'
 ]
@@ -33,7 +33,10 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = 'move-mouse window-lazy-center'
+on-focus-changed = [
+  'move-mouse window-lazy-center',
+  'exec-and-forget sketchybar --trigger aerospace_focus_change',
+]
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -56,7 +59,7 @@ inner.horizontal = 8
 inner.vertical =   8
 outer.left =       8
 outer.bottom =     8
-outer.top =        8
+outer.top =        12
 outer.right =      8
 
 # 'main' binding mode declaration
@@ -130,7 +133,19 @@ cmd-alt-ctrl-shift-9 = 'workspace 9'
 
 # Fullscreen the selected window
 # Pressing it again will go back to tiles
-cmd-alt-ctrl-shift-f = 'fullscreen'
+cmd-alt-ctrl-shift-enter = 'fullscreen'
+
+# Toggle Finder visibility - show in current workspace or hide using macOS hide
+# Logic:
+#   - If Finder is currently focused → Hide Finder using macOS native hide
+#   - If Finder is not focused → Open Finder and bring to current workspace
+#
+# TODO: If needed, create an "open" mode and add other apps that needs to be opened like that (i.e: Messages, Slack,...)
+# TODO: When opening Claude, bring it to the current workspace
+# TODO: Have all the floating windows not tight to a workpace, when opening them they should come floating
+# on the currently opened workspace
+#
+cmd-alt-ctrl-shift-f = 'exec-and-forget /bin/bash -c "if aerospace list-windows --focused | grep -q \"| Finder |\"; then osascript -e \"tell application \\\"System Events\\\" to set visible of process \\\"Finder\\\" to false\"; else open -a Finder && sleep 0.1 && aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --focused); fi"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
@@ -172,7 +187,7 @@ cmd-alt-ctrl-shift-l = 'move right'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
-# r = ['flatten-workspace-tree', 'mode main'] # reset layout
+#r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout ** Important **
 backspace = ['close-all-windows-but-current', 'mode main']
@@ -186,7 +201,6 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # App-to-workspace assignments based on current setup
 # Automatically assign apps to workspaces when new windows open
-
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
@@ -200,7 +214,7 @@ if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.todesktop.230313mzl4w4u92'
+if.app-id = 'com.todesktop.230313mzl4w4u92' # Cursor
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
@@ -208,5 +222,34 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
 if.app-id = 'com.flexibits.fantastical2.mac'
 run = 'move-node-to-workspace 9'
+
+# Floating apps configuration
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-EventViewer'
+run = 'layout floating'
