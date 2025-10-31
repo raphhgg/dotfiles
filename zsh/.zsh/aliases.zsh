@@ -10,7 +10,9 @@ alias c="clear"
 # full
 alias ls='eza -la -lh --icons --git --group-directories-first --header --sort=name'
 # minimal
-alias l='eza -a --icons --group-directories-first --sort=name'
+alias l='eza --icons --group-directories-first --sort=name'
+# minimal + hidden
+alias la='eza -a --icons --group-directories-first --sort=name'
 # tree view (2 levels deep)
 alias lt='eza --tree --level=2 --icons --git'
 
