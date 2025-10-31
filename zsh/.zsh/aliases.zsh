@@ -6,6 +6,7 @@ alias x="exit"
 alias c="clear"
 
 ### Ls / Eza
+# https://man.archlinux.org/man/extra/eza/eza.1.en
 # full
 alias ls='eza -la -lh --icons --git --group-directories-first --header --sort=name'
 # minimal
