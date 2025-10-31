@@ -1,7 +1,7 @@
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-	'exec-and-forget sketchybar & dark-notify -c "sketchybar --reload || echo "',
+	'exec-and-forget sketchybar --hotload true & dark-notify -c "sketchybar --reload || echo "',
 	'exec-and-forget borders',
 	'layout tiles'
 ]
@@ -57,10 +57,10 @@ key-mapping.preset = 'qwerty'
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
-outer.left =       8
-outer.bottom =     8
+outer.left =       12
+outer.bottom =     12
 outer.top =        12
-outer.right =      8
+outer.right =      12
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -206,11 +206,11 @@ if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
+if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]

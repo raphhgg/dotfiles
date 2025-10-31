@@ -84,8 +84,11 @@ for i = 1, 10, 1 do
             space_popup:set({ background = { image = "space." .. env.SID } })
             space:set({ popup = { drawing = "toggle" } })
         else
-            local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-            sbar.exec("yabai -m space " .. op .. " " .. env.SID)
+            -- TODO: For right-click we could call AeroSpace to either move this workspace to the next display
+            -- (`aerospace move-workspace-to-monitor --workspace <id> next`) or send the focused window here
+            -- (`aerospace move-node-to-workspace <id>`). Leaving the Yabai command disabled until we wire one in.
+            -- local op = (env.BUTTON == "right") and "--destroy" or "--focus"
+            -- sbar.exec("yabai -m space " .. op .. " " .. env.SID)
         end
     end)
 
@@ -121,6 +124,14 @@ local spaces_indicator = sbar.add("item", {
     }
 })
 
+-- local function showing_spaces()
+--     return spaces_indicator:query().icon.value == icons.switch.on
+-- end
+
+-- local function next_mode_label()
+--     return showing_spaces() and "Menus" or "Spaces"
+-- end
+
 space_window_observer:subscribe("space_windows_change", function(env)
     local icon_line = ""
     local no_app = true
@@ -139,38 +150,42 @@ space_window_observer:subscribe("space_windows_change", function(env)
     end)
 end)
 
-spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
-    local currently_on = spaces_indicator:query().icon.value == icons.switch.on
-    spaces_indicator:set({
-        icon = currently_on and icons.switch.off or icons.switch.on
-    })
-end)
+-- spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
+--     local was_showing = showing_spaces()
+--     local now_showing = not was_showing
+--     spaces_indicator:set({
+--         icon = now_showing and icons.switch.on or icons.switch.off,
+--         label = { string = now_showing and "Menu" or "Spaces" },
+--     })
+-- end)
 
-spaces_indicator:subscribe("mouse.entered", function(env)
-    sbar.animate("tanh", 30, function()
-        spaces_indicator:set({
-            background = {
-                color = { alpha = 1.0 },
-                border_color = { alpha = 1.0 },
-            },
-            icon = { color = colors.bg1 },
-            label = { width = "dynamic" }
-        })
-    end)
-end)
+-- spaces_indicator:subscribe("mouse.entered", function(env)
+--     spaces_indicator:set({ label = { string = next_mode_label() } })
+--     sbar.animate("tanh", 15, function()
+--         spaces_indicator:set({
+--             background = {
+--                 color = { alpha = 1.0 },
+--                 border_color = { alpha = 1.0 },
+--             },
+--             icon = { color = colors.bg1 },
+--             label = { width = "dynamic" }
+--         })
+--     end)
+-- end)
 
-spaces_indicator:subscribe("mouse.exited", function(env)
-    sbar.animate("tanh", 30, function()
-        spaces_indicator:set({
-            background = {
-                color = { alpha = 0.0 },
-                border_color = { alpha = 0.0 },
-            },
-            icon = { color = colors.grey },
-            label = { width = 0, }
-        })
-    end)
-end)
+-- spaces_indicator:subscribe("mouse.exited", function(env)
+--     spaces_indicator:set({ label = { string = next_mode_label() } })
+--     sbar.animate("tanh", 15, function()
+--         spaces_indicator:set({
+--             background = {
+--                 color = { alpha = 0.0 },
+--                 border_color = { alpha = 0.0 },
+--             },
+--             icon = { color = colors.grey },
+--             label = { width = 0, }
+--         })
+--     end)
+-- end)
 
 spaces_indicator:subscribe("mouse.clicked", function(env)
     sbar.trigger("swap_menus_and_spaces")
