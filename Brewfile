@@ -5,6 +5,7 @@ tap "nikitabobko/tap"
 tap "domt4/autoupdate"
 
 # Development Tools
+brew "stow"
 brew "felixkratz/formulae/borders"
 brew "entr"
 brew "eza"
