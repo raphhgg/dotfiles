@@ -4,6 +4,7 @@
 ### Zsh
 alias x="exit"
 alias c="clear"
+alias rm="rm -r"
 
 ### Ls / Eza
 # https://man.archlinux.org/man/extra/eza/eza.1.en
