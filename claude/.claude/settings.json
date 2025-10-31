@@ -1,10 +1,14 @@
 {
+  "env": {
+    "MCP_TIMEOUT": "300000",
+    "MCP_TOOL_TIMEOUT": "300000"
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
   },
-  "env": {
-    "MCP_TIMEOUT": "300000",
-    "MCP_TOOL_TIMEOUT": "300000"
+  "alwaysThinkingEnabled": true,
+  "permissions": {
+    "allow": ["WebFetch"]
   }
 }
