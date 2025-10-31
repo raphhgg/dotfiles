@@ -144,8 +144,6 @@ cmd-alt-ctrl-shift-enter = 'fullscreen'
 # TODO: When opening Claude, bring it to the current workspace
 # TODO: Have all the floating windows not tight to a workpace, when opening them they should come floating
 # on the currently opened workspace
-#
-cmd-alt-ctrl-shift-f = 'exec-and-forget /bin/bash -c "if aerospace list-windows --focused | grep -q \"| Finder |\"; then osascript -e \"tell application \\\"System Events\\\" to set visible of process \\\"Finder\\\" to false\"; else open -a Finder && sleep 0.1 && aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --focused); fi"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
@@ -164,7 +162,9 @@ cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
 cmd-alt-ctrl-shift-semicolon = 'mode move'
 # Enter service mode with Hyper + "," (AZERTY "," key "m" in QWERTY)
 cmd-alt-ctrl-shift-m = 'mode service'
-#
+# Enter apps mode with Hyper + "o"
+cmd-alt-ctrl-shift-o = 'mode open'
+
 # 'move' binding mode declaration.
 # Move windows to workspaces and follow them
 [mode.move.binding]
@@ -198,6 +198,14 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[mode.open.binding]
+f = ['exec-and-forget /bin/bash -c "if aerospace list-windows --focused | grep -q \"| Finder |\"; then osascript -e \"tell application \\\"System Events\\\" to set visible of process \\\"Finder\\\" to false\"; else open -a Finder && sleep 0.1 && aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --focused); fi"','mode main']
+# AZERTY "m" is QWERTY "semicolon"
+semicolon = ['exec-and-forget /bin/bash -c "if aerospace list-windows --focused | grep -q \"| Messages |\"; then osascript -e \"tell application \\\"System Events\\\" to set visible of process \\\"Messages\\\" to false\"; else open -a Messages && sleep 0.1 && aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --focused); fi"','mode main']
+s = ['exec-and-forget /bin/bash -c "if aerospace list-windows --focused | grep -q \"| Slack |\"; then osascript -e \"tell application \\\"System Events\\\" to set visible of process \\\"Slack\\\" to false\"; else open -a Slack && sleep 0.1 && aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --focused); fi"','mode main']
+
+esc = 'mode main'
 
 # App-to-workspace assignments based on current setup
 # Automatically assign apps to workspaces when new windows open
@@ -244,6 +252,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'layout floating'
 
 [[on-window-detected]]
