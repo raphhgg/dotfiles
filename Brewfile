@@ -7,6 +7,7 @@ tap "domt4/autoupdate"
 # Development Tools
 brew "felixkratz/formulae/borders"
 brew "entr"
+brew "eza"
 brew "fastfetch"
 brew "ffmpeg"
 brew "fswatch"
