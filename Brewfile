@@ -6,6 +6,8 @@ tap "domt4/autoupdate"
 
 # Development Tools
 brew "stow"
+brew "bash"
+brew "bat"
 brew "felixkratz/formulae/borders"
 brew "entr"
 brew "eza"
