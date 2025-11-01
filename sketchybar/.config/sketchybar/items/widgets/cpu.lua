@@ -1,80 +1,47 @@
 local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
+local widget = require("helpers.widget")
 
 -- Execute the event provider binary which provides the event "cpu_update" for
 -- the cpu load data, which is fired every 2.0 seconds.
 sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
-local cpu = sbar.add("graph", "widgets.cpu", 42, {
-	position = "right",
-	graph = { color = colors.blue },
-	background = {
-		height = 22,
-		color = { alpha = 0 },
-		border_color = { alpha = 0 },
-		drawing = true,
-	},
-	icon = { string = icons.cpu },
-	label = {
-		string = "cpu ??%",
-		font = {
-			family = settings.font.numbers,
-			style = settings.font.style_map["Bold"],
-			size = 9.0,
-		},
-		align = "right",
-		padding_right = 0,
-		width = 0,
-		y_offset = 4,
-	},
-	padding_right = settings.paddings + 6,
+-- Add extra padding before CPU (to separate from WiFi widget on the right)
+sbar.add("item", "widgets.cpu.padding_left", {
+    position = "right",
+    width = settings.group_paddings + 30, -- Extra spacing before CPU
+})
+
+-- Create base CPU widget with lavender color
+local cpu = widget.new("widgets.cpu", {
+    icon = icons.cpu,
+    label = "??%",
+    update_background_on_theme = true,
+    icon_color = colors.lavender,
+    label_color = colors.lavender,
 })
 
 cpu:subscribe("cpu_update", function(env)
-	-- Also available: env.user_load, env.sys_load
-	local load = tonumber(env.total_load)
-	cpu:push({ load / 100. })
+    local load = tonumber(env.total_load)
 
-	local color = colors.blue
-	if load > 30 then
-		if load < 60 then
-			color = colors.yellow
-		elseif load < 80 then
-			color = colors.orange
-		else
-			color = colors.red
-		end
-	end
+    -- Color changes based on load: lavender or red only
+    local color = colors.lavender
+    if load > 70 then
+        color = colors.red
+    end
 
-	cpu:set({
-		graph = { color = color },
-		label = "cpu " .. env.total_load .. "%",
-	})
+    cpu:set({
+        label = {
+            string = load .. "%",
+            color = color,
+        },
+        icon = {
+            color = color,
+        },
+    })
 end)
 
 cpu:subscribe("mouse.clicked", function(env)
-	sbar.exec("open -a 'Activity Monitor'")
-end)
-
--- Background around the cpu item
-sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {
-	background = { border_color = colors.transparent },
-})
-
--- Background around the cpu item
-sbar.add("item", "widgets.cpu.padding", {
-	position = "right",
-	width = settings.group_paddings,
-})
-
-cpu:subscribe("theme_changed", function()
-	cpu:set({
-		icon = {
-			color = colors.text,
-		},
-		label = {
-			color = colors.text,
-		},
-	})
+    sbar.exec("open -a 'Activity Monitor'")
 end)

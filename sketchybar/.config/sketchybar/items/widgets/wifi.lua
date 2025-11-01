@@ -10,66 +10,123 @@ sbar.exec(
 
 local popup_width = 250
 
+-- Helper function to format bandwidth
+local function format_bandwidth(bw_string)
+    -- Handle different formats: "5000 Bps", "104KBps", "000 Bps"
+    if not bw_string or bw_string == "" then
+        return " 0.0 Mbps"
+    end
+
+    local kbps
+
+    -- Check if already in KBps format (e.g., "104KBps")
+    local kbps_value = bw_string:match("(%d+)KBps")
+    if kbps_value then
+        kbps = tonumber(kbps_value)
+    else
+        -- Otherwise assume "Bps" format (e.g., "5000 Bps")
+        local bps = tonumber(bw_string:match("(%d+)"))
+        if not bps then return " 0.0 Mbps" end
+        kbps = bps / 1000.0
+    end
+
+    -- Always display as Mbps with one decimal place
+    local mbps = kbps / 1000.0
+    return string.format("%4.1f Mbps", mbps)
+end
+
+-- Upload (top row)
 local wifi_up = sbar.add("item", "widgets.wifi1", {
     position = "right",
     padding_left = -5,
+    padding_right = 1,
     width = 0,
     icon = {
         padding_right = 0,
         font = {
-            style = settings.font.style_map["Bold"],
-            size = 9.0,
+            style = settings.font.style_map["Semibold"],
+            size = 8.0,
         },
         string = icons.wifi.upload,
+        color = colors.lavender,
     },
     label = {
         font = {
             family = settings.font.numbers,
-            style = settings.font.style_map["Bold"],
-            size = 9.0,
+            style = settings.font.style_map["Semibold"],
+            size = 8.0,
         },
-        color = colors.red,
-        string = "??? Bps",
+        padding_right = 8,
+        color = colors.lavender,
+        string = " 0.0 Mbps",
+        width = 60, -- Fixed width to prevent shifting
     },
     y_offset = 4,
 })
 
+-- Download (bottom row)
 local wifi_down = sbar.add("item", "widgets.wifi2", {
     position = "right",
     padding_left = -5,
+    padding_right = 1,
     icon = {
         padding_right = 0,
         font = {
-            style = settings.font.style_map["Bold"],
-            size = 9.0,
+            style = settings.font.style_map["Regular"],
+            size = 8.0,
         },
         string = icons.wifi.download,
+        color = colors.lavender,
     },
     label = {
         font = {
             family = settings.font.numbers,
-            style = settings.font.style_map["Bold"],
-            size = 9.0,
+            style = settings.font.style_map["Regular"],
+            size = 8.0,
         },
-        color = colors.blue,
-        string = "??? Bps",
+        padding_right = 8,
+        color = colors.lavender,
+        string = " 0.0 Mbps",
+        width = 60, -- Fixed width to prevent shifting
     },
     y_offset = -4,
 })
 
+-- WiFi status icon
 local wifi = sbar.add("item", "widgets.wifi.padding", {
     position = "right",
+    padding_left = 1,
+    icon = {
+        string = icons.wifi.connected,
+        padding_left = 8,
+        padding_right = 4,
+        color = colors.lavender,
+        font = {
+            style = settings.font.style_map["Regular"],
+            size = 15.0,
+        },
+    },
     label = { drawing = false },
 })
 
--- Background around the item
+-- Background around all items
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
     wifi.name,
     wifi_up.name,
     wifi_down.name,
 }, {
-    background = { border_color = colors.transparent },
+    background = {
+        color = colors.bg0,
+        border_width = 1,
+        height = 26,
+        border_color = colors.bg3,
+    },
     popup = { align = "center", height = 30 },
+})
+
+sbar.add("item", "widgets.wifi.padding", {
+    position = "right",
+    width = settings.group_paddings,
 })
 
 local ssid = sbar.add("item", {
@@ -154,23 +211,27 @@ local router = sbar.add("item", {
     },
 })
 
-sbar.add("item", { position = "right", width = settings.group_paddings })
-
 wifi_up:subscribe("network_update", function(env)
-    local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
-    local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
+    -- Use the raw values from the event
+    local upload_str = env.upload or "0 Bps"
+    local download_str = env.download or "0 Bps"
+
+    -- Format to Kbps or Mbps with fixed width
+    local upload_formatted = format_bandwidth(upload_str)
+    local download_formatted = format_bandwidth(download_str)
+
     wifi_up:set({
-        icon = { color = up_color },
+        icon = { color = colors.lavender },
         label = {
-            string = env.upload,
-            color = up_color,
+            string = upload_formatted,
+            color = colors.lavender,
         },
     })
     wifi_down:set({
-        icon = { color = down_color },
+        icon = { color = colors.lavender },
         label = {
-            string = env.download,
-            color = down_color,
+            string = download_formatted,
+            color = colors.lavender,
         },
     })
 end)
@@ -181,7 +242,7 @@ wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
         wifi:set({
             icon = {
                 string = connected and icons.wifi.connected or icons.wifi.disconnected,
-                color = connected and colors.text or colors.red,
+                color = colors.lavender,
             },
         })
     end)
@@ -239,11 +300,23 @@ router:subscribe("mouse.clicked", copy_label_to_clipboard)
 
 wifi:subscribe("theme_changed", function()
     wifi:set({
-        icon = {
-            color = colors.text,
-        },
-        label = {
-            color = colors.text,
+        icon = { color = colors.lavender },
+    })
+    wifi_up:set({
+        icon = { color = colors.lavender },
+        label = { color = colors.lavender },
+    })
+    wifi_down:set({
+        icon = { color = colors.lavender },
+        label = { color = colors.lavender },
+    })
+end)
+
+wifi_bracket:subscribe("theme_changed", function()
+    wifi_bracket:set({
+        background = {
+            color = colors.bg0,
+            border_color = colors.bg3,
         },
     })
 end)

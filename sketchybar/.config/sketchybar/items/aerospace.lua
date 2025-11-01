@@ -165,10 +165,10 @@ local function onWorkspaceChanged(workspace, selected)
     workspace:set({
         icon = { highlight = selected },
         label = { highlight = selected },
-        background = { border_color = selected and colors.lavender or colors.bg2 },
+        background = { border_color = selected and colors.lavender_subtle or colors.bg3 },
     })
     -- workspace.space_bracket:set({
-    --     background = { border_color = selected and colors.lavender or colors.bg2 },
+    --     background = { border_color = selected and colors.lavender_subtle or colors.bg3 },
     -- })
 end
 
@@ -179,27 +179,30 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
         -- Workspace definition
         local workspace = sbar.add("item", "space." .. i, {
             icon = {
-                font = { family = "SF Mono:Regular:9.0" },
+                font = {
+                    family = settings.font.text,
+                    size = 13.0,
+                },
                 string = i,
                 padding_left = 15,
                 padding_right = 8,
-                color = colors.white,
+                color = colors.lavender,
                 highlight_color = colors.red,
             },
             label = {
                 padding_right = 20,
                 color = colors.lavender,
-                highlight_color = colors.white,
+                highlight_color = colors.lavender,
                 font = "sketchybar-app-font:Regular:14.0",
                 y_offset = -1,
             },
             padding_right = 1,
             padding_left = 1,
             background = {
-                color = colors.bg1,
+                color = colors.bg0,
                 border_width = 1,
                 height = 26,
-                border_color = colors.bg2,
+                border_color = colors.bg3,
             },
             click_script = "aerospace workspace " .. i,
         })
@@ -247,10 +250,10 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
             color = colors.white
         },
         background = {
-            color = colors.bg1,
+            color = colors.bg0,
             border_width = 1,
             height = 26,
-            border_color = colors.bg2,
+            border_color = colors.bg3,
         },
     })
 
@@ -289,9 +292,9 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
         sbar.animate("tanh", 15, function()
             spaces_indicator:set({
                 background = {
-                    color = colors.bg1,
+                    color = colors.bg0,
                     border_width = 1,
-                    border_color = colors.bg2,
+                    border_color = colors.bg3,
                 },
                 icon = { color = colors.white },
                 label = { width = "dynamic" }
@@ -304,9 +307,9 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
         sbar.animate("tanh", 15, function()
             spaces_indicator:set({
                 background = {
-                    color = colors.bg1,
+                    color = colors.bg0,
                     border_width = 1,
-                    border_color = colors.bg2,
+                    border_color = colors.bg3,
                 },
                 icon = { color = colors.white },
                 label = { width = 0, }
