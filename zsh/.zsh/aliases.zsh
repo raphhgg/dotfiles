@@ -11,6 +11,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+### Bat
+alias cat=bat
+# Highlight JSON or YAML files nicely
+alias jcat='bat --language json'
+alias ycat='bat --language yaml'
+
 ### Ls / Eza
 # https://man.archlinux.org/man/extra/eza/eza.1.en
 # full
