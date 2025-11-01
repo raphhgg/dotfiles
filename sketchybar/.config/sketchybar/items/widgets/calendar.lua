@@ -18,5 +18,5 @@ end)
 
 -- Add click handler
 calendar:subscribe("mouse.clicked", function(env)
-    sbar.exec("open -a 'Fantastical'")
+    sbar.exec([[osascript -e 'tell application "System Events" to key code 49 using {control down, option down}']])
 end)

@@ -7,12 +7,6 @@ local widget = require("helpers.widget")
 -- the cpu load data, which is fired every 2.0 seconds.
 sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
--- Add extra padding before CPU (to separate from WiFi widget on the right)
-sbar.add("item", "widgets.cpu.padding_left", {
-    position = "right",
-    width = settings.group_paddings + 30, -- Extra spacing before CPU
-})
-
 -- Create base CPU widget with lavender color
 local cpu = widget.new("widgets.cpu", {
     icon = icons.cpu,
