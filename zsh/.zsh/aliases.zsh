@@ -6,6 +6,11 @@ alias x="exit"
 alias c="clear"
 alias rm="rm -r"
 
+### Cd
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 ### Ls / Eza
 # https://man.archlinux.org/man/extra/eza/eza.1.en
 # full
