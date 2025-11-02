@@ -116,9 +116,9 @@ cmd-alt-ctrl-shift-l = 'focus right'
 
 # See: https://nikitasbobko.github.io/AeroSpace/commands#resize
 # 'equal' is '-' in AZERTY keyboard
-cmd-alt-ctrl-shift-equal = 'resize smart -50'
+cmd-alt-ctrl-shift-minus = 'resize smart -50'
 # 'minus is ')'
-cmd-alt-ctrl-shift-minus = 'resize smart +50'
+cmd-alt-ctrl-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 cmd-alt-ctrl-shift-1 = 'workspace 1'
