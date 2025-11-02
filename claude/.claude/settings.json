@@ -1,14 +1,16 @@
 {
-  "env": {
-    "MCP_TIMEOUT": "300000",
-    "MCP_TOOL_TIMEOUT": "300000"
+  "permissions": {
+    "allow": ["WebFetch"],
+    "deny": ["Bash(rm -rf:*)"]
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline-command.sh"
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0
   },
   "alwaysThinkingEnabled": true,
-  "permissions": {
-    "allow": ["WebFetch"]
+  "env": {
+    "MCP_TIMEOUT": "300000",
+    "MCP_TOOL_TIMEOUT": "300000"
   }
 }
