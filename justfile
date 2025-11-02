@@ -4,6 +4,10 @@
 stow-all:
     stow aerospace alacritty git nvim omp ssh zsh ghostty claude
 
+# Install dotfiles for ds423plus NAS server
+stow-ds423plus:
+    stow tmux omp claude git nvim zsh
+
 # Remove all dotfiles symlinks
 unstow-all:
     stow -D aerospace git nvim omp ssh zsh ghostty claude
