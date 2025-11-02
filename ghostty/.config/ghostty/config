@@ -1,6 +1,6 @@
 # Theme
-theme = Catppuccin Mocha
-# theme = tokyonight_night
+# theme = Catppuccin Mocha
+theme = TokyoNight Night
 
 # Terminal
 # Fallback TERM for SSH compatibility (fixes backspace issues)
