@@ -2,9 +2,9 @@
 
 options=(
     style=round
-    width=3.0
+    width=1.0
     hidpi=on
-    active_color=0xffe1e3e4
+    active_color=0xff45475a #0xff6c7a9e #0xffe1e3e4
     inactive_color=0xff6c7086
     # blacklist=
 )
