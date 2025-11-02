@@ -33,7 +33,7 @@ A dedicated SSH key has been created specifically for this GitHub Actions workfl
 
 **Security features:**
 - ✅ Dedicated key (isolated from personal SSH keys)
-- ✅ Command restriction: Can only run `cd ~/.dotfiles && git pull origin main`
+- ✅ Command restriction: Can only run `cd ~/dotfiles && git pull origin main`
 - ✅ Disabled port forwarding, X11 forwarding, and agent forwarding
 - ✅ Easy revocation without affecting personal access
 
@@ -49,7 +49,7 @@ Copy the entire output (including `BEGIN` and `END` lines) and paste into the `S
 1. **Push** changes to `main` branch on GitHub
 2. **GitHub Actions** workflow triggers automatically
 3. **Runner** connects to NAS via SSH using stored credentials
-4. **Executes** restricted command: `cd ~/.dotfiles && git pull origin main`
+4. **Executes** restricted command: `cd ~/dotfiles && git pull origin main`
 5. **Reports** status in GitHub Actions tab
 
 ### Security Model
@@ -57,12 +57,12 @@ Copy the entire output (including `BEGIN` and `END` lines) and paste into the `S
 The SSH key is restricted at the `authorized_keys` level on the NAS:
 
 ```bash
-command="cd ~/.dotfiles && git pull origin main",no-port-forwarding,no-X11-forwarding,no-agent-forwarding ssh-ed25519 AAAA... github_actions_dotfiles
+command="cd ~/dotfiles && git pull origin main",no-port-forwarding,no-X11-forwarding,no-agent-forwarding ssh-ed25519 AAAA... github_actions_dotfiles
 ```
 
 This means even if GitHub's infrastructure is compromised, the key can **only**:
 - Connect to the NAS
-- Navigate to `~/.dotfiles`
+- Navigate to `~/dotfiles`
 - Execute `git pull origin main`
 
 Nothing else is possible with this key.
@@ -87,7 +87,7 @@ Nothing else is possible with this key.
 - Verify firewall settings on NAS allow SSH connections
 
 **Git pull fails**
-- Ensure `~/.dotfiles` directory exists on NAS
+- Ensure `~/dotfiles` directory exists on NAS
 - Verify git remote is configured correctly: `git remote -v`
 - Check that the NAS user has permission to write to the directory
 
@@ -116,7 +116,7 @@ Test the SSH connection and command restriction:
 # Test connection with the GitHub Actions key
 ssh -i ~/.ssh/github_actions_dotfiles raphh@ds423plus
 
-# This should automatically execute: cd ~/.dotfiles && git pull origin main
+# This should automatically execute: cd ~/dotfiles && git pull origin main
 # You won't get an interactive shell due to the command restriction
 ```
 

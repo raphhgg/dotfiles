@@ -8,11 +8,11 @@ This document outlines which applications use the hyper key (Caps Lock) and how 
 
 ### Karabiner-Elements
 **How it works**: Caps Lock → Hyper Key (Cmd+Ctrl+Alt+Shift) transformation and Belgian AZERTY fixes
-- Look in ~/.dotfiles/karabiner/.config/karabiner/assets/complex_modifications/ for modular configuration files.
+- Look in ~/dotfiles/karabiner/.config/karabiner/assets/complex_modifications/ for modular configuration files.
 
 ### tmux (Hyper+A)
 **How it works**: Ghostty translates `Hyper+A` → F1 escape sequence → tmux prefix
-- Look in ~/.dotfiles/tmux/.config/tmux/tmux.conf for more infos.
+- Look in ~/dotfiles/tmux/.config/tmux/tmux.conf for more infos.
 
 ### Raycast
 **How it works**: Direct Raycast integration, auto-detects hyper key.
@@ -38,7 +38,7 @@ This document outlines which applications use the hyper key (Caps Lock) and how 
 - Automatic app-to-workspace assignments
 - Belgian AZERTY keyboard fully supported
 
-- Look in ~/.dotfiles/aerospace/.config/aerospace/aerospace.toml for more infos.
+- Look in ~/dotfiles/aerospace/.config/aerospace/aerospace.toml for more infos.
 
 ## Troubleshooting
 
@@ -48,8 +48,8 @@ This document outlines which applications use the hyper key (Caps Lock) and how 
 - Test with `Hyper + A` for tmux - should show prefix indicator
 
 ### tmux Prefix Not Working
-- Check Ghostty config: `~/.dotfiles/ghostty/.config/ghostty/config`
-- Verify tmux config: `~/.dotfiles/tmux/.config/tmux/tmux.conf`
+- Check Ghostty config: `~/dotfiles/ghostty/.config/ghostty/config`
+- Verify tmux config: `~/dotfiles/tmux/.config/tmux/tmux.conf`
 - Test escape sequence: `cat -v` should show `^[OP` for `Hyper+A`
 
 ### cmd+tab Still Shows macOS App Switcher
@@ -59,7 +59,7 @@ This document outlines which applications use the hyper key (Caps Lock) and how 
 
 ### AeroSpace Shortcuts Not Working
 - Verify AeroSpace is running: `aerospace list-workspaces`
-- Check config: `~/.dotfiles/aerospace/.config/aerospace/aerospace.toml`
+- Check config: `~/dotfiles/aerospace/.config/aerospace/aerospace.toml`
 - Reload AeroSpace config: `aerospace reload-config`
 
 ### Belgian AZERTY Keys Not Working

@@ -3,7 +3,7 @@
 This repository contains my personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Prerequisites
-- **macOS**: `brew install stow`  
+- **macOS**: `brew install stow`
 - **Arch Linux**: `sudo pacman -S stow`
 - **Ubuntu/Debian**: `sudo apt install stow`
 - **Other**: Check your package manager
@@ -29,8 +29,8 @@ dotfiles/
 
 ```bash
 # Clone the repository
-git clone https://github.com/raaphhh/.dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
+cd ~/github/dotfiles
 
 # Install specific packages
 stow zsh      # Creates ~/.zshrc
@@ -67,7 +67,7 @@ Since stow creates symlinks, just edit files normally:
 nvim ~/.zshrc
 
 # Or edit in the repo
-nvim ~/.dotfiles/zsh/.zshrc
+nvim ~/github/dotfiles/zsh/.zshrc
 ```
 
 ### Removing packages
@@ -107,8 +107,8 @@ just brew-cleanup
 ### New Mac Setup
 ```bash
 # Complete setup on a new Mac
-git clone https://github.com/raaphhh/.dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
+cd ~/github/dotfiles
 
 # Install dotfiles
 just stow-all
@@ -182,7 +182,7 @@ nvim ~/.claude/settings.json
 
 ### MCP Server Configuration
 
-MCP servers are managed via the `claude mcp` CLI, not configuration files in .dotfiles.
+MCP servers are managed via the `claude mcp` CLI, not configuration files in dotfiles.
 
 **Add user-level MCP server (available in all projects):**
 ```bash
@@ -217,7 +217,7 @@ For machine-specific paths or values, edit `~/.claude/settings.json` directly:
 ### Adding to New Machine
 
 ```bash
-cd ~/.dotfiles
+cd ~/dotfiles
 stow claude
 
 # Add MCP servers (they're per-machine, not in dotfiles)

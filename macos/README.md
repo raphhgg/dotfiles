@@ -12,7 +12,7 @@ This directory contains macOS system preferences extracted from the nix-darwin c
 Apply all preferences at once:
 
 ```bash
-~/.dotfiles/macos/apply-preferences.sh
+~/dotfiles/macos/apply-preferences.sh
 ```
 
 Then restart services:

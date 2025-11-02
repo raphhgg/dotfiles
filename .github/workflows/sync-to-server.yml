@@ -1,24 +1,24 @@
-name: Sync to NAS Server
+# name: Sync to NAS Server
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  sync:
-    runs-on: [self-hosted, dotfiles]
+# jobs:
+#   sync:
+#     runs-on: [self-hosted, dotfiles]
 
-    steps:
-      - name: Sync dotfiles to NAS
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
-        run: |
-          set -e
-          git config --global --add safe.directory /dotfiles
-          cd /dotfiles
-          echo "📥 Pulling latest changes from main branch..."
-          git -c credential.helper='!f() { echo "username=x-access-token"; echo "password=$GH_TOKEN"; }; f' pull origin main
-          echo "🔧 Fixing file permissions..."
-          chown -R ${{ secrets.SERVER_PUID }}:${{ secrets.SERVER_PGID }} /dotfiles
-          echo "✅ Dotfiles sync completed successfully!"
+#     steps:
+#       - name: Sync dotfiles to NAS
+#         env:
+#           GH_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
+#         run: |
+#           set -e
+#           git config --global --add safe.directory /dotfiles
+#           cd /dotfiles
+#           echo "📥 Pulling latest changes from main branch..."
+#           git -c credential.helper='!f() { echo "username=x-access-token"; echo "password=$GH_TOKEN"; }; f' pull origin main
+#           echo "🔧 Fixing file permissions..."
+#           chown -R ${{ secrets.SERVER_PUID }}:${{ secrets.SERVER_PGID }} /dotfiles
+#           echo "✅ Dotfiles sync completed successfully!"
