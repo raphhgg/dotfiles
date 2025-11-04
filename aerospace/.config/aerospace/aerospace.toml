@@ -247,6 +247,9 @@ run = 'move-node-to-workspace 9'
 
 # Floating apps configuration
 [[on-window-detected]]
+if.app-id = '85C27NK92C.com.flexibits.fantastical2.mac.helper'
+run = 'layout floating'
+[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
 

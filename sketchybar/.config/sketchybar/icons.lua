@@ -42,6 +42,13 @@ local icons = {
             forward = "􀊌",
             play_pause = "􀊈",
         },
+        weather = {
+            sun = "􀆮",
+            cloud = "􀇃",
+            rain = "􀇅",
+            snow = "􀇏",
+            wind = "􀇋",
+        },
     },
 
     -- Alternative NerdFont icons
