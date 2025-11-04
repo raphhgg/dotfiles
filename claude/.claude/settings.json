@@ -9,6 +9,7 @@
     "padding": 0
   },
   "alwaysThinkingEnabled": true,
+  "autoCompactEnabled": false,
   "env": {
     "MCP_TIMEOUT": "300000",
     "MCP_TOOL_TIMEOUT": "300000"
