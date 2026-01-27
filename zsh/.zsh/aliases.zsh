@@ -66,5 +66,16 @@ alias gaac='git add . && git commit -m'
 alias gaacp='git add . && git commit -m && git push'
 
 
+### Tmux
+# Kill session
+alias tk="tmux kill-session -t"
+
+# SSH + tmux connections
+alias sds="ssh ds423plus"
+alias sub="ssh ubuntu-server"
+alias sds-shell="ssh ds423plus-notmux"
+alias sub-shell="ssh ubuntu-server-notmux"
+
+
 # TODO
 # alias zquery="zoxide query -l -s | less"
