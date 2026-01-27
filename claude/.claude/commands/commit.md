@@ -13,7 +13,7 @@ description: Analyze changes and suggest well-formatted git commit(s)
 
 ## Task
 - Analyze all changes since last commit and suggest 1 or more appropriate commit messages following conventional commits format.
-- **DO NOT launch the 'git commit' command(s), ask the user first to validate the proposed commit(s)** 
+- **DO NOT launch the 'git commit' command(s), you should show to the user the different commits you want to create and prompt him to validate the proposed commit(s)** 
 
 ## Analysis
 1. **Files changed**: List all files that have been modified, added, or deleted
