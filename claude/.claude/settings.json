@@ -14,7 +14,7 @@
     "command": "npx -y ccstatusline@latest",
     "padding": 0
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "model": "qwen3-coder-64k",
   "smallFastModel": "qwen3-coder-64k",
   "autoCompactEnabled": false
