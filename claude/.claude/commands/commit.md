@@ -12,7 +12,8 @@ description: Analyze changes and suggest well-formatted git commit(s)
 - Recent commits: !`git log --oneline -5`
 
 ## Task
-Analyze all changes since last commit and suggest 1 or more appropriate commit messages following conventional commits format.
+- Analyze all changes since last commit and suggest 1 or more appropriate commit messages following conventional commits format.
+- **DO NOT launch the 'git commit' command(s), ask the user first to validate the proposed commit(s)** 
 
 ## Analysis
 1. **Files changed**: List all files that have been modified, added, or deleted
@@ -24,7 +25,6 @@ Based on the analysis, I will propose one or more commit messages that:
 - Follow conventional commit format (type: description)
 - Include appropriate scope prefixes
 - Group related changes logically
-- Do NOT execute commits automatically
 - Focus on the changes made rather than generation markers
 
 ## Commit Message Guidelines
