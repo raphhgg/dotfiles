@@ -30,22 +30,57 @@ end
 
 -- Fetch weather from Raycast's menu bar item
 local function update_weather()
+    -- Try to get weather data from Raycast's first menu bar item (usually contains weather)
     sbar.exec(
-        'osascript -e \'tell application "System Events" to tell process "Raycast" to get {name, help} of menu bar item 2 of menu bar 2\'',
+        'osascript -e \'tell application "System Events" to tell process "Raycast" to get {name, help} of menu bar item 1 of menu bar 2\'',
         function(result)
-            local temp, condition = result:match("([^,]+),%s*(.+)")
-            if temp and condition then
-                temp = temp:match("^%s*(.-)%s*$") -- Trim whitespace
-                condition = condition:match("^%s*(.-)%s*$")
+            if result and result ~= "" and not result:match("missing value") then
+                -- Parse the result properly - it should be in format "temp, condition"
+                local temp, condition = result:match("([^,]+),%s*(.+)")
+                if temp and condition then
+                    temp = temp:match("^%s*(.-)%s*$") -- Trim whitespace
+                    condition = condition:match("^%s*(.-)%s*$")
 
-                -- Strip the ℃ symbol and replace with °C or just the number
-                temp = temp:gsub("℃", "°C")
+                    -- Strip the ℃ symbol and replace with °C or just the number
+                    temp = temp:gsub("℃", "°C")
 
-                local icon = get_weather_icon(condition)
-                weather:set({
-                    icon = { string = icon },
-                    label = temp
-                })
+                    local icon = get_weather_icon(condition)
+                    weather:set({
+                        icon = { string = icon },
+                        label = temp
+                    })
+                else
+                    -- If parsing failed, try to use the whole result
+                    local clean_result = result:match("^%s*(.-)%s*$")
+                    if clean_result and clean_result ~= "" then
+                        weather:set({
+                            icon = { string = icons.weather.cloud },
+                            label = clean_result
+                        })
+                    end
+                end
+            else
+                -- If first item doesn't work, try the second item as fallback
+                sbar.exec(
+                    'osascript -e \'tell application "System Events" to tell process "Raycast" to get {name, help} of menu bar item 2 of menu bar 2\'',
+                    function(fallback_result)
+                        if fallback_result and fallback_result ~= "" and not fallback_result:match("missing value") then
+                            local temp, condition = fallback_result:match("([^,]+),%s*(.+)")
+                            if temp and condition then
+                                temp = temp:match("^%s*(.-)%s*$") -- Trim whitespace
+                                condition = condition:match("^%s*(.-)%s*$")
+
+                                -- Strip the ℃ symbol and replace with °C or just the number
+                                temp = temp:gsub("℃", "°C")
+
+                                local icon = get_weather_icon(condition)
+                                weather:set({
+                                    icon = { string = icon },
+                                    label = temp
+                                })
+                            end
+                        end
+                    end)
             end
         end)
 end
