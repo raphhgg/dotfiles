@@ -31,7 +31,7 @@ end
 -- Fetch weather from Raycast's menu bar item
 local function update_weather()
     sbar.exec(
-        'osascript -e \'tell application "System Events" to tell process "Raycast" to get {name, help} of menu bar item 1 of menu bar 2\'',
+        'osascript -e \'tell application "System Events" to tell process "Raycast" to get {name, help} of menu bar item 2 of menu bar 2\'',
         function(result)
             local temp, condition = result:match("([^,]+),%s*(.+)")
             if temp and condition then
@@ -59,7 +59,7 @@ weather:subscribe("routine", update_weather)
 -- Click to open Raycast weather popup
 weather:subscribe("mouse.clicked", function()
     sbar.exec(
-        'osascript -e \'tell application "System Events" to tell process "Raycast" to perform action "AXPress" of menu bar item 1 of menu bar 2\'')
+        'osascript -e \'tell application "System Events" to tell process "Raycast" to perform action "AXPress" of menu bar item 2 of menu bar 2\'')
 end)
 
 -- Add bracket (consistent with other widgets)
