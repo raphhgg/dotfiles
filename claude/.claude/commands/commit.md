@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git diff --name-only:*)
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git diff --name-only:*), Bash(git commit:*)
 argument-hint: [message]
 description: Analyze changes and suggest well-formatted git commit(s)
 ---

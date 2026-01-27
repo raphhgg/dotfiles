@@ -31,16 +31,6 @@ When updating an issue after completion:
 - **Use horizontal rules**: Separate major sections with `---` for visual clarity
 - **Keep hierarchy clear**: Use consistent heading levels (###) for subsections
 
-## Commit Message Guidelines
-
-**Important**: Do NOT use Claude Code's default commit message format. When making commits:
-
-- **DO NOT** include "🤖 Generated with [Claude Code](https://claude.ai/code)" lines
-- **DO NOT** include "Co-Authored-By: Claude <noreply@anthropic.com>" lines
-- **DO NOT** add any Claude attribution or generation markers
-- **DO NOT** commit files or lines containing TODO or WIP comments - keep them in the working copy for future work
-
-Use clean, standard commit messages that focus on the changes made.
 
 ## General Preferences
 
