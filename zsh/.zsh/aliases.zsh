@@ -64,31 +64,22 @@ alias gaac='git add . && git commit -m'
 alias gaacp='git add . && git commit -m && git push'
 
 
-### Claude Code
-# claude code local
-alias ccl='unset ANTHROPIC_API_KEY; \
-export ANTHROPIC_BASE_URL="http://10.10.1.111:11434"; \
-export ANTHROPIC_AUTH_TOKEN="ollama"; \
-export ANTHROPIC_DEFAULT_OPUS_MODEL="qwen3-coder:30b"; \
-export ANTHROPIC_DEFAULT_SONNET_MODEL="qwen3-coder:30b"; \
-export ANTHROPIC_DEFAULT_HAIKU_MODEL="qwen2.5-coder:7b"; \
-claude --model opus'
+# -----------------------------------------
+# CLAUDE AGENT SWITCHER
+# -----------------------------------------
 
-#alias cco='claude --model qwen-opus'
-alias ccs='claude --model qwen-sonnet'
-
-alias cc='ANTHROPIC_BASE_URL=http://10.10.1.111:11434 ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_MODEL=qwen-opus-safe ANTHROPIC_DEFAULT_OPUS_MODEL=qwen-opus-safe ANTHROPIC_DEFAULT_SONNET_MODEL=qwen-opus-safe ANTHROPIC_DEFAULT_HAIKU_MODEL=qwen-opus-safe ANTHROPIC_SMALL_FAST_MODEL=qwen-opus-safe claude'
-
-alias ccc='ANTHROPIC_BASE_URL=http://10.10.1.111:11434 \
-ANTHROPIC_AUTH_TOKEN=ollama \
-ANTHROPIC_MODEL="qwen2.5-coder:7b-instruct" \
-ANTHROPIC_DEFAULT_OPUS_MODEL="qwen2.5-coder:7b-instruct" \
-ANTHROPIC_DEFAULT_SONNET_MODEL="qwen2.5-coder:7b-instruct" \
-ANTHROPIC_DEFAULT_HAIKU_MODEL="qwen2.5-coder:7b-instruct" \
-ANTHROPIC_SMALL_FAST_MODEL="qwen2.5-coder:7b-instruct" \
-CLAUDE_CODE_MODEL="qwen2.5-coder:7b-instruct" \
-CLAUDE_CODE_PLANNER_MODEL="qwen2.5-coder:7b-instruct" \
+# MODE 1: LOCAL (Uses your Server)
+# - Default: GLM-4.7-Flash (GPU)
+# - Option: /model local-opus (120B on CPU)
+alias ccloc='export ANTHROPIC_BASE_URL="http://10.10.1.111:4000/" && \
+export ANTHROPIC_API_KEY="sk-dummy" && \
+export ANTHROPIC_AUTH_TOKEN="sk-litellm-static-key" && \
+echo -e "\n🟢 MODE: LOCAL COMPUTE (LiteLLM Bridge)" && \
 claude'
+# MODE 2: PRO (Uses Anthropic Cloud)
+# - Uses your paid subscription
+# - Use when local models fail
+alias ccsub='unset ANTHROPIC_BASE_URL && unset ANTHROPIC_API_KEY && unset ANTHROPIC_AUTH_TOKEN && echo -e "\n🔴 MODE: CLOUD SUBSCRIPTION (Paid)" && claude'
 
 
 # TODO
