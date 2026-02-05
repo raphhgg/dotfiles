@@ -20,7 +20,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -113,6 +113,8 @@ cmd-alt-ctrl-shift-h = 'focus left'
 cmd-alt-ctrl-shift-j = 'focus down'
 cmd-alt-ctrl-shift-k = 'focus up'
 cmd-alt-ctrl-shift-l = 'focus right'
+# Cycle through windows in the current workspace (works with fullscreen stacked windows)
+cmd-alt-ctrl-shift-w = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
 
 # See: https://nikitasbobko.github.io/AeroSpace/commands#resize
 # 'equal' is '-' in AZERTY keyboard
@@ -211,23 +213,35 @@ esc = 'mode main'
 # Automatically assign apps to workspaces when new windows open
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'move-node-to-workspace 1'
+run = ['move-node-to-workspace 1', 'layout accordion']
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
+run = ['move-node-to-workspace 1', 'layout accordion']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace 2'
+run = ['move-node-to-workspace 2', 'layout accordion']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = 'move-node-to-workspace 3'
+run = ['move-node-to-workspace 3', 'layout accordion']
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92' # Cursor
-run = 'move-node-to-workspace 4'
+run = ['move-node-to-workspace 3', 'layout accordion']
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 5'
+run = ['move-node-to-workspace 4', 'layout accordion']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = ['move-node-to-workspace 4', 'layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace 4', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
@@ -251,14 +265,6 @@ if.app-id = '85C27NK92C.com.flexibits.fantastical2.mac.helper'
 run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'layout floating'
 
 [[on-window-detected]]
