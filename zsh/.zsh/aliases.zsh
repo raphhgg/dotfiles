@@ -33,9 +33,11 @@ alias lt='eza --tree --level=2 --icons --git'
 # down
 alias dcd="docker compose down"
 # up detached
-alias dcu="docker compose up"
+alias dcu="docker compose up -d"
 # restart quickly after a config/env change.
 alias dcr="docker compose restart"
+# force recreate
+alias dcduf="docker compose down && docker compose up --force-recreate"
 # redeploy after updating image versions or dependencies.
 alias dcdpu="docker compose down && docker compose pull && docker compose up"
 
@@ -64,6 +66,21 @@ alias gaac='git add . && git commit -m'
 alias gaacp='git add . && git commit -m && git push'
 
 
+### Tmux
+# Kill session
+alias tk="tmux kill-session -t"
+
+# SSH + tmux connections
+alias sds="ssh ds423plus"
+alias sub="ssh ubuntu-server"
+alias sds-shell="ssh ds423plus-notmux"
+alias sub-shell="ssh ubuntu-server-notmux"
+
+
+### Wake On Lan
+alias wolub="wakeonlan 10:7c:61:3f:c9:8f && sleep 10 && ssh ubuntu-server"
+
+
 # -----------------------------------------
 # CLAUDE AGENT SWITCHER
 # -----------------------------------------
@@ -80,6 +97,7 @@ claude'
 # - Uses your paid subscription
 # - Use when local models fail
 alias ccsub='unset ANTHROPIC_BASE_URL && unset ANTHROPIC_API_KEY && unset ANTHROPIC_AUTH_TOKEN && echo -e "\n🔴 MODE: CLOUD SUBSCRIPTION (Paid)" && claude'
+
 
 
 # TODO
