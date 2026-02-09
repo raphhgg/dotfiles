@@ -15,5 +15,9 @@
 # Tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/
 
+# Neovim (managed by lazy.nvim)
+nvim/.config/nvim/lazyvim.json
+nvim/.config/nvim/lazy-lock.json
+
 # Zsh cache
 zsh/.zsh/cache/
