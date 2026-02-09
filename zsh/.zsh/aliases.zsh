@@ -33,9 +33,11 @@ alias lt='eza --tree --level=2 --icons --git'
 # down
 alias dcd="docker compose down"
 # up detached
-alias dcu="docker compose up"
+alias dcu="docker compose up -d"
 # restart quickly after a config/env change.
 alias dcr="docker compose restart"
+# force recreate
+alias dcduf="docker compose down && docker compose up --force-recreate"
 # redeploy after updating image versions or dependencies.
 alias dcdpu="docker compose down && docker compose pull && docker compose up"
 
