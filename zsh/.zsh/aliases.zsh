@@ -12,10 +12,17 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 ### Bat
-alias cat=bat
-# Highlight JSON or YAML files nicely
-alias jcat='bat --language json'
-alias ycat='bat --language yaml'
+# On Ubuntu/Debian, bat is installed as 'batcat'
+if has_command bat; then
+    alias cat=bat
+    alias jcat='bat --language json'
+    alias ycat='bat --language yaml'
+elif has_command batcat; then
+    alias bat=batcat
+    alias cat=batcat
+    alias jcat='batcat --language json'
+    alias ycat='batcat --language yaml'
+fi
 
 ### Ls / Eza
 # https://man.archlinux.org/man/extra/eza/eza.1.en

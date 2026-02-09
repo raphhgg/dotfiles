@@ -1,0 +1,61 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "local-llama/devstral-small-2-24b",
+  "provider": {
+    "local-llama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Llama Server (RTX 3090)",
+      "options": {
+        "baseURL": "http://10.10.1.111:8081/v1",
+        "apiKey": "x"
+      },
+      "models": {
+        "nemotron-3-nano-30b-a3b": {
+          "name": "Nemotron-3-Nano-30B-A3B",
+          "description": "32B MoE (active: 4B) — 175.6 t/s — Best for: daily coding, autocomplete, chat",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "glm-4.7-flash": {
+          "name": "GLM-4.7-Flash",
+          "description": "30B MoE (active: 3B) — 126.2 t/s — Best for: daily coding, chat",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "phi-4": {
+          "name": "phi-4",
+          "description": "14.7B — 81.0 t/s — Best for: chat, quick tasks",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "devstral-small-2-24b": {
+          "name": "Devstral-Small-2-24B",
+          "description": "23.6B code-specialized — 52.6 t/s — Best for: complex tasks, refactoring, daily coding",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "deepseek-r1-distill-qwen-14b": {
+          "name": "DeepSeek-R1-Distill-Qwen-14B",
+          "description": "14.8B R1 distill — 52.1 t/s — Best for: planning, architecture, research",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "deepseek-r1-distill-qwen-32b": {
+          "name": "DeepSeek-R1-Distill-Qwen-32B",
+          "description": "32.8B R1 distill — 37.6 t/s — Best for: debugging, reasoning, planning, research",
+          "limit": { "context": 32768, "output": 16384 }
+        },
+        "qwen2.5-coder-32b": {
+          "name": "Qwen2.5-Coder-32B",
+          "description": "32.8B code-specialized — 37.6 t/s — Best for: complex tasks, debugging",
+          "limit": { "context": 32768, "output": 16384 }
+        },
+        "qwen3-32b": {
+          "name": "Qwen3-32B",
+          "description": "32.8B — 37.4 t/s — Best for: debugging, reasoning",
+          "limit": { "context": 32768, "output": 16384 }
+        },
+        "qwen3-coder-next": {
+          "name": "Qwen3-Coder-Next",
+          "description": "80B MoE (active: 3B) — 18.4 t/s — Partial GPU offload, agentic coding",
+          "limit": { "context": 65536, "output": 16384 }
+        }
+      }
+    }
+  }
+}
