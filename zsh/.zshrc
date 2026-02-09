@@ -42,3 +42,6 @@ init_tool "zoxide" "zoxide init zsh"
 
 # Show profiling results if enabled
 # show_profiling
+
+# opencode
+export PATH=/home/raphh/.opencode/bin:$PATH
