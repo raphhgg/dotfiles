@@ -78,6 +78,9 @@ alias sub-shell="ssh ubuntu-server-notmux"
 ### Wake On Lan
 alias wolub="wakeonlan 10:7c:61:3f:c9:8f && sleep 10 && ssh ubuntu-server"
 
+### Dotfiles Sync
+alias dsync='$HOME/github/dotfiles/scripts/sync.sh'
+
 
 # -----------------------------------------
 # CLAUDE AGENT SWITCHER
