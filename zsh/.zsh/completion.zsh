@@ -26,3 +26,6 @@ zstyle ':completion:*' special-dirs true
 
 # Colorful completion
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Salmon completion
+fpath=(/volume2/docker/compose/scripts $fpath)

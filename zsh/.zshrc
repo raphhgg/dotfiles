@@ -37,8 +37,19 @@ fi
 
 # Tool Initialization (system tools managed by nix-darwin)
 init_tool "oh-my-posh" "oh-my-posh init zsh --config ~/.config/omp/config.toml"
-# init_tool "fzf" "source <(fzf --zsh)"
+# init_tool "fzf" "fzf --zsh"
 init_tool "zoxide" "zoxide init zsh"
+
+# Tmux auto-attach (run only in interactive shells)
+# if [[ $- == *i* ]]; then
+#     tmux_auto_attach
+# fi
 
 # Show profiling results if enabled
 # show_profiling
+
+export PATH="/usr/local/bin:$PATH"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+# opencode
+export PATH=/var/services/homes/raphh/.opencode/bin:$PATH

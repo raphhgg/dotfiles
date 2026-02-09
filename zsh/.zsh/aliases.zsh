@@ -33,11 +33,9 @@ alias lt='eza --tree --level=2 --icons --git'
 # down
 alias dcd="docker compose down"
 # up detached
-alias dcu="docker compose up -d"
+alias dcu="docker compose up"
 # restart quickly after a config/env change.
 alias dcr="docker compose restart"
-# force recreate
-alias dcduf="docker compose down && docker compose up --force-recreate"
 # redeploy after updating image versions or dependencies.
 alias dcdpu="docker compose down && docker compose pull && docker compose up"
 
@@ -98,6 +96,13 @@ claude'
 # - Use when local models fail
 alias ccsub='unset ANTHROPIC_BASE_URL && unset ANTHROPIC_API_KEY && unset ANTHROPIC_AUTH_TOKEN && echo -e "\n🔴 MODE: CLOUD SUBSCRIPTION (Paid)" && claude'
 
+
+
+alias salmon='/volume2/docker/compose/scripts/salmon-upload.sh'
+alias salmon-auto='/volume2/docker/compose/scripts/music/salmon-upload-auto.py'
+
+### Open Code
+alias oc="sudo docker run -it --rm -v \$(pwd):/app -v \$HOME/.config/opencode:/root/.config/opencode ghcr.io/anomalyco/opencode"
 
 
 # TODO
