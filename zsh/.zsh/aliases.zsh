@@ -108,18 +108,8 @@ claude'
 # - Use when local models fail
 alias ccsub='unset ANTHROPIC_BASE_URL && unset ANTHROPIC_API_KEY && unset ANTHROPIC_AUTH_TOKEN && echo -e "\n🔴 MODE: CLOUD SUBSCRIPTION (Paid)" && claude'
 
-
-
 alias salmon='/volume2/docker/compose/scripts/salmon-upload.sh'
 alias salmon-auto='/volume2/docker/compose/scripts/music/salmon-upload-auto.py'
-
-### Open Code
-# alias oc="sudo docker run -it --rm -v \$(pwd):/app -v \$HOME/.config/opencode:/root/.config/opencode ghcr.io/anomalyco/opencode"
-alias oc="sudo docker run -it --rm \
-  -v \$(pwd):/app \
-  -v \$HOME/.config/opencode:/root/.config/opencode \
-  -v /volume2/docker/appdata/opencode:/root/.local/share/opencode \
-  ghcr.io/anomalyco/opencode"
 
 # TODO
 # alias zquery="zoxide query -l -s | less"
