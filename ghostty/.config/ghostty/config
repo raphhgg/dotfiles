@@ -38,7 +38,9 @@ mouse-hide-while-typing = true
 # Copy & Paste
 copy-on-select = clipboard
 clipboard-paste-protection = true
-# right-click-action = paste
+clipboard-read = allow
+clipboard-write = allow
+right-click-action = paste
 # https://github.com/ghostty-org/ghostty/issues/3359
 
 # Focus
