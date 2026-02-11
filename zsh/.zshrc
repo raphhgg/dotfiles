@@ -45,3 +45,4 @@ init_tool "zoxide" "zoxide init zsh"
 
 # opencode
 export PATH=/home/raphh/.opencode/bin:$PATH
+export EDITOR="nvim"
