@@ -114,8 +114,12 @@ alias salmon='/volume2/docker/compose/scripts/salmon-upload.sh'
 alias salmon-auto='/volume2/docker/compose/scripts/music/salmon-upload-auto.py'
 
 ### Open Code
-alias oc="sudo docker run -it --rm -v \$(pwd):/app -v \$HOME/.config/opencode:/root/.config/opencode ghcr.io/anomalyco/opencode"
-
+# alias oc="sudo docker run -it --rm -v \$(pwd):/app -v \$HOME/.config/opencode:/root/.config/opencode ghcr.io/anomalyco/opencode"
+alias oc="sudo docker run -it --rm \
+  -v \$(pwd):/app \
+  -v \$HOME/.config/opencode:/root/.config/opencode \
+  -v /volume2/docker/appdata/opencode:/root/.local/share/opencode \
+  ghcr.io/anomalyco/opencode"
 
 # TODO
 # alias zquery="zoxide query -l -s | less"
