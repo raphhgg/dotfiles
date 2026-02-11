@@ -1,13 +1,31 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "local-llama/devstral-small-2-24b",
+  "small_model": "local-llama/nemotron-3-nano-30b-a3b",
   "permission": {
     "read": "allow",
     "list": "allow",
     "glob": "allow",
     "grep": "allow",
-    "bash": "ask"
+    "webfetch": "allow",
+    "websearch": "allow",
+    "bash": "ask",
+    "edit": "ask",
+    "write": "ask"
   },
-  "model": "local-llama/devstral-small-2-24b",
+  "instructions": [
+    "CLAUDE.md",
+    "AGENTS.md"
+  ],
+  "compaction": {
+    "keep_tokens": 8192
+  },
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    }
+  },
   "provider": {
     "local-llama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -45,17 +63,17 @@
         "deepseek-r1-distill-qwen-32b": {
           "name": "DeepSeek-R1-Distill-Qwen-32B",
           "description": "32.8B R1 distill — 37.6 t/s — Best for: debugging, reasoning, planning, research",
-          "limit": { "context": 32768, "output": 16384 }
+          "limit": { "context": 16384, "output": 16384 }
         },
         "qwen2.5-coder-32b": {
           "name": "Qwen2.5-Coder-32B",
           "description": "32.8B code-specialized — 37.6 t/s — Best for: complex tasks, debugging",
-          "limit": { "context": 32768, "output": 16384 }
+          "limit": { "context": 16384, "output": 16384 }
         },
         "qwen3-32b": {
           "name": "Qwen3-32B",
           "description": "32.8B — 37.4 t/s — Best for: debugging, reasoning",
-          "limit": { "context": 32768, "output": 16384 }
+          "limit": { "context": 16384, "output": 16384 }
         },
         "qwen3-coder-next": {
           "name": "Qwen3-Coder-Next",
