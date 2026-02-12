@@ -1,5 +1,6 @@
 # Sensitive credentials - NEVER commit
 .credentials.json
+.secrets
 
 # Local overrides (machine-specific)
 settings.local.json
