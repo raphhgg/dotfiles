@@ -75,10 +75,20 @@
           "description": "32.8B — 37.4 t/s — Best for: debugging, reasoning",
           "limit": { "context": 24576, "output": 16384 }
         },
-        "qwen3-coder-next": {
-          "name": "Qwen3-Coder-Next",
-          "description": "80B MoE (active: 3B) — 17.5 t/s — Partial GPU offload, agentic coding",
+        "qwen3-coder-30b-a3b": {
+          "name": "Qwen3-Coder-30B-A3B",
+          "description": "30B MoE (active: 3B) code-specialized — Best for: daily coding, agentic coding",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "qwen3-coder-next-q4": {
+          "name": "Qwen3-Coder-Next (Q4)",
+          "description": "80B MoE (active: 3B) Q4 — 17.5 t/s — Partial GPU offload, agentic coding",
           "limit": { "context": 32768, "output": 16384 }
+        },
+        "qwen3-coder-next-q3": {
+          "name": "Qwen3-Coder-Next (Q3)",
+          "description": "80B MoE (active: 3B) Q3 — Partial GPU offload, agentic coding, 65k context",
+          "limit": { "context": 65536, "output": 16384 }
         }
       }
     }
