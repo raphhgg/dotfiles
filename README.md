@@ -1,8 +1,9 @@
-# Dotfiles with GNU Stow
+# Dotfiles
 
-This repository contains my personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/), supporting multi-host deployment across macOS, Synology NAS, and Ubuntu.
 
 ## Prerequisites
+
 - **macOS**: `brew install stow`
 - **Arch Linux**: `sudo pacman -S stow`
 - **Ubuntu/Debian**: `sudo apt install stow`
@@ -12,17 +13,59 @@ This repository contains my personal dotfiles managed with [GNU Stow](https://ww
 
 ```
 dotfiles/
-├── zsh/          # Zsh configuration
-│   └── .zshrc
-├── git/          # Git configuration
-│   ├── .gitconfig
-│   └── .gitignore_global
-├── nvim/         # Neovim configuration
-│   └── .config/nvim/
-├── claude/       # Claude Code configuration
-│   ├── .claude/
-│   └── .mcp.json.example
-└── ...           # Other configurations
+├── aerospace/        # AeroSpace window manager
+├── alacritty/        # Alacritty terminal
+├── borders/          # Window borders
+├── claude/           # Claude Code configuration
+├── ghostty/          # Ghostty terminal
+├── git/              # Git configuration
+├── jankyborders/     # JankyBorders window borders
+├── karabiner/        # Karabiner-Elements key remapping
+├── macos/            # macOS system preferences
+├── nvim/             # Neovim configuration
+├── omp/              # Oh My Posh prompt
+├── opencode/         # OpenCode configuration
+├── sketchybar/       # SketchyBar status bar
+├── ssh/              # SSH configuration
+├── tmux/             # tmux configuration
+├── zsh/              # Zsh configuration
+├── docs/             # Documentation
+├── scripts/          # Utility scripts
+├── Brewfile          # Homebrew packages
+└── justfile          # Task runner commands
+```
+
+### Package Convention
+
+Each package mirrors the home directory structure:
+```
+package-name/
+├── .config/package-name/     # XDG config
+├── .local/                   # Local files
+└── .packagerc               # Root-level dotfiles
+```
+
+## Multi-Host Deployment
+
+Different hosts use different subsets of packages:
+
+```bash
+# macOS (full desktop setup)
+just stow-all
+# → aerospace alacritty git nvim omp ssh zsh ghostty claude
+
+# DS423Plus NAS
+just stow-ds423plus
+# → tmux omp claude git nvim zsh
+
+# Ubuntu server
+just stow-ubuntu
+# → tmux omp claude git nvim zsh ssh
+```
+
+Additional packages (borders, jankyborders, karabiner, macos, opencode, sketchybar) can be stowed manually as needed:
+```bash
+stow <package-name>
 ```
 
 ## Installation
@@ -32,16 +75,12 @@ dotfiles/
 git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
 cd ~/github/dotfiles
 
-# Install specific packages
-stow zsh      # Creates ~/.zshrc
-stow git      # Creates ~/.gitconfig
-stow nvim     # Creates ~/.config/nvim/
-# etc...
+# Install packages for your host
+just stow-all          # macOS
+just stow-ds423plus    # NAS
+just stow-ubuntu       # Ubuntu
 
-# Or install all at once using justfile
-just stow-all
-
-# Install Homebrew packages (optional)
+# Install Homebrew packages (macOS only)
 just brew-install
 ```
 
@@ -79,9 +118,14 @@ stow -D zsh
 rm -rf zsh/
 ```
 
+### Syncing across machines
+```bash
+just sync
+```
+
 ## Brewfile Management
 
-This repository includes a curated `Brewfile` containing essential applications for macOS setup.
+The `Brewfile` is the source of truth for macOS applications, development tools, fonts, and Mac App Store apps.
 
 ### Installing packages
 ```bash
@@ -94,7 +138,7 @@ brew bundle install
 
 ### Updating Brewfile
 ```bash
-# Update Brewfile with current packages (careful - this includes everything!)
+# Update Brewfile with current packages (careful — this includes everything!)
 just brew-dump
 
 # Check what would be installed/removed
@@ -106,7 +150,6 @@ just brew-cleanup
 
 ### New Mac Setup
 ```bash
-# Complete setup on a new Mac
 git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
 cd ~/github/dotfiles
 
@@ -122,10 +165,12 @@ just brew-install
 ### Stow conflicts
 If stow complains about existing files:
 ```bash
-# Manual backup and retry
+# Back up existing file and retry
 mv ~/.zshrc ~/.zshrc.backup
 stow zsh
 ```
+
+Check for `.DS_Store` files which can cause stow conflicts on macOS — delete them before stowing.
 
 ### Missing symlinks
 Check if stow created the links:
@@ -134,95 +179,16 @@ ls -la ~ | grep "\->"
 ls -la ~/.config/ | grep "\->"
 ```
 
+### Missing dependencies
+```bash
+# Ensure GNU Stow is installed
+brew install stow
+
+# Install Homebrew packages
+just brew-install
+```
+
 ### Checking what's stowed
 ```bash
-# See what packages are stowed
 stow --verbose --no-folding --simulate *
-```
-
-## Claude Code Setup
-
-This repository includes **user-level** Claude Code configuration for sharing settings across machines.
-
-### Structure
-```
-claude/
-└── .claude/                          # User-level config (~/.claude/)
-    ├── settings.json                 # Global settings for all projects
-    ├── plugins/
-    │   └── config.json               # MCP plugin config
-    └── .gitignore                    # Ignores credentials & session data
-```
-
-### Initial Setup
-
-```bash
-# Install Claude configuration
-stow claude
-
-# Edit settings.json directly for machine-specific values if needed
-nvim ~/.claude/settings.json
-```
-
-### What Gets Version Controlled
-
-**User-level (this repo):**
-- `~/.claude/settings.json` - Global permissions, hooks, environment variables
-- `~/.claude/plugins/config.json` - MCP plugin configuration
-
-**NOT version controlled (managed by Claude):**
-- `~/.claude/.credentials.json` - OAuth tokens (auto-managed)
-- `~/.claude.json` - Main config file (contains project state and tokens)
-- Session data (history, todos, cache, shell-snapshots, etc.)
-
-**Project-level (each project's repo):**
-- `.claude/settings.json` - Project-specific settings (checked into that project)
-- `.claude/settings.local.json` - Personal overrides (gitignored in that project)
-- `.mcp.json` - Project MCP servers (checked into that project)
-
-### MCP Server Configuration
-
-MCP servers are managed via the `claude mcp` CLI, not configuration files in dotfiles.
-
-**Add user-level MCP server (available in all projects):**
-```bash
-# Linear integration
-claude mcp add linear-server --scope user --transport sse https://mcp.linear.app/sse
-
-# GitHub integration
-claude mcp add github-server --scope user npx -y @modelcontextprotocol/server-github
-```
-
-OAuth credentials are automatically managed by Claude in `~/.claude/.credentials.json`.
-
-**Add project-level MCP server (specific to one project):**
-```bash
-cd /your/project
-claude mcp add project-server --scope project /path/to/server
-# Creates .mcp.json in the project (commit this to project's git)
-```
-
-### Machine-Specific Settings
-
-For machine-specific paths or values, edit `~/.claude/settings.json` directly:
-```json
-{
-  "env": {
-    "DOCKER_APPDATA_PATH": "/your/machine/specific/path",
-    "MEDIAS_PATH": "/your/media/path"
-  }
-}
-```
-
-### Adding to New Machine
-
-```bash
-cd ~/dotfiles
-stow claude
-
-# Add MCP servers (they're per-machine, not in dotfiles)
-claude mcp add linear-server --scope user --transport sse https://mcp.linear.app/sse
-
-# Customize settings.json for this machine if needed
-nvim ~/.claude/settings.json
 ```
