@@ -67,18 +67,18 @@
         },
         "qwen2.5-coder-32b": {
           "name": "Qwen2.5-Coder-32B",
-          "description": "32.8B code-specialized — 37.6 t/s — Best for: complex tasks, debugging",
-          "limit": { "context": 16384, "output": 16384 }
+          "description": "32.8B code-specialized — 24 t/s — Best for: complex tasks, debugging",
+          "limit": { "context": 32768, "output": 16384 }
         },
         "qwen3-32b": {
           "name": "Qwen3-32B",
           "description": "32.8B — 37.4 t/s — Best for: debugging, reasoning",
-          "limit": { "context": 16384, "output": 16384 }
+          "limit": { "context": 24576, "output": 16384 }
         },
         "qwen3-coder-next": {
           "name": "Qwen3-Coder-Next",
-          "description": "80B MoE (active: 3B) — 18.4 t/s — Partial GPU offload, agentic coding",
-          "limit": { "context": 65536, "output": 16384 }
+          "description": "80B MoE (active: 3B) — 17.5 t/s — Partial GPU offload, agentic coding",
+          "limit": { "context": 32768, "output": 16384 }
         }
       }
     }
