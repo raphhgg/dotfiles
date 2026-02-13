@@ -40,9 +40,14 @@
           "description": "32B MoE (active: 4B) — 175.6 t/s — Best for: daily coding, autocomplete, chat",
           "limit": { "context": 65536, "output": 16384 }
         },
-        "glm-4.7-flash": {
-          "name": "GLM-4.7-Flash",
-          "description": "30B MoE (active: 3B) — 126.2 t/s — Best for: daily coding, chat",
+        "glm-4.7-flash-q4": {
+          "name": "GLM-4.7-Flash (Q4)",
+          "description": "30B MoE (active: 3B) Q4 — 109 t/s — Best for: daily coding, agentic coding, chat",
+          "limit": { "context": 65536, "output": 16384 }
+        },
+        "glm-4.7-flash-q6": {
+          "name": "GLM-4.7-Flash (Q6)",
+          "description": "30B MoE (active: 3B) Q6 — 67.6 t/s — Best for: agentic coding, higher quality",
           "limit": { "context": 65536, "output": 16384 }
         },
         "phi-4": {
@@ -79,6 +84,11 @@
           "name": "Qwen3-Coder-30B-A3B",
           "description": "30B MoE (active: 3B) code-specialized — Best for: daily coding, agentic coding",
           "limit": { "context": 65536, "output": 16384 }
+        },
+        "qwen3-coder-next-q5": {
+          "name": "Qwen3-Coder-Next (Q5)",
+          "description": "80B MoE (active: 3B) Q5 — 45 t/s — Best for: agentic coding, 131k context",
+          "limit": { "context": 131072, "output": 16384 }
         },
         "qwen3-coder-next-q4": {
           "name": "Qwen3-Coder-Next (Q4)",
