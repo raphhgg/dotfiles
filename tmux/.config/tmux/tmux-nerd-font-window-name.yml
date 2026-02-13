@@ -1,6 +1,6 @@
 config:
   fallback-icon: ""
-  show-name: false
+  show-name: true
 
 icons:
   claude: "󰚩"

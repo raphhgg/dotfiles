@@ -26,6 +26,7 @@ brew "felixkratz/formulae/sketchybar"
 brew "switchaudio-osx"
 brew "tmux"
 brew "watch"
+brew "yq"
 brew "yt-dlp"
 brew "zoxide"
 
