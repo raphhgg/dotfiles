@@ -9,7 +9,10 @@
     "webfetch": "allow",
     "websearch": "allow",
     "bash": {
+      // Ask
       "*": "ask",
+
+      // Allow
       "echo *": "allow",
       "grep *": "allow",
       "head *": "allow",
@@ -18,6 +21,14 @@
       "curl *": "allow",
       "docker logs *": "allow",
       "sleep *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git add *": "allow",
+      "git commit *": "allow",
+      "git rm *": "allow",
+      "git status": "allow",
+
+      // Deny
       "rm -rf *": "deny",
       "rm *": "deny",
       "sudo *": "deny"
