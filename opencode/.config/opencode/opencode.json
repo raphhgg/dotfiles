@@ -8,14 +8,24 @@
     "grep": "allow",
     "webfetch": "allow",
     "websearch": "allow",
-    "bash": "ask",
+    "bash": {
+      "*": "ask",
+      "echo *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "find *": "allow",
+      "ls *": "allow",
+      "curl *": "allow",
+      "docker logs *": "allow",
+      "sleep *": "allow",
+      "rm -rf *": "deny",
+      "rm *": "deny",
+      "sudo *": "deny"
+    },
     "edit": "ask",
     "write": "ask"
   },
-  "instructions": [
-    "CLAUDE.md",
-    "AGENTS.md"
-  ],
+  "instructions": ["CLAUDE.md", "AGENTS.md"],
   "compaction": {
     "keep_tokens": 8192
   },
