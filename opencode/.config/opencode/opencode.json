@@ -23,7 +23,11 @@
       "sudo *": "deny"
     },
     "edit": "ask",
-    "write": "ask"
+    "write": "ask",
+    "external_directory": {
+      "*": "ask",
+      "/volume2/docker/appdata/": "allow"
+    }
   },
   "instructions": ["CLAUDE.md", "AGENTS.md"],
   "compaction": {
