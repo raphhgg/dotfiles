@@ -3,7 +3,7 @@ name: commit
 description: Analyze changes and suggest well-formatted git commit(s)
 argument-hint: [message]
 disable-model-invocation: true
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git diff --name-only:*), Bash(git commit:*)
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git diff --name-only:*), Bash(git commit:*), Bash(git push:*), AskUserQuestion
 ---
 
 ## Context
@@ -15,7 +15,9 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git l
 
 ## Task
 - Analyze all changes since last commit and suggest 1 or more appropriate commit messages following these guidelines.
-- **DO NOT launch the 'git commit' command(s) directly**. You should first show to the user the different commits you want to create and prompt him to validate the proposed commit(s). Once he validated, you can use the 'git commit' command.
+- **DO NOT launch the 'git commit' command(s) directly**. First, use the `AskUserQuestion` tool to validate 2 things:
+  - Validate commits: ask the user if these commits are good, if some commits needs to be ommitted or if some stuff are missing
+  - Ask the user if I need to just commit or commit and push
 
 ### Guidelines
 1. **Files changed**: List all files that have been modified, added, or deleted
