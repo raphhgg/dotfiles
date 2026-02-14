@@ -1,6 +1,8 @@
 ---
+name: gemini
 description: Ask a question to Google's Gemini AI using the Gemini CLI
 argument-hint: <your question or prompt>
+disable-model-invocation: true
 allowed-tools: Bash(gemini:*)
 ---
 

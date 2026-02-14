@@ -1,7 +1,9 @@
 ---
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git diff --name-only:*), Bash(git commit:*)
-argument-hint: [message]
+name: commit
 description: Analyze changes and suggest well-formatted git commit(s)
+argument-hint: [message]
+disable-model-invocation: true
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git diff --name-only:*), Bash(git commit:*)
 ---
 
 ## Context
@@ -20,7 +22,3 @@ description: Analyze changes and suggest well-formatted git commit(s)
 2. **Logical grouping**: Group changes by logical functionality or component
 3. **Commit scope**: Prefix each commit with appropriate scope (e.g., [zsh], [nvim], [claude], [global], [monitoring], [torrents], etc)
 4. **DO NOT include any co-authorship footer or attribution lines**
-
-
-
-
