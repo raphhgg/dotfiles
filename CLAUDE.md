@@ -11,8 +11,15 @@ Each package mirrors the home directory structure:
 package-name/
 ├── .config/package-name/     # XDG config
 ├── .local/                   # Local files
-└── .packagerc               # Root-level dotfiles
+└── .packagerc                # Root-level dotfiles
 ```
+
+### Stow Commands
+
+After adding/removing/renaming  files, make sure you always launch the stow command so that new files are symlinked.
+
+>  stow -t ~ -R -v <name_of_the_service>
+
 
 ## Application Management
 
