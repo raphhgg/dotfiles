@@ -13,6 +13,13 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git l
 - Current branch: !`git branch --show-current`
 - Recent commits: !`git log --oneline -5`
 
+
+## How to Ask User Question
+The tool we'll call will depend of which application the user is using to run this skill:
+- If using Claude Code, you **MUST** use the `AskUserQuestion` tool
+- If using OpenCode, you **MUST** use the `question` tool
+
+
 ## Critical Safety Rules
 - **DO NOT use `Bash(rm:*)` command(s) directly**. First, use the `AskUserQuestion` / `question` tool to validate with the user that the files you identified can indeed be deleted.
 - **DO NOT launch the `Bash(git commit:*)` command(s) directly**. First, use the `AskUserQuestion` / `question` tool to validate 2 things:

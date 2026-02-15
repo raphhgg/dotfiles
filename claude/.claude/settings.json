@@ -9,7 +9,9 @@
       "LS",
       "Bash(curl:*)"
     ],
-    "deny": ["Bash(rm -rf:*)"]
+    "deny": [
+      "Bash(rm -rf:*)"
+    ]
   },
   "statusLine": {
     "type": "command",
