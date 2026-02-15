@@ -54,6 +54,14 @@
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
+    },
+    "grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app"
+    },
+    "exa": {
+      "type": "remote",
+      "url": "https://mcp.exa.ai/mcp"
     }
   },
   "plugin": ["@franlol/opencode-md-table-formatter@0.0.3"],
