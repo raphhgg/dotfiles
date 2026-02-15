@@ -9,40 +9,13 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/), s
 - **Ubuntu/Debian**: `sudo apt install stow`
 - **Other**: Check your package manager
 
-## Structure
-
-```
-dotfiles/
-├── aerospace/        # AeroSpace window manager
-├── alacritty/        # Alacritty terminal
-├── borders/          # Window borders
-├── claude/           # Claude Code configuration
-├── ghostty/          # Ghostty terminal
-├── git/              # Git configuration
-├── jankyborders/     # JankyBorders window borders
-├── karabiner/        # Karabiner-Elements key remapping
-├── macos/            # macOS system preferences
-├── nvim/             # Neovim configuration
-├── omp/              # Oh My Posh prompt
-├── opencode/         # OpenCode configuration
-├── sketchybar/       # SketchyBar status bar
-├── ssh/              # SSH configuration
-├── tmux/             # tmux configuration
-├── zsh/              # Zsh configuration
-├── docs/             # Documentation
-├── scripts/          # Utility scripts
-├── Brewfile          # Homebrew packages
-└── justfile          # Task runner commands
-```
-
 ### Package Convention
 
 Each package mirrors the home directory structure:
 ```
 package-name/
 ├── .config/package-name/     # XDG config
-├── .local/                   # Local files
-└── .packagerc               # Root-level dotfiles
+└── .local/                   # Local files
 ```
 
 ## Multi-Host Deployment
@@ -50,22 +23,22 @@ package-name/
 Different hosts use different subsets of packages:
 
 ```bash
-# macOS (full desktop setup)
-just stow-all
-# → aerospace alacritty git nvim omp ssh zsh ghostty claude
+# macOS
+just stow-macos
+# → aerospace alacritty borders karabiner git nvim omp opencode sketchybar ssh zsh ghostty claude
 
 # DS423Plus NAS
 just stow-ds423plus
-# → tmux omp claude git nvim zsh
+# → btop claude git nvim omp opencode ssh tmux zsh
 
 # Ubuntu server
 just stow-ubuntu
-# → tmux omp claude git nvim zsh ssh
+# → btop claude git nvim omp opencode ssh tmux zsh
 ```
 
-Additional packages (borders, jankyborders, karabiner, macos, opencode, sketchybar) can be stowed manually as needed:
+Additional packages can be stowed manually as needed:
 ```bash
-stow <package-name>
+stow -t ~ macos
 ```
 
 ## Installation
@@ -76,7 +49,7 @@ git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
 cd ~/github/dotfiles
 
 # Install packages for your host
-just stow-all          # macOS
+just stow-macos        # macOS
 just stow-ds423plus    # NAS
 just stow-ubuntu       # Ubuntu
 
@@ -89,14 +62,14 @@ just brew-install
 ### Adding new dotfiles
 ```bash
 # Create package directory
-mkdir tmux
+mkdir btop
 
 # Add your config (maintaining home directory structure)
-mkdir -p tmux/.config/tmux
-cp ~/.config/tmux/tmux.conf tmux/.config/tmux/
+mkdir -p btop/.config/btop
+cp ~/.config/btop/btop.conf btop/.config/btop/
 
 # Install the package
-stow tmux
+stow btop
 ```
 
 ### Updating configs
@@ -120,7 +93,7 @@ rm -rf zsh/
 
 ### Syncing across machines
 ```bash
-just sync
+./scripts/sync.sh
 ```
 
 ## Brewfile Management
@@ -154,7 +127,7 @@ git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
 cd ~/github/dotfiles
 
 # Install dotfiles
-just stow-all
+just stow-macos
 
 # Install applications
 just brew-install

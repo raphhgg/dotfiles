@@ -23,6 +23,7 @@
       "head *": "allow",
       "find *": "allow",
       "ls *": "allow",
+      "sort *": "allow",
       "curl *": "allow",
       "docker logs *": "allow",
       "sleep *": "allow",
@@ -37,7 +38,8 @@
       "git show *": "allow",
       "gemini *": "allow",
       "test *": "allow",
-      "stow *": "allow"
+      "stow *": "allow",
+      "wc *": "allow"
     },
     "edit": "ask",
     "write": "ask",

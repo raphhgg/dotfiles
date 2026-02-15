@@ -1,20 +1,20 @@
 # Commands for dotfiles management with stow
 
-# Install all dotfiles using stow (macOS)
-stow-all:
-    stow -t ~ aerospace alacritty git nvim omp ssh zsh ghostty claude
+# Install dotfiles for macOS
+stow-macos:
+    stow -t ~ aerospace alacritty git nvim omp ssh zsh ghostty claude borders karabiner sketchybar
 
 # Install dotfiles for ds423plus NAS server
 stow-ds423plus:
-    stow -t ~ tmux omp claude git nvim zsh
+    stow -t ~ tmux omp claude git nvim zsh btop opencode
 
 # Install dotfiles for ubuntu server
 stow-ubuntu:
-    stow -t ~ tmux omp claude git nvim zsh ssh
+    stow -t ~ tmux omp claude git nvim zsh ssh btop opencode
 
 # Remove all dotfiles symlinks
 unstow-all:
-    stow -t ~ -D aerospace git nvim omp ssh zsh ghostty claude
+    stow -t ~ -D aerospace git nvim omp ssh zsh ghostty claude borders karabiner sketchybar
 
 # Sync dotfiles from remote
 sync:
