@@ -1,17 +1,36 @@
 {
   "permissions": {
     "allow": [
+      "WebSearch",
       "WebFetch",
-      "Read",
-      "Write",
-      "Bash",
+      "Read(*)",
       "Glob",
       "LS",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(osascript:*)",
+      "Bash(readlink:*)",
+      "Bash(ls:*)",
+      "Bash(unzip:*)",
+      "Bash(python3:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(pgrep:*)",
+      "Bash(aerospace:*)",
+      "Bash(tree:*)",
+      "Bash(log show:*)",
+      "Bash(chmod:*)",
+      "Bash(sketchybar:*)",
+      "Bash(echo:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git -C *)",
+      "Bash(xargs -0 git rm -f --ignore-unmatch)",
+      "Skill(gemini)"
     ],
-    "deny": [
-      "Bash(rm -rf:*)"
-    ]
+    "ask": [],
+    "deny": ["Bash(rm -rf:*)"]
   },
   "statusLine": {
     "type": "command",
