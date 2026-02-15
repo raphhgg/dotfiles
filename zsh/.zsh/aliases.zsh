@@ -113,3 +113,7 @@ alias salmon-auto='/volume2/docker/compose/scripts/music/salmon-upload-auto.py'
 
 # TODO
 # alias zquery="zoxide query -l -s | less"
+
+# Opencode
+# Attach to opencode server running on ds423plus
+alias ocnas=OPENCODE_SERVER_PASSWORD=uAiJPc9c7xMT3i0dPTcOcfkyrG5ZMTU opencode attach http://10.10.2.2:4096

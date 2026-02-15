@@ -12,6 +12,9 @@
     "bash": {
       // Ask
       "*": "ask",
+      "rm -rf *": "ask",
+      "rm *": "ask",
+      "sudo *": "ask",
 
       // Allow
       "cat *": "allow",
@@ -31,12 +34,10 @@
       "git status": "allow",
       "git branch *": "allow",
       "git ls-files *": "allow",
+      "git show *": "allow",
       "gemini *": "allow",
-
-      // Deny
-      "rm -rf *": "deny",
-      "rm *": "deny",
-      "sudo *": "deny"
+      "test *": "allow",
+      "stow *": "allow"
     },
     "edit": "ask",
     "write": "ask",
