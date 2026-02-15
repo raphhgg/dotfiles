@@ -31,7 +31,6 @@
       "git status": "allow",
       "git branch *": "allow",
       "git ls-files *": "allow",
-
       "gemini *": "allow",
 
       // Deny

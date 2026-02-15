@@ -1,14 +1,19 @@
-
 # Zsh Profile Configuration
 # Environment setup for login shells
+
+# Source helper functions first
+source ~/.zsh/helpers.zsh
 
 # Sets HOMEBREW_PREFIX, adds /opt/homebrew/bin to PATH, etc.
 if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Claude Code
-export PATH="$HOME/.local/bin:$PATH"
+# Set default editor
+export EDITOR="nvim"
 
-# Add pipx-installed Python tools to PATH
-export PATH="$PATH:/Users/raphaelgrau/.local/bin"
+# Ensure ~/.local/bin is in PATH for all shells (not just login shells)
+add_to_path "$HOME/.local/bin"
+
+# Add OpenCode to PATH
+add_to_path "$HOME/.opencode/bin"

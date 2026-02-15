@@ -35,10 +35,6 @@ if init_zinit; then
     zinit load "zsh-users/zsh-syntax-highlighting"  # Load syntax highlighting last
 fi
 
-# Ensure ~/.local/bin is in PATH for all shells (not just login shells)
-# This is critical for tmux-resurrect restored panes which are non-login shells
-add_to_path "$HOME/.local/bin"
-
 # Tool Initialization (system tools managed by nix-darwin)
 init_tool "oh-my-posh" "oh-my-posh init zsh --config ~/.config/omp/config.toml"
 # init_tool "fzf" "source <(fzf --zsh)"
@@ -46,7 +42,3 @@ init_tool "zoxide" "zoxide init zsh"
 
 # Show profiling results if enabled
 # show_profiling
-
-# opencode
-export PATH=/home/raphh/.opencode/bin:$PATH
-export EDITOR="nvim"
