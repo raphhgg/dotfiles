@@ -11,6 +11,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias ccomp='cd /volume2/docker/compose'
+alias ckom='cd /volume2/docker/appdata/kometa'
+
 ### Bat
 # On Ubuntu/Debian, bat is installed as 'batcat'
 if has_command bat; then
