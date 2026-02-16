@@ -26,6 +26,7 @@
       "sort *": "allow",
       "curl *": "allow",
       "docker logs *": "allow",
+      "docker ps *": "allow",
       "sleep *": "allow",
       "git diff *": "allow",
       "git log *": "allow",
