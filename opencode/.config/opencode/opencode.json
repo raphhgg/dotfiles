@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "local-llama/glm-4.7-flash-q6",
+  "model": "local-llama/nemotron-3-nano-30b-a3b-q6",
   "permission": {
     "read": "allow",
     "list": "allow",
@@ -76,107 +76,59 @@
         "apiKey": "x"
       },
       "models": {
-        "nemotron-3-nano-30b-a3b": {
-          "name": "Nemotron-3-Nano-30B-A3B",
-          "description": "32B MoE (active: 4B) — 175.6 t/s — Best for: daily coding, autocomplete, chat",
+        "nemotron-3-nano-30b-a3b-q4": {
+          "name": "Nemotron-3-Nano Q4",
+          "description": "32B MoE (4B active) Q4 — 175 t/s — Speed: autocomplete, chat, quick tasks",
           "limit": {
             "context": 65536,
             "output": 16384
           }
         },
-        "glm-4.7-flash-q4": {
-          "name": "GLM-4.7-Flash (Q4)",
-          "description": "30B MoE (active: 3B) Q4 — 109 t/s — Best for: daily coding, agentic coding, chat",
-          "limit": {
-            "context": 65536,
-            "output": 16384
-          }
-        },
-        "glm-4.7-flash-q6": {
-          "name": "GLM-4.7-Flash (Q6)",
-          "description": "30B MoE (active: 3B) Q6 — 67.6 t/s — Best for: agentic coding, higher quality",
-          "limit": {
-            "context": 65536,
-            "output": 16384
-          }
-        },
-        "phi-4": {
-          "name": "phi-4",
-          "description": "14.7B — 81.0 t/s — Best for: chat, quick tasks",
-          "limit": {
-            "context": 65536,
-            "output": 16384
-          }
-        },
-        "devstral-small-2-24b": {
-          "name": "Devstral-Small-2-24B",
-          "description": "23.6B code-specialized — 52.6 t/s — Best for: complex tasks, refactoring, daily coding",
-          "limit": {
-            "context": 65536,
-            "output": 16384
-          }
-        },
-        "deepseek-r1-distill-qwen-14b": {
-          "name": "DeepSeek-R1-Distill-Qwen-14B",
-          "description": "14.8B R1 distill — 52.1 t/s — Best for: planning, architecture, research",
-          "limit": {
-            "context": 65536,
-            "output": 16384
-          }
-        },
-        "deepseek-r1-distill-qwen-32b": {
-          "name": "DeepSeek-R1-Distill-Qwen-32B",
-          "description": "32.8B R1 distill — 37.6 t/s — Best for: debugging, reasoning, planning, research",
-          "limit": {
-            "context": 16384,
-            "output": 16384
-          }
-        },
-        "qwen2.5-coder-32b": {
-          "name": "Qwen2.5-Coder-32B",
-          "description": "32.8B code-specialized — 24 t/s — Best for: complex tasks, debugging",
-          "limit": {
-            "context": 32768,
-            "output": 16384
-          }
-        },
-        "qwen3-32b": {
-          "name": "Qwen3-32B",
-          "description": "32.8B — 37.4 t/s — Best for: debugging, reasoning",
-          "limit": {
-            "context": 24576,
-            "output": 16384
-          }
-        },
-        "qwen3-coder-30b-a3b": {
-          "name": "Qwen3-Coder-30B-A3B",
-          "description": "30B MoE (active: 3B) code-specialized — Best for: daily coding, agentic coding",
-          "limit": {
-            "context": 65536,
-            "output": 16384
-          }
-        },
-        "qwen3-coder-next-q5": {
-          "name": "Qwen3-Coder-Next (Q5)",
-          "description": "80B MoE (active: 3B) Q5 — 45 t/s — Best for: agentic coding, 131k context",
+        "nemotron-3-nano-30b-a3b-q6": {
+          "name": "Nemotron-3-Nano Q6",
+          "description": "32B MoE (4B active) Q6 — 75 t/s — Daily driver: agentic coding, tool calling",
           "limit": {
             "context": 131072,
             "output": 16384
           }
         },
-        "qwen3-coder-next-q4": {
-          "name": "Qwen3-Coder-Next (Q4)",
-          "description": "80B MoE (active: 3B) Q4 — 17.5 t/s — Partial GPU offload, agentic coding",
+        "glm-4.7-flash-q6": {
+          "name": "GLM-4.7-Flash Q6",
+          "description": "30B MoE (3B active) Q6 — 68 t/s — Hard code reasoning",
           "limit": {
-            "context": 32768,
+            "context": 65536,
             "output": 16384
           }
         },
-        "qwen3-coder-next-q3": {
-          "name": "Qwen3-Coder-Next (Q3)",
-          "description": "80B MoE (active: 3B) Q3 — Partial GPU offload, agentic coding, 65k context",
+        "devstral-small-2-24b-q4": {
+          "name": "Devstral-Small-2 Q4",
+          "description": "24B dense code-specialized Q4 — 53 t/s — Dense coder, 163k context",
+          "limit": {
+            "context": 163840,
+            "output": 16384
+          }
+        },
+        "devstral-small-2-24b-q6": {
+          "name": "Devstral-Small-2 Q6",
+          "description": "24B dense code-specialized Q6 — 37 t/s — Dense coder, max quality",
           "limit": {
             "context": 65536,
+            "output": 16384
+          }
+        },
+        "qwen3-next-80b-thinking-q5": {
+          "name": "Qwen3-Next-80B Thinking Q5",
+          "description": "80B MoE (3B active) Q5 thinking-only — 38 t/s — Brainstorming, planning, reasoning",
+          "limit": {
+            "context": 262144,
+            "output": 81920
+          }
+        },
+        "qwen3-coder-next-q5": {
+          "name": "Qwen3-Coder-Next Q5",
+          "description": "80B MoE (3B active) Q5 — 45 t/s — Heavy coder, 80B knowledge base",
+          "limit": {
+            "context": 131072,
             "output": 16384
           }
         }
