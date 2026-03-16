@@ -114,8 +114,8 @@ alias ccsub='unset ANTHROPIC_BASE_URL && unset ANTHROPIC_API_KEY && unset ANTHRO
 alias salmon='/volume2/docker/compose/scripts/salmon-upload.sh'
 alias salmon-auto='/volume2/docker/compose/scripts/music/salmon-upload-auto.py'
 
-# TODO
-# alias zquery="zoxide query -l -s | less"
+# Zoxide
+alias zls="zoxide query -ls"
 
 # Opencode
 # Attach to opencode server running on ds423plus
