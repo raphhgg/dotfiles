@@ -11,7 +11,7 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git l
 - Files changed: !`git diff --name-only HEAD`
 - Files added: !`git ls-files --others --exclude-standard`
 - Current branch: !`git branch --show-current`
-- Recent commits: !`git log --oneline -5`
+- Recent commits: !`git log --oneline -5
 
 
 ## How to Ask User Question
@@ -23,7 +23,7 @@ The tool we'll call will depend of which application the user is using to run th
 ## Critical Safety Rules
 - **DO NOT use `Bash(rm:*)` command(s) directly**. First, use the `AskUserQuestion` / `question` tool to validate with the user that the files you identified can indeed be deleted.
 - **DO NOT launch the `Bash(git commit:*)` command(s) directly**. First, use the `AskUserQuestion` / `question` tool to validate 2 things:
-  - Validate commits: ask the user if these commits are good, if some commits needs to be ommitted or if some stuff are missing
+  - Validate commits: after having presented the commit name and description to the user, ask them if these commits are good, if some commits needs to be ommitted or if some stuff are missing
   - Ask the user if I need to just commit or commit and push
 
 ## Task
