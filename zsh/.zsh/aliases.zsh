@@ -128,7 +128,7 @@ alias salmon='/volume2/docker/compose/scripts/salmon-upload.sh'
 alias salmon-auto='/volume2/docker/compose/scripts/music/salmon-upload-auto.py'
 
 # Zoxide
-alias zls="zoxide query -ls"
+alias zls="zoxide query -ls | less"
 
 # Opencode
 # Attach to opencode server running on ds423plus
