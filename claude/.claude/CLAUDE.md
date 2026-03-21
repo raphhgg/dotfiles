@@ -26,9 +26,6 @@
 |     2 | Access control   | settings.json deny list          |
 |     3 | Git safety       | .gitignore patterns              |
 
-## Configuration Sync
-This file is managed via GNU Stow from the dotfiles repository:
-`stow -t ~ claude` → symlinks ~/.claude
 
 ## General Preferences
 - Be concise and direct in responses
