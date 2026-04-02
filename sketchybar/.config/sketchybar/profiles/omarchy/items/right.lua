@@ -276,11 +276,11 @@ weather:subscribe({ "routine", "forced", "system_woke" }, update_weather)
 
 local volume = sbar.add("item", "omarchy.volume", {
     position = "right",
-    width = 26,
+    width = 34,
     icon = {
         string = icons.volume._100,
         color = colors.fg,
-        width = 16,
+        width = 22,
         align = "center",
         padding_left = 0,
         padding_right = 0,
