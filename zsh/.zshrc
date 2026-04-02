@@ -18,6 +18,7 @@ source ~/.zsh/helpers.zsh
 safe_source ~/.zsh/history.zsh
 safe_source ~/.zsh/completion.zsh
 safe_source ~/.zsh/aliases.zsh
+safe_source ~/.zsh/terminal-title.zsh
 
 # Zsh Options
 setopt auto_cd              # cd into directory by typing its name
