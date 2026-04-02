@@ -80,8 +80,8 @@
 
   // Terminal Font
   "terminal": {
-    "dock": "bottom",
-    "default_height": 220,
+    "dock": "right",
+    "default_width": 600,
     "button": true,
     "copy_on_select": true,
     "font_family": "JetBrainsMono Nerd Font",

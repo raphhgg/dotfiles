@@ -63,7 +63,7 @@
     "context": "Workspace",
     "bindings": {
       "alt-t": "workspace::NewCenterTerminal",
-      "cmd-j": "workspace::ToggleBottomDock",
+      "cmd-j": "workspace::ToggleRightDock",
       "cmd-shift-g": "git_panel::ToggleFocus"
     }
   },
