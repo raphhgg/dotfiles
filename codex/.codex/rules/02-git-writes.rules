@@ -1,0 +1,91 @@
+# Scoped Git write approvals.
+#
+# Execpolicy here matches command prefixes, not ambient working directories.
+# Keep cross-repo write allowances explicit via `git -C /absolute/path ...`.
+
+prefix_rule(
+    pattern = ["git", "-C", "/Users/raphaelgrau/agent-standards", "push"],
+    decision = "allow",
+    justification = "Pushing from the shared agent-standards repo is an intentional routine write action to auto-approve.",
+    match = [
+        "git -C /Users/raphaelgrau/agent-standards push",
+        "git -C /Users/raphaelgrau/agent-standards push -u origin main",
+        "git -C /Users/raphaelgrau/agent-standards push origin HEAD",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "-C", "/Users/raphaelgrau/dotfiles", "push"],
+    decision = "allow",
+    justification = "Pushing from the dotfiles repo that owns Codex config is an intentional routine write action to auto-approve.",
+    match = [
+        "git -C /Users/raphaelgrau/dotfiles push",
+        "git -C /Users/raphaelgrau/dotfiles push -u origin main",
+        "git -C /Users/raphaelgrau/dotfiles push origin HEAD",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "-C", "/Users/raphaelgrau/agent-standards", "switch"],
+    decision = "allow",
+    justification = "Switching branches in the shared agent-standards repo is a routine intentional repo-management action to auto-approve.",
+    match = [
+        "git -C /Users/raphaelgrau/agent-standards switch fix/no-qa-handoff-guidance",
+        "git -C /Users/raphaelgrau/agent-standards switch main",
+        "git -C /Users/raphaelgrau/agent-standards switch codex/example-branch",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "add"],
+    decision = "allow",
+    justification = "Staging explicit files for commit is a routine intentional Git write action to auto-approve.",
+    match = [
+        "git add .env.example",
+        "git add .env.example config.example.toml cmd/service/main.go",
+        "git add cmd/service/main.go internal/application/config/config.go",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "commit", "-m"],
+    decision = "allow",
+    justification = "Creating a commit with an explicit message is a routine intentional Git write action to auto-approve.",
+    match = [
+        "git commit -m \"feat: deliver queued discord notifications\"",
+        "git commit -m \"fix: handle missing config\"",
+        "git commit -m \"docs: update qa guidance\"",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "push", "-u", "origin"],
+    decision = "allow",
+    justification = "Pushing the current branch to origin with upstream tracking is a routine intentional Git write action to auto-approve.",
+    match = [
+        "git push -u origin feat/4-discord-delivery-retries",
+        "git push -u origin main",
+        "git push -u origin codex/example-branch",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "allow",
+    justification = "Pushing the current branch is a routine intentional Git write action to auto-approve.",
+    match = [
+        "git push",
+        "git push origin HEAD",
+        "git push origin feat/example",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "checkout", "-b"],
+    decision = "allow",
+    justification = "Creating and switching to a new branch is a routine intentional Git repo-management action to auto-approve.",
+    match = [
+        "git checkout -b feat/8-show-requests",
+        "git checkout -b fix/example",
+    ],
+)

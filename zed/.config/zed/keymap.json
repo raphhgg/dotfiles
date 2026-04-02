@@ -1,0 +1,76 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-/": null
+    }
+  },
+  {
+    "context": "(Editor && mode == full)",
+    "bindings": {
+      "cmd-/": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-/": [
+        "editor::ToggleComments",
+        {
+          "advance_downwards": false
+        }
+      ]
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-t": "project_symbols::Toggle"
+    }
+  },
+  {
+    "context": "KeymapEditor",
+    "unbind": {
+      "cmd-t": "keymap_editor::ShowMatchingKeybinds"
+    }
+  },
+  {
+    "context": "DebugPanel",
+    "unbind": {
+      "cmd-t": "debugger::ToggleThreadPicker"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-t": "workspace::NewCenterTerminal",
+      "cmd-j": "workspace::ToggleBottomDock",
+      "cmd-shift-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl->": "workspace::NewTerminal"
+    }
+  }
+]

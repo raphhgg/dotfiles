@@ -1,0 +1,199 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // SSH
+  "git_panel": {
+    "dock": "left",
+    "default_width": 320,
+    "button": true,
+    "sort_by_path": true,
+  },
+  "project_panel": {
+    "dock": "left",
+    "default_width": 280,
+    "button": true,
+  },
+  "outline_panel": {
+    "dock": "left",
+    "button": false,
+  },
+  "collaboration_panel": {
+    "dock": "left",
+    "button": false,
+  },
+  "agent": {
+    "enabled": true,
+    "dock": "right",
+    "default_width": 640,
+    "button": true,
+  },
+  "bottom_dock_layout": "contained",
+  "ssh_connections": [
+    {
+      "host": "10.10.2.201",
+      "username": "raphh",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/raphh/dotfiles"],
+        },
+      ],
+      "nickname": "debian-vm",
+    },
+    {
+      "host": "debian-vm",
+      "args": [],
+      "projects": [],
+    },
+  ],
+
+  // Theme
+  "theme": {
+    "mode": "dark",
+    "light": "Tokyo Night",
+    "dark": "Tokyo Night",
+  },
+
+  // Icons
+  "icon_theme": "Colored Zed Icons Theme Dark",
+
+  // UI Font (menus, panels, etc.)
+  "ui_font_family": ".SystemUIFont",
+  "ui_font_size": 14,
+  "ui_font_weight": 400,
+
+  // Editor/Buffer Font
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_size": 13,
+  "buffer_font_weight": 250,
+  "buffer_line_height": "comfortable",
+  "buffer_font_features": {
+    "calt": true, // Enable ligatures
+    "ss01": true, // Stylistic set 1
+  },
+
+  // Terminal Font
+  "terminal": {
+    "dock": "bottom",
+    "default_height": 220,
+    "button": true,
+    "copy_on_select": true,
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 13,
+    "font_weight": 200,
+    "line_height": "comfortable",
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+
+    // Most terminal themes have APCA values of 40-70.
+    // A value of 45 preserves colorful themes while ensuring legibility.
+    "minimum_contrast": 1,
+  },
+
+  // Cursor shape for the default editor.
+  //  1. A vertical bar
+  //     "bar"
+  //  2. A block that surrounds the following character
+  //     "block"
+  //  3. An underline / underscore that runs along the following character
+  //     "underline"
+  //  4. A box drawn around the following character
+  //     "hollow"
+  //
+  // Default: "bar"
+  "cursor_shape": "bar",
+
+  // Autosave
+  // When to automatically save edited buffers. This setting can
+  // take four values.
+  //
+  // 1. Never automatically save:
+  //     "autosave": "off",
+  // 2. Save when changing focus away from the Zed window:
+  //     "autosave": "on_window_change",
+  // 3. Save when changing focus away from a specific buffer:
+  //     "autosave": "on_focus_change",
+  // 4. Save when idle for a certain amount of time:
+  //     "autosave": { "after_delay": {"milliseconds": 500} },
+  "autosave": "on_focus_change",
+
+  // Titlebar
+  "title_bar": {
+    // Whether to show the branch icon beside branch switcher in the titlebar.
+    "show_branch_icon": true,
+    // Whether to show the branch name button in the titlebar.
+    "show_branch_name": true,
+    // Whether to show the project host and name in the titlebar.
+    "show_project_items": false,
+    // Whether to show onboarding banners in the titlebar.
+    "show_onboarding_banner": false,
+    // Whether to show user picture in the titlebar.
+    "show_user_picture": false,
+    // Whether to show the sign in button in the 3titlebar.
+    "show_sign_in": false,
+    // Whether to show the menus in the titlebar.
+    "show_menus": false,
+  },
+
+  // Tabs
+  "preview_tabs": {
+    // Whether preview tabs should be enabled.
+    // Preview tabs allow you to open files in preview mode, where they close automatically
+    // when you switch to another file unless you explicitly pin them.
+    // This is useful for quickly viewing files without cluttering your workspace.
+    "enabled": true,
+    // Whether to open tabs in preview mode when selected from the file finder.
+    "enable_preview_from_file_finder": false,
+    // Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
+    "enable_keep_preview_on_code_navigation": false,
+  },
+  // Maximum number of tabs per pane. Unset for unlimited.
+  "max_tabs": 4,
+  // Settings related to the editor's tab bar.
+  "tab_bar": {
+    // Whether or not to show the tab bar in the editor
+    "show": true,
+    // Whether or not to show the navigation history buttons.
+    "show_nav_history_buttons": true,
+    // Whether or not to show the tab bar buttons.
+    "show_tab_bar_buttons": true,
+  },
+
+  // Agent Panel Font
+  "agent_ui_font_size": 15,
+  // Bracket Auto Close
+  "always_treat_brackets_as_autoclosed": true,
+
+  // Prediction
+  // Controls whether edit predictions are shown immediately (true)
+  // or manually by triggering `editor::ShowEditPrediction` (false).
+  "show_edit_predictions": false,
+
+  // File Types
+  "file_types": {
+    "Shell Script": [".env.*", "*.conf", "config", "Brewfile"],
+  },
+
+  // Different settings for specific languages.
+  "languages": {
+    "Python": {
+      "language_servers": [
+        // Disable basedpyright and enable Ty, and otherwise
+        // use the default configuration.
+        "!ty",
+        "!basedpyright",
+        "ruff",
+        "PyRight",
+        "pylsp",
+        "pyflakes",
+      ],
+    },
+  },
+}

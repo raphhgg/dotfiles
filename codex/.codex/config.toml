@@ -2,11 +2,65 @@ personality = "pragmatic"
 model = "gpt-5.4"
 model_reasoning_effort = "medium"
 
+approval_policy = "on-request"
+sandbox_mode = "danger-full-access"
+
 [history]
 persistence = "save-all"
 
 [sandbox_workspace_write]
 network_access = true
+writable_roots = [
+  "/Users/raphaelgrau/Projects/notifications-hub",
+  "/Users/raphaelgrau/dotfiles/codex/.codex",
+  "/Users/raphaelgrau/agent-standards",
+  "/Users/raphaelgrau/Library/Caches/go-build",
+  "/Users/raphaelgrau/go/pkg/mod"
+]
 
 [tools]
 web_search = true
+
+[shell]
+auto_approve = [
+  "cd /Users/raphaelgrau/Projects/notifications-hub",
+  "cd /Users/raphaelgrau/dotfiles/codex/.codex",
+  "cd /Users/raphaelgrau/agent-standards",
+  "pwd",
+  "ls",
+  "cat",
+  "rg",
+  "find",
+  "git status",
+  "git diff",
+  "git log",
+  "git show",
+  "git add",
+  "git commit",
+  "git branch",
+  "git switch",
+  "git checkout",
+  "git pull",
+  "git push",
+  "go test",
+  "go mod tidy",
+  "gofmt -w",
+  "env GOCACHE="
+]
+deny = ["rm -rf", "sudo"]
+
+[apps.connector_76869538009648d5b282a4bb21c3d157]
+enabled = false
+default_tools_approval_mode = "auto"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_add_comment_to_issue]
+approval_mode = "approve"
+
+[projects."/Users/raphaelgrau/agent-standards"]
+trust_level = "trusted"
+
+[projects."/Users/raphaelgrau/dotfiles"]
+trust_level = "trusted"
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "current-dir", "git-branch", "five-hour-limit", "weekly-limit"]

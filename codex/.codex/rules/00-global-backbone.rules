@@ -1,0 +1,49 @@
+# Global hand-maintained Codex execpolicy rules.
+#
+# Codex loads every `*.rules` file under `~/.codex/rules/` at startup.
+# Keep `default.rules` for TUI-generated entries and add deliberate rules here.
+#
+# Validate a candidate rule with:
+#   codex execpolicy check --pretty \
+#     --rules ~/.codex/rules/00-global-backbone.rules \
+#     -- git status
+#
+# Template:
+# prefix_rule(
+#     pattern = ["tool", "subcommand"],
+#     decision = "allow",
+#     justification = "Why this is safe to auto-approve.",
+#     match = ["tool subcommand"],
+#     not_match = ["tool other-subcommand"],
+# )
+
+# Hard stops for commands that should never be broadly auto-approved.
+prefix_rule(
+    pattern = ["sudo"],
+    decision = "forbidden",
+    justification = "Do not run privileged commands through auto-approval.",
+    match = [
+        "sudo ls",
+        "sudo rm -rf /tmp/example",
+    ],
+)
+
+prefix_rule(
+    pattern = ["rm", "-rf"],
+    decision = "forbidden",
+    justification = "Use a reviewed alternative instead of auto-approving recursive force deletion.",
+    match = [
+        "rm -rf /tmp/example",
+        "rm -rf node_modules",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "forbidden",
+    justification = "Hard resets are destructive and must stay manual.",
+    match = [
+        "git reset --hard",
+        "git reset --hard HEAD~1",
+    ],
+)
