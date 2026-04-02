@@ -1,6 +1,6 @@
 ---
 name: gemini
-description: Chat with Google Gemini via gemini-cli from within Claude Code or OpenCode. Maintains conversation continuity using --resume. Use when the user wants to ask Gemini something, have a multi-turn conversation with Gemini, compare answers with Gemini, or delegate a task to Gemini.
+description: Chat with Google Gemini via gemini-cli from within Codex or OpenCode. Maintains conversation continuity using --resume. Use when the user wants to ask Gemini something, have a multi-turn conversation with Gemini, compare answers with Gemini, or delegate a task to Gemini.
 argument-hint: <your prompt>
 disable-model-invocation: true
 allowed-tools: Bash(gemini:*)
@@ -8,7 +8,7 @@ allowed-tools: Bash(gemini:*)
 
 # Gemini Chat Skill
 
-Chat with Google Gemini from Claude Code or OpenCode with full conversation continuity.
+Chat with Google Gemini from Codex or OpenCode with full conversation continuity.
 
 ## Setup (run once at start of every invocation)
 

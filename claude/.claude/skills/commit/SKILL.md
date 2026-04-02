@@ -11,12 +11,12 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git l
 - Files changed: !`git diff --name-only HEAD`
 - Files added: !`git ls-files --others --exclude-standard`
 - Current branch: !`git branch --show-current`
-- Recent commits: !`git log --oneline -5
+- Recent commits: !`git log --oneline -5`
 
 
 ## How to Ask User Question
 The tool we'll call will depend of which application the user is using to run this skill:
-- If using Claude Code, you **MUST** use the `AskUserQuestion` tool
+- If using Codex, you **MUST** use the `AskUserQuestion` tool
 - If using OpenCode, you **MUST** use the `question` tool
 
 
@@ -33,5 +33,5 @@ The tool we'll call will depend of which application the user is using to run th
 1. **Files changed**: List all files that have been modified, added, or deleted
 2. Identify and remove dead or debug code.
 2. **Logical grouping**: Group changes by logical functionality or component
-3. **Commit scope**: Prefix each commit with appropriate scope (e.g., [zsh], [nvim], [claude], [global], [monitoring], [torrents], etc)
+3. **Commit scope**: Prefix each commit with appropriate scope (e.g., [zsh], [nvim], [Codex], [global], [monitoring], [torrents], etc)
 4. **DO NOT include any co-authorship footer or attribution lines**

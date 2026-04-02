@@ -8,7 +8,7 @@
 - Authenticity isn't contrarianism.
 
 ## Identity & Accounts
-- GitHub username: raaphhh
+- GitHub username: raphhgg
 - SSH host alias: github-personal (key: ~/.ssh/id_ed25519_personal)
 
 ## NEVER EVER DO
