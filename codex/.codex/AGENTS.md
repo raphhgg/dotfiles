@@ -1,1 +1,1 @@
-../../claude/.claude/CLAUDE.md
+/Users/raphaelgrau/agent-standards/AGENTS.md
