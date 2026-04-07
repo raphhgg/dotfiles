@@ -21,6 +21,10 @@ writable_roots = [
 [tools]
 web_search = true
 
+[mcp_servers.XcodeBuildMCP]
+command = "npx"
+args = ["-y", "xcodebuildmcp@latest", "mcp"]
+
 [shell]
 auto_approve = [
   "cd /Users/raphaelgrau/Projects/notifications-hub",
@@ -49,18 +53,17 @@ auto_approve = [
 ]
 deny = ["rm -rf", "sudo"]
 
-[apps.connector_76869538009648d5b282a4bb21c3d157]
-enabled = false
-default_tools_approval_mode = "auto"
-
-[apps.connector_76869538009648d5b282a4bb21c3d157.tools.github_add_comment_to_issue]
-approval_mode = "approve"
-
 [projects."/Users/raphaelgrau/agent-standards"]
 trust_level = "trusted"
 
 [projects."/Users/raphaelgrau/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/raphaelgrau"]
+trust_level = "trusted"
+
 [tui]
 status_line = ["model-with-reasoning", "context-remaining", "current-dir", "git-branch", "five-hour-limit", "weekly-limit"]
+
+[features]
+apps = false

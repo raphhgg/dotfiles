@@ -41,16 +41,28 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/raphh/dotfiles"],
+          "paths": [
+            "/home/raphh/docker/compose"
+          ]
         },
+        {
+          "paths": [
+            "/home/raphh/docker/compose/services/media-server/heimdall"
+          ]
+        },
+        {
+          "paths": [
+            "/home/raphh/dotfiles"
+          ]
+        }
       ],
-      "nickname": "debian-vm",
+      "nickname": "debian-vm"
     },
     {
       "host": "debian-vm",
       "args": [],
-      "projects": [],
-    },
+      "projects": []
+    }
   ],
 
   // Theme
