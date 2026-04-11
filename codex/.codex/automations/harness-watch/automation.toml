@@ -1,0 +1,13 @@
+version = 1
+id = "harness-watch"
+kind = "cron"
+name = "Harness Watch"
+prompt = "Read `$HOME/agent-standards/docs/references/reference-repos.md` and `$HOME/agent-standards/docs/references/watched-product-repos.md`. Compare the tracked upstream reference topics against the current harness in `$HOME/agent-standards`. Also read `.codex/learnings.md` from the watched product repos when present. Look for updates to existing topics, stale or missing guidance, routing drift, missing workflow contracts, missing skills, and missing reference files that should exist in the harness. Propose improvements for existing docs and skills, and propose new shared docs, skills, routing entries, or reference files where the harness has gaps. Open an inbox item with prioritized proposals, confidence, and likely target files in `agent-standards`."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;BYDAY=MO;BYHOUR=9;BYMINUTE=0"
+model = "gpt-5.4"
+reasoning_effort = "medium"
+execution_environment = "local"
+cwds = ["/Users/raphaelgrau/agent-standards", "/Users/raphaelgrau/Projects/codex-usage-menubar-app", "/Users/raphaelgrau/Projects/heimdall", "/Users/raphaelgrau/Projects/gather-app", "/Users/raphaelgrau/Projects/twitter-cli", "/Users/raphaelgrau/Projects/review-app"]
+created_at = 1775917402597
+updated_at = 1775922783192
