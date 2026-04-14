@@ -1,14 +1,8 @@
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-	'exec-and-forget sketchybar --hotload true & dark-notify -c "sketchybar --reload || echo "',
 	'exec-and-forget borders',
 	'layout tiles'
-]
-
-# Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Start AeroSpace at login
@@ -35,7 +29,6 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = [
   'move-mouse window-lazy-center',
-  'exec-and-forget sketchybar --trigger aerospace_focus_change',
 ]
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
