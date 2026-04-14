@@ -7,6 +7,7 @@
 set -e
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PLISTBUDDY="/usr/libexec/PlistBuddy"
 
 echo "🍎 Applying macOS system preferences..."
 echo "⚠️  Some changes require logging out or restarting to take effect"
@@ -106,29 +107,32 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # Desktop view settings
-defaults write com.apple.finder DesktopViewSettings -dict \
-    IconViewSettings -dict-add \
-        arrangeBy -string "grid" \
-        backgroundColorBlue -float 1.0 \
-        backgroundColorGreen -float 1.0 \
-        backgroundColorRed -float 1.0 \
-        backgroundType -int 0 \
-        gridOffsetX -int 0 \
-        gridOffsetY -int 0 \
-        gridSpacing -int 54 \
-        iconSize -int 64 \
-        labelOnBottom -bool true \
-        showIconPreview -bool true \
-        showItemInfo -bool false \
-        textSize -int 12
+FINDER_PLIST="${HOME}/Library/Preferences/com.apple.finder.plist"
+"${PLISTBUDDY}" -c "Delete :DesktopViewSettings" "${FINDER_PLIST}" 2>/dev/null || true
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings dict" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings dict" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:arrangeBy string grid" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:backgroundColorBlue real 1.0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:backgroundColorGreen real 1.0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:backgroundColorRed real 1.0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:backgroundType integer 0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:gridOffsetX integer 0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:gridOffsetY integer 0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:gridSpacing integer 54" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:iconSize integer 64" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:labelOnBottom bool true" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:showIconPreview bool true" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:showItemInfo bool false" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :DesktopViewSettings:IconViewSettings:textSize integer 12" "${FINDER_PLIST}"
 
 # Default icon view settings
-defaults write com.apple.finder FK_DefaultIconViewSettings -dict \
-    arrangeBy -string "grid" \
-    backgroundType -int 0 \
-    gridSpacing -int 54 \
-    iconSize -int 64 \
-    showIconPreview -bool true
+"${PLISTBUDDY}" -c "Delete :FK_DefaultIconViewSettings" "${FINDER_PLIST}" 2>/dev/null || true
+"${PLISTBUDDY}" -c "Add :FK_DefaultIconViewSettings dict" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :FK_DefaultIconViewSettings:arrangeBy string grid" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :FK_DefaultIconViewSettings:backgroundType integer 0" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :FK_DefaultIconViewSettings:gridSpacing integer 54" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :FK_DefaultIconViewSettings:iconSize integer 64" "${FINDER_PLIST}"
+"${PLISTBUDDY}" -c "Add :FK_DefaultIconViewSettings:showIconPreview bool true" "${FINDER_PLIST}"
 
 # ============================================================================
 # INTERFACE & APPEARANCE PREFERENCES
