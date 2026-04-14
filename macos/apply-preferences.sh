@@ -53,10 +53,10 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 # 11: Launchpad
 # 12: Notification Center
 # 13: Lock Screen
-defaults write com.apple.dock wvous-tl-corner -int 2    # Top-left: Mission Control
+defaults write com.apple.dock wvous-tl-corner -int 1    # Top-left: current local setting
 defaults write com.apple.dock wvous-tr-corner -int 4    # Top-right: Desktop
 defaults write com.apple.dock wvous-bl-corner -int 3    # Bottom-left: Application Windows
-defaults write com.apple.dock wvous-br-corner -int 4    # Bottom-right: Desktop
+defaults write com.apple.dock wvous-br-corner -int 1    # Bottom-right: current local setting
 
 # Persistent applications - load from external plist file
 if [ -f "$SCRIPT_DIR/dock-persistent-apps.plist" ]; then
@@ -153,7 +153,7 @@ defaults write NSGlobalDomain NSNavPanelFileLastListModeForOpenModeKey -int 1
 defaults write NSGlobalDomain NSNavPanelFileLastListModeForSaveModeKey -int 1
 
 # Menu bar auto-hide
-defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults write NSGlobalDomain _HIHideMenuBar -bool false
 defaults write NSGlobalDomain AppleMenuBarVisibleInFullscreen -bool false
 
 # Title bar double-click behavior
@@ -164,7 +164,7 @@ defaults write NSGlobalDomain AppleLocale -string "en_001@rg=bezzzz"
 defaults write NSGlobalDomain AppleLanguages -array "en" "fr"
 
 # Trackpad Force Click
-defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
 
 # Control Center configuration
 defaults write com.apple.controlcenter BatteryShowPercentage -bool false
@@ -223,12 +223,14 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -int 1
 
 # Corner behavior
 defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
 
 # Gestures
 defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -int 1
 defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -int 1
 defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -int 1
 defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
@@ -265,8 +267,9 @@ defaults write com.apple.BezelServices KeyboardBacklightIdleDimTime -int 30
 # ============================================================================
 echo "🔒 Configuring Security..."
 
-# Disable Gatekeeper quarantine for downloaded apps
+# Match the current machine behavior for downloaded apps
 defaults write com.apple.LaunchServices LSQuarantine -bool false
+echo "⚠️  Gatekeeper quarantine disabled to match current local setup"
 
 echo ""
 echo "✅ System preferences applied successfully!"

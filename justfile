@@ -2,7 +2,7 @@
 
 # Install dotfiles for macOS
 stow-macos:
-    stow -t ~ aerospace alacritty git nvim omp ssh zsh ghostty claude borders karabiner sketchybar
+    stow -t ~ aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
 
 # Install dotfiles for ds423plus NAS server
 stow-ds423plus:
@@ -14,7 +14,7 @@ stow-ubuntu:
 
 # Remove all dotfiles symlinks
 unstow-all:
-    stow -t ~ -D aerospace git nvim omp ssh zsh ghostty claude borders karabiner sketchybar
+    stow -t ~ -D aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
 
 # Sync dotfiles from remote
 sync:
@@ -37,3 +37,7 @@ brew-check:
 # Clean up packages not in Brewfile
 brew-cleanup:
     brew bundle cleanup
+
+# Bootstrap a fresh macOS machine from this repo
+bootstrap-macos:
+    ./bootstrap-macos.sh

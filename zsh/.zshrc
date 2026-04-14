@@ -64,9 +64,7 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="/home/raphh/.local/bin:$PATH"
-export PATH="/home/raphh/.fzf/bin:$PATH"
-
-# opencode
-export PATH=/home/raphh/.opencode/bin:$PATH
+add_to_path "/opt/nvim-linux-x86_64/bin"
+add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.fzf/bin"
+add_to_path "$HOME/.opencode/bin"

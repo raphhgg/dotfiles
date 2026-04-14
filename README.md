@@ -25,7 +25,7 @@ Different hosts use different subsets of packages:
 ```bash
 # macOS
 just stow-macos
-# → aerospace alacritty borders karabiner git nvim omp opencode sketchybar ssh zsh ghostty claude
+# → aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
 
 # DS423Plus NAS
 just stow-ds423plus
@@ -55,7 +55,28 @@ just stow-ubuntu       # Ubuntu
 
 # Install Homebrew packages (macOS only)
 just brew-install
+
 ```
+
+## Fresh Mac Setup
+
+If you are bootstrapping a new Mac, do not run the steps by hand one by one unless you need to debug something. Use the bootstrap script:
+
+```bash
+git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
+cd ~/github/dotfiles
+./bootstrap-macos.sh
+```
+
+This will:
+
+- install Xcode Command Line Tools if needed
+- install Homebrew if needed
+- install packages from the `Brewfile`
+- stow the macOS dotfiles set
+- apply macOS preferences with safer defaults
+
+Manual restore items that still matter are listed in [macos/MIGRATION_CHECKLIST.md](./macos/MIGRATION_CHECKLIST.md).
 
 ## Management
 
@@ -126,11 +147,8 @@ just brew-cleanup
 git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
 cd ~/github/dotfiles
 
-# Install dotfiles
-just stow-macos
-
-# Install applications
-just brew-install
+# Bootstrap the machine
+./bootstrap-macos.sh
 ```
 
 ## Troubleshooting

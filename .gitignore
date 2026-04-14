@@ -1,5 +1,6 @@
 # macOS
 .DS_Store
+**/.DS_Store
 
 # Git
 .git/
@@ -11,6 +12,9 @@
 # Claude Code
 # Ignore project-specific .claude directory (at root)
 /.claude/
+**/.secrets
+**/config.local
+**/*.local
 
 # Tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/

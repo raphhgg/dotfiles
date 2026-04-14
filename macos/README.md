@@ -5,14 +5,22 @@ This directory contains macOS system preferences extracted from the nix-darwin c
 ## Files
 
 - **`apply-preferences.sh`** - Main script to apply all system preferences
+- **`../bootstrap-macos.sh`** - Fresh Mac bootstrap entrypoint
 - **`dock-persistent-apps.plist`** - Dock persistent applications list (easy to edit!)
+- **`MIGRATION_CHECKLIST.md`** - Manual data and account transfer checklist
 
 ## Quick Start
 
-Apply all preferences at once:
+Bootstrap a fresh Mac from this repo:
 
 ```bash
-~/dotfiles/macos/apply-preferences.sh
+./bootstrap-macos.sh
+```
+
+Apply only system preferences:
+
+```bash
+./macos/apply-preferences.sh
 ```
 
 Then restart services:
@@ -31,11 +39,11 @@ killall Dock Finder SystemUIServer
 - Hide recent applications
 - Fast Mission Control animations (0.1s)
 - Hot corners configured:
-  - Top-left: Mission Control
+  - Top-left: custom local value `1`
   - Top-right: Desktop
   - Bottom-left: Application Windows
-  - Bottom-right: Desktop
-- Persistent apps: Zen, Obsidian, Fantastical, Ghostty, Zed, Cursor, Xcode, Discord, Slack, Messages
+  - Bottom-right: custom local value `1`
+- Persistent apps: Brave Browser, Obsidian, Fantastical, Ghostty, Zed, Zed Preview, Codex, Discord, Telegram, Messages
 
 ### 📁 Finder
 - Show all file extensions
@@ -50,7 +58,7 @@ killall Dock Finder SystemUIServer
 
 ### 🎨 Interface & Appearance
 - Dark mode enabled
-- Auto-hide menu bar
+- Menu bar remains visible
 - Metric system (Celsius, Centimeters)
 - Expanded save/open dialogs
 - Languages: English, French
@@ -81,6 +89,8 @@ killall Dock Finder SystemUIServer
 - Keyboard backlight auto-adjust (if supported)
 
 ## Manual Steps Required
+
+For the broader machine migration checklist, see `MIGRATION_CHECKLIST.md`.
 
 ### TouchID for sudo
 
@@ -157,5 +167,6 @@ killall Dock
 
 - Some settings require logout/restart to take full effect
 - The script is idempotent - safe to run multiple times
+- The Dock and hot corner values in this directory currently reflect the live local Mac, not generic macOS defaults
 - Based on nix-darwin configuration from `~/nix-darwin-config/darwin/preferences/`
 - No external dependencies required - uses only macOS built-in tools

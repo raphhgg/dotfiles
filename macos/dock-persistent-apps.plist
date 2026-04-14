@@ -2,17 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<dict>
-		<key>tile-data</key>
 		<dict>
-			<key>file-data</key>
+			<key>tile-data</key>
 			<dict>
-				<key>_CFURLString</key>
-				<string>/Applications/Zen.app</string>
-				<key>_CFURLStringType</key>
-				<integer>0</integer>
+				<key>file-data</key>
+				<dict>
+					<key>_CFURLString</key>
+					<string>/Applications/Brave Browser.app</string>
+					<key>_CFURLStringType</key>
+					<integer>0</integer>
+				</dict>
 			</dict>
-		</dict>
 	</dict>
 	<dict>
 		<key>tile-data</key>
@@ -62,29 +62,29 @@
 			</dict>
 		</dict>
 	</dict>
-	<dict>
-		<key>tile-data</key>
 		<dict>
-			<key>file-data</key>
+			<key>tile-data</key>
 			<dict>
-				<key>_CFURLString</key>
-				<string>/Applications/Cursor.app</string>
-				<key>_CFURLStringType</key>
-				<integer>0</integer>
+				<key>file-data</key>
+				<dict>
+					<key>_CFURLString</key>
+					<string>/Applications/Zed Preview.app</string>
+					<key>_CFURLStringType</key>
+					<integer>0</integer>
+				</dict>
 			</dict>
-		</dict>
 	</dict>
-	<dict>
-		<key>tile-data</key>
 		<dict>
-			<key>file-data</key>
+			<key>tile-data</key>
 			<dict>
-				<key>_CFURLString</key>
-				<string>/Applications/Xcode.app</string>
-				<key>_CFURLStringType</key>
-				<integer>0</integer>
+				<key>file-data</key>
+				<dict>
+					<key>_CFURLString</key>
+					<string>/Applications/Codex.app</string>
+					<key>_CFURLStringType</key>
+					<integer>0</integer>
+				</dict>
 			</dict>
-		</dict>
 	</dict>
 	<dict>
 		<key>tile-data</key>
@@ -98,17 +98,17 @@
 			</dict>
 		</dict>
 	</dict>
-	<dict>
-		<key>tile-data</key>
 		<dict>
-			<key>file-data</key>
+			<key>tile-data</key>
 			<dict>
-				<key>_CFURLString</key>
-				<string>/Applications/Slack.app</string>
-				<key>_CFURLStringType</key>
-				<integer>0</integer>
+				<key>file-data</key>
+				<dict>
+					<key>_CFURLString</key>
+					<string>/Applications/Telegram.app</string>
+					<key>_CFURLStringType</key>
+					<integer>0</integer>
+				</dict>
 			</dict>
-		</dict>
 	</dict>
 	<dict>
 		<key>tile-data</key>

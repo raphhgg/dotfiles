@@ -1,7 +1,9 @@
 # First-Time macOS Setup Script - Implementation Plan
 
+Status: implemented as `bootstrap-macos.sh`. Keep this file as design history, not as the primary entrypoint. When this file disagrees with `bootstrap-macos.sh` or `macos/README.md`, the code and README win.
+
 ## Overview
-Create a comprehensive setup script `macos/first-time-setup.sh` that automates setting up a fresh macOS installation with your dotfiles, similar to the reference script from linkarzu's repository.
+Create a comprehensive setup script `bootstrap-macos.sh` that automates setting up a fresh macOS installation with your dotfiles, similar to the reference script from linkarzu's repository.
 
 ## Script Structure
 
@@ -44,7 +46,7 @@ Create a comprehensive setup script `macos/first-time-setup.sh` that automates s
 
 ### 8. **Stow All Configurations**
 - Backup any existing conflicting files (`.zshrc`, `.gitconfig`, etc.)
-- Run: `just stow-all` (stows: aerospace, alacritty, git, nvim, omp, ssh, zsh, ghostty, claude)
+- Run the macOS target from `justfile`
 - Verify symlinks created successfully
 
 ### 9. **Apply macOS System Preferences**
@@ -65,11 +67,10 @@ Create a comprehensive setup script `macos/first-time-setup.sh` that automates s
 - Start Karabiner-Elements: `open -a 'Karabiner-Elements'`
 - Grant necessary permissions (prompt user)
 
-### 12. **Configure SketchyBar**
-- Verify SketchyBar is installed
-- Download required icon fonts to `~/.config/sketchybar/icons/` (if needed)
-- Start SketchyBar: `brew services start sketchybar`
-- Restart service to load config: `brew services restart sketchybar`
+### 12. **Menu Bar / Status Bar**
+- Keep the native macOS menu bar visible to match the current local setup
+- Verify no third-party menu bar replacement is configured in dotfiles
+- Stop SketchyBar if it was previously enabled: `brew services stop sketchybar`
 
 ### 13. **Configure Tmux**
 - Verify tmux is installed
@@ -84,9 +85,9 @@ Create a comprehensive setup script `macos/first-time-setup.sh` that automates s
 - List applications that need manual configuration
 - Display next steps:
   - Log out and log back in
-  - Configure Claude Code MCP servers
-  - Set up Linear integration
-  - Configure app-specific settings
+  - Re-authenticate CLI and app accounts
+  - Re-grant macOS permissions
+  - Restore app-specific data
 
 ### 15. **Script Features**
 - Colored output for better readability (✓ green success, ⚠️  yellow warnings, ✗ red errors)
@@ -97,8 +98,8 @@ Create a comprehensive setup script `macos/first-time-setup.sh` that automates s
 
 ## Files to Create/Modify
 
-1. **New file**: `macos/first-time-setup.sh` (main script, ~500-800 lines)
-2. **Update**: `macos/README.md` (add section about first-time-setup.sh)
+1. **New file**: `bootstrap-macos.sh` (main script, ~500-800 lines)
+2. **Update**: `macos/README.md` (add section about `bootstrap-macos.sh`)
 3. **Optional**: Create helper functions file for SSH key handling
 
 ## Key Differences from Reference Script
