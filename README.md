@@ -138,6 +138,15 @@ Recommended workflow:
 
 Do not rely on syncing `~/.codex` wholesale. Keep auth, logs, sessions, and other machine-local state local.
 
+Codex uses a split setup in this repo:
+
+- shared Codex files are stowed from `dotfiles/codex/.codex/`
+- machine-local `~/.codex/config.toml` is installed from an OS-specific source file
+- macOS uses `dotfiles/codex/.codex/config.macos.toml`
+- Debian/Ubuntu uses `dotfiles/codex/.codex/config.debian.toml`
+
+This keeps shared harness files versioned in dotfiles without forcing one host's paths, MCP servers, or sandbox settings onto another host.
+
 ## Brewfile Management
 
 The `Brewfile` is the source of truth for macOS applications, development tools, fonts, and Mac App Store apps.

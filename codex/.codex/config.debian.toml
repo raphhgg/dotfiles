@@ -1,0 +1,29 @@
+approval_policy = "on-request"
+sandbox_mode = "danger-full-access"
+
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+
+[projects."/home/raphh/docker/compose"]
+trust_level = "trusted"
+
+[projects."/home/raphh/docker/appdata/kometa"]
+trust_level = "trusted"
+
+[projects."/home/raphh"]
+trust_level = "trusted"
+
+[projects."/home/raphh/docker/compose/services/media-server/heimdall"]
+trust_level = "trusted"
+
+[projects."/home/raphh/llm-workspace"]
+trust_level = "trusted"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "five-hour-limit", "weekly-limit", "context-window-size"]

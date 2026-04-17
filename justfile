@@ -3,6 +3,7 @@
 # Install dotfiles for macOS
 stow-macos:
     stow -t ~ aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
+    DOTFILES_DIR=$PWD bash ./scripts/install-codex-config.sh macos
 
 # Install dotfiles for ds423plus NAS server
 stow-ds423plus:
@@ -10,7 +11,8 @@ stow-ds423plus:
 
 # Install dotfiles for ubuntu server
 stow-ubuntu:
-    stow -t ~ tmux omp claude git nvim zsh ssh btop opencode
+    stow -t ~ tmux omp claude git nvim zsh ssh btop opencode codex
+    DOTFILES_DIR=$PWD bash ./scripts/install-codex-config.sh debian
 
 # Remove all dotfiles symlinks
 unstow-all:
