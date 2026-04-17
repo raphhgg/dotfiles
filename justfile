@@ -20,6 +20,10 @@ unstow-all:
 sync:
     ./scripts/sync.sh
 
+# Sync Codex shared repos used across machines
+sync-codex:
+    ./scripts/sync-codex.sh
+
 # Brewfile management commands
 
 # Install all packages from Brewfile

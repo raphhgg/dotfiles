@@ -36,7 +36,7 @@
   "bottom_dock_layout": "contained",
   "ssh_connections": [
     {
-      "host": "10.10.2.201",
+      "host": "debian-vm-zed",
       "username": "raphh",
       "args": [],
       "projects": [
@@ -59,7 +59,7 @@
       "nickname": "debian-vm"
     },
     {
-      "host": "debian-vm",
+      "host": "debian-vm-zed",
       "args": [],
       "projects": []
     }
@@ -73,7 +73,11 @@
   },
 
   // Icons
-  "icon_theme": "Colored Zed Icons Theme Dark",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Colored Zed Icons Theme Dark",
+    "dark": "Colored Zed Icons Theme Dark"
+  },
 
   // UI Font (menus, panels, etc.)
   "ui_font_family": ".SystemUIFont",

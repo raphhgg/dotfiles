@@ -117,6 +117,27 @@ rm -rf zsh/
 ./scripts/sync.sh
 ```
 
+For Codex and the shared harness, one repo is not enough. Your remote machine needs both `dotfiles` and `agent-standards` current before you start work:
+
+```bash
+just sync-codex
+```
+
+That command:
+
+- updates `~/dotfiles`
+- updates `~/agent-standards`
+- stops if either repo has uncommitted changes
+- stops if the remote machine has local commits you have not pushed yet
+
+Recommended workflow:
+
+1. Make changes locally in `dotfiles` or `agent-standards`.
+2. Commit and push them.
+3. On the remote machine, run `just sync-codex` before starting Codex.
+
+Do not rely on syncing `~/.codex` wholesale. Keep auth, logs, sessions, and other machine-local state local.
+
 ## Brewfile Management
 
 The `Brewfile` is the source of truth for macOS applications, development tools, fonts, and Mac App Store apps.

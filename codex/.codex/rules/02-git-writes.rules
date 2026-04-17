@@ -4,35 +4,35 @@
 # Keep cross-repo write allowances explicit via `git -C /absolute/path ...`.
 
 prefix_rule(
-    pattern = ["git", "-C", "/Users/raphaelgrau/agent-standards", "push"],
+    pattern = ["git", "-C", "$HOME/agent-standards", "push"],
     decision = "allow",
     justification = "Pushing from the shared agent-standards repo is an intentional routine write action to auto-approve.",
     match = [
-        "git -C /Users/raphaelgrau/agent-standards push",
-        "git -C /Users/raphaelgrau/agent-standards push -u origin main",
-        "git -C /Users/raphaelgrau/agent-standards push origin HEAD",
+        "git -C $HOME/agent-standards push",
+        "git -C $HOME/agent-standards push -u origin main",
+        "git -C $HOME/agent-standards push origin HEAD",
     ],
 )
 
 prefix_rule(
-    pattern = ["git", "-C", "/Users/raphaelgrau/dotfiles", "push"],
+    pattern = ["git", "-C", "$HOME/dotfiles", "push"],
     decision = "allow",
     justification = "Pushing from the dotfiles repo that owns Codex config is an intentional routine write action to auto-approve.",
     match = [
-        "git -C /Users/raphaelgrau/dotfiles push",
-        "git -C /Users/raphaelgrau/dotfiles push -u origin main",
-        "git -C /Users/raphaelgrau/dotfiles push origin HEAD",
+        "git -C $HOME/dotfiles push",
+        "git -C $HOME/dotfiles push -u origin main",
+        "git -C $HOME/dotfiles push origin HEAD",
     ],
 )
 
 prefix_rule(
-    pattern = ["git", "-C", "/Users/raphaelgrau/agent-standards", "switch"],
+    pattern = ["git", "-C", "$HOME/agent-standards", "switch"],
     decision = "allow",
     justification = "Switching branches in the shared agent-standards repo is a routine intentional repo-management action to auto-approve.",
     match = [
-        "git -C /Users/raphaelgrau/agent-standards switch fix/no-qa-handoff-guidance",
-        "git -C /Users/raphaelgrau/agent-standards switch main",
-        "git -C /Users/raphaelgrau/agent-standards switch codex/example-branch",
+        "git -C $HOME/agent-standards switch fix/no-qa-handoff-guidance",
+        "git -C $HOME/agent-standards switch main",
+        "git -C $HOME/agent-standards switch codex/example-branch",
     ],
 )
 

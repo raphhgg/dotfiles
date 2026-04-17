@@ -16,7 +16,7 @@ prefix_rule(
     match = [
         "ls",
         "ls -la",
-        "ls -la /Users/raphaelgrau/Projects/notifications-hub",
+        "ls -la $HOME/Projects/homelab-notifications-hub",
     ],
 )
 
@@ -26,7 +26,7 @@ prefix_rule(
     justification = "Reading file contents is a low-risk inspection action to auto-approve.",
     match = [
         "cat AGENTS.md",
-        "cat /Users/raphaelgrau/dotfiles/codex/.codex/config.toml",
+        "cat $HOME/dotfiles/codex/.codex/config.toml",
     ],
 )
 

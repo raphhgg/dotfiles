@@ -68,3 +68,7 @@ add_to_path "/opt/nvim-linux-x86_64/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.fzf/bin"
 add_to_path "$HOME/.opencode/bin"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/raphh/.lmstudio/bin"
+# End of LM Studio CLI section

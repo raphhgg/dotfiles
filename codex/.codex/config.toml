@@ -11,11 +11,11 @@ persistence = "save-all"
 [sandbox_workspace_write]
 network_access = true
 writable_roots = [
-  "/Users/raphaelgrau/Projects/notifications-hub",
-  "/Users/raphaelgrau/dotfiles/codex/.codex",
-  "/Users/raphaelgrau/agent-standards",
-  "/Users/raphaelgrau/Library/Caches/go-build",
-  "/Users/raphaelgrau/go/pkg/mod"
+  "/Users/raphh/Projects/homelab-notifications-hub",
+  "/Users/raphh/dotfiles/codex/.codex",
+  "/Users/raphh/agent-standards",
+  "/Users/raphh/Library/Caches/go-build",
+  "/Users/raphh/go/pkg/mod"
 ]
 
 [tools]
@@ -27,9 +27,9 @@ args = ["-y", "xcodebuildmcp@latest", "mcp"]
 
 [shell]
 auto_approve = [
-  "cd /Users/raphaelgrau/Projects/notifications-hub",
-  "cd /Users/raphaelgrau/dotfiles/codex/.codex",
-  "cd /Users/raphaelgrau/agent-standards",
+  "cd /Users/raphh/Projects/homelab-notifications-hub",
+  "cd /Users/raphh/dotfiles/codex/.codex",
+  "cd /Users/raphh/agent-standards",
   "pwd",
   "ls",
   "cat",
@@ -53,37 +53,40 @@ auto_approve = [
 ]
 deny = ["rm -rf", "sudo"]
 
-[projects."/Users/raphaelgrau/agent-standards"]
+[projects."/Users/raphh/agent-standards"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/dotfiles"]
+[projects."/Users/raphh/dotfiles"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau"]
+[projects."/Users/raphh"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/twitter-cli"]
+[projects."/Users/raphh/Projects/twitter-cli"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/gather-app"]
+[projects."/Users/raphh/Projects/gather-app"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/codex-usage-menubar-app"]
+[projects."/Users/raphh/Projects/codex-usage-menubar-app"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/heimdall"]
+[projects."/Users/raphh/Projects/heimdall"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/review-app"]
+[projects."/Users/raphh/Projects/review-app"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/.codex"]
+[projects."/Users/raphh/.codex"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/tiling-window-manager-macos"]
+[projects."/Users/raphh/Projects/tiling-window-manager-macos"]
 trust_level = "trusted"
 
-[projects."/Users/raphaelgrau/Projects/raphhgg"]
+[projects."/Users/raphh/Projects/raphhgg"]
+trust_level = "trusted"
+
+[projects."/Users/raphh/Projects/CodexPill"]
 trust_level = "trusted"
 
 [tui]
@@ -91,4 +94,7 @@ status_line = ["model-with-reasoning", "context-remaining", "current-dir", "git-
 
 [features]
 apps = false
-memories = true
+use_memories = true
+generate_memories = true
+no_memories_if_mcp_or_web_search = false
+remote_connections = true
