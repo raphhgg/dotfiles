@@ -13,7 +13,7 @@
 
 ## New Mac Bootstrap
 
-- Clone the repo to a stable path, for example `$HOME/github/dotfiles`.
+- Clone the repo to a stable path: `$HOME/dotfiles`.
 - Run `./bootstrap-macos.sh`.
 - Sign in to the App Store, then rerun `brew bundle install` if MAS apps were skipped.
 - Restore SSH keys before switching Git remotes to SSH-only workflows.
@@ -23,8 +23,7 @@
 ## Manual Restore Items
 
 - `~/.ssh/config.local` and any host-specific SSH keys.
-- `~/.claude` auth/session state you actually want to keep.
-- `~/.codex` auth/session state you actually want to keep.
+- Any tool-specific auth/session state you actually want to keep.
 - Browser profiles.
 - Obsidian vaults.
 - Mail, Calendar, Contacts, and Messages accounts.
@@ -37,4 +36,4 @@
 - `brew bundle check --file Brewfile`
 - `test -L ~/.zshrc && test -L ~/.gitconfig`
 - `test -f ~/.config/zed/settings.json`
-- `test -f ~/.codex/config.toml`
+- `test -d ~/.config`

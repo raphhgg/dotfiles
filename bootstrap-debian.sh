@@ -11,7 +11,6 @@ AVAILABLE_APPS=(
   "node"
   "neovim"
   "oh-my-posh"
-  "ai-tools"
   "stow-dotfiles"
 )
 
@@ -33,7 +32,7 @@ Options:
   --help                        Show this help
 
 App modules:
-  terminal-utils,shells,node,neovim,oh-my-posh,ai-tools,stow-dotfiles
+  terminal-utils,shells,node,neovim,oh-my-posh,stow-dotfiles
 
 Latest-capable modules:
   neovim
@@ -98,10 +97,10 @@ profile_apps() {
       echo "terminal-utils,shells,node,neovim,oh-my-posh,stow-dotfiles"
       ;;
     server)
-      echo "terminal-utils,shells,node,neovim,oh-my-posh,ai-tools,stow-dotfiles"
+      echo "terminal-utils,shells,node,neovim,oh-my-posh,stow-dotfiles"
       ;;
     full)
-      echo "terminal-utils,shells,node,neovim,oh-my-posh,ai-tools,stow-dotfiles"
+      echo "terminal-utils,shells,node,neovim,oh-my-posh,stow-dotfiles"
       ;;
     *)
       die "Invalid profile: $profile"

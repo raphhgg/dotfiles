@@ -125,8 +125,6 @@ verify_symlinks() {
     "${HOME}/.ssh/config"
     "${HOME}/.config/zed/settings.json"
     "${HOME}/.config/tmux/tmux.conf"
-    "${HOME}/.codex/config.toml"
-    "${HOME}/.claude/settings.json"
   )
 
   local missing=0
@@ -149,7 +147,7 @@ ${bold}Manual follow-up you still need on the new Mac${reset}
 
 1. Restore SSH keys and any local-only SSH includes such as ~/.ssh/config.local.
 2. Sign in to the App Store before rerunning brew bundle if MAS apps were skipped.
-3. Re-authenticate CLI tools: gh, Claude, Codex, Cursor, Raycast, Tailscale, Proton Pass.
+3. Re-authenticate CLI tools and apps you care about: gh, Cursor, Raycast, Tailscale, Proton Pass.
 4. Re-grant macOS permissions: Accessibility, Full Disk Access, Input Monitoring, Screen Recording, Automation.
 5. Start and approve AeroSpace and Karabiner-Elements at login.
 6. Enable Touch ID for sudo manually if you still want it:

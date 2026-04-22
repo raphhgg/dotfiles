@@ -2,29 +2,19 @@
 
 # Install dotfiles for macOS
 stow-macos:
-    stow -t ~ aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
-    DOTFILES_DIR=$PWD bash ./scripts/install-codex-config.sh macos
+    stow -t ~ aerospace btop karabiner git nvim omp ssh tmux zed zsh ghostty
 
-# Install dotfiles for ds423plus NAS server
-stow-ds423plus:
-    stow -t ~ tmux omp claude git nvim zsh btop opencode
-
-# Install dotfiles for ubuntu server
-stow-ubuntu:
-    stow -t ~ tmux omp claude git nvim zsh ssh btop opencode codex
-    DOTFILES_DIR=$PWD bash ./scripts/install-codex-config.sh debian
+# Install dotfiles for the Debian VM
+stow-debian:
+    stow -t ~ tmux omp git nvim zsh ssh btop
 
 # Remove all dotfiles symlinks
 unstow-all:
-    stow -t ~ -D aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
+    stow -t ~ -D aerospace alacritty borders btop karabiner git nvim omp ssh tmux zed zsh ghostty
 
 # Sync dotfiles from remote
 sync:
     ./scripts/sync.sh
-
-# Sync Codex shared repos used across machines
-sync-codex:
-    ./scripts/sync-codex.sh
 
 # Brewfile management commands
 

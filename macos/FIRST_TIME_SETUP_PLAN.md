@@ -3,7 +3,7 @@
 Status: implemented as `bootstrap-macos.sh`. Keep this file as design history, not as the primary entrypoint. When this file disagrees with `bootstrap-macos.sh` or `macos/README.md`, the code and README win.
 
 ## Overview
-Create a comprehensive setup script `bootstrap-macos.sh` that automates setting up a fresh macOS installation with your dotfiles, similar to the reference script from linkarzu's repository.
+Create a comprehensive setup script `bootstrap-macos.sh` that automates setting up a fresh macOS installation with your dotfiles.
 
 ## Script Structure
 
@@ -34,14 +34,14 @@ Create a comprehensive setup script `bootstrap-macos.sh` that automates setting 
 - Create/update `~/.ssh/config` with github-personal host alias
 
 ### 5. **Clone Dotfiles Repository**
-- Clone using SSH: `git clone git@github-personal:raaphhh/dotfiles.git ~/github/dotfiles`
+- Clone using SSH: `git clone git@github-personal:raphhgg/dotfiles.git $HOME/dotfiles`
 - Change to dotfiles directory
 
 ### 6. **Install GNU Stow**
 - Use Homebrew to install stow: `brew install stow`
 
 ### 7. **Install Homebrew Packages**
-- Run: `cd ~/github/dotfiles && brew bundle install`
+- Run: `cd "$HOME/dotfiles" && brew bundle install`
 - This installs all formulae, casks, and MAS apps from Brewfile
 
 ### 8. **Stow All Configurations**
@@ -50,7 +50,7 @@ Create a comprehensive setup script `bootstrap-macos.sh` that automates setting 
 - Verify symlinks created successfully
 
 ### 9. **Apply macOS System Preferences**
-- Run existing script: `~/github/dotfiles/macos/apply-preferences.sh`
+- Run existing script: `$HOME/dotfiles/macos/apply-preferences.sh`
 - Includes Dock, Finder, keyboard, trackpad, security settings
 
 ### 10. **Configure Aerospace Window Manager**

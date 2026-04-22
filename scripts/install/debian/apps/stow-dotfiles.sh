@@ -25,9 +25,6 @@ main() {
     git
     omp
     ssh
-    claude
-    codex
-    opencode
   )
 
   info "Applying stow symlinks from $repo_root"
@@ -40,12 +37,6 @@ main() {
     info "Stowing $folder"
     stow -t "$HOME" -R -v -d "$repo_root" "$folder"
   done
-
-  if [[ -f "$repo_root/scripts/install-codex-config.sh" ]]; then
-    info "Installing machine-local Codex config"
-    DOTFILES_DIR="$repo_root" bash "$repo_root/scripts/install-codex-config.sh" debian
-  fi
-
   success "Stow phase finished"
 }
 

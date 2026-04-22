@@ -1,35 +1,37 @@
-# macOS System Preferences
+# macOS Setup Notes
 
-This directory contains macOS system preferences extracted from the nix-darwin configuration, converted to portable shell scripts and plist files.
+This directory contains the macOS bootstrap, preferences, and migration notes for my current Mac setup.
 
-## Files
+## What Lives Here
 
 - **`apply-preferences.sh`** - Main script to apply all system preferences
 - **`../bootstrap-macos.sh`** - Fresh Mac bootstrap entrypoint
-- **`dock-persistent-apps.plist`** - Dock persistent applications list (easy to edit!)
+- **`dock-persistent-apps.plist`** - Dock layout source
 - **`MIGRATION_CHECKLIST.md`** - Manual data and account transfer checklist
 
-## Quick Start
+## Start Here
 
 Bootstrap a fresh Mac from this repo:
 
 ```bash
+cd "$HOME/dotfiles"
 ./bootstrap-macos.sh
 ```
 
 Apply only system preferences:
 
 ```bash
+cd "$HOME/dotfiles"
 ./macos/apply-preferences.sh
 ```
 
-Then restart services:
+Then restart the affected services:
 
 ```bash
 killall Dock Finder SystemUIServer
 ```
 
-## What's Configured
+## What The Scripts Touch
 
 ### 🖥️ Dock
 - Auto-hide enabled
@@ -43,7 +45,7 @@ killall Dock Finder SystemUIServer
   - Top-right: Desktop
   - Bottom-left: Application Windows
   - Bottom-right: custom local value `1`
-- Persistent apps: Brave Browser, Obsidian, Fantastical, Ghostty, Zed, Zed Preview, Codex, Discord, Telegram, Messages
+- Persistent apps are defined in `dock-persistent-apps.plist`
 
 ### 📁 Finder
 - Show all file extensions
@@ -107,7 +109,7 @@ Or manually edit `/etc/pam.d/sudo_local` and add this line after the first comme
 auth       sufficient     pam_tid.so
 ```
 
-## Customizing Dock Apps
+## Customizing The Dock
 
 The Dock persistent applications are stored in `dock-persistent-apps.plist`. To modify:
 
@@ -132,7 +134,7 @@ Example app entry:
 </dict>
 ```
 
-## Selective Application
+## Running Only Part Of The Setup
 
 If you want to apply only specific settings, you can copy individual sections from the script and run them manually.
 
@@ -167,6 +169,5 @@ killall Dock
 
 - Some settings require logout/restart to take full effect
 - The script is idempotent - safe to run multiple times
-- The Dock and hot corner values in this directory currently reflect the live local Mac, not generic macOS defaults
-- Based on nix-darwin configuration from `~/nix-darwin-config/darwin/preferences/`
+- The Dock and hot corner values in this directory reflect the current local Mac, not generic macOS defaults
 - No external dependencies required - uses only macOS built-in tools

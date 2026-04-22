@@ -1,34 +1,29 @@
 # Dotfiles
 
-Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/), supporting multi-host deployment across macOS, Synology NAS, and Ubuntu.
+Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/), shared across my Mac and one Debian VM.
 
-This repo is the public version of the setup I actually use across my machines. I am publishing it as "my dotfiles and workflows" rather than pretending it is a universal bootstrap system for everyone.
+This repo is the public version of the base setup I actually use across my machines.
+
+The AI and agent-tooling layer lives separately in `$HOME/dotfiles-ai`, so this repo stays focused on the shell, editor, terminal, SSH, and macOS setup.
 
 ## Public vs Local
 
 This repo keeps a deliberate split between:
 
 - tracked base configs that show the shape of my setup
-- local-only machine overlays that contain real host inventories, trusted project lists, and private endpoints
+- local-only machine overlays that contain real host inventories, private endpoints, and host-specific state
 
 Examples of that split:
 
 - tracked: `ssh/.ssh/config`
 - local-only: `~/.ssh/config.local`
-- tracked: `codex/.codex/config.macos.toml`, `codex/.codex/config.debian.toml`
-- local-only: `~/.codex/config.local.toml`
-- tracked example: `zed/.config/zed/settings.local.example.json`
-
-If you borrow these configs, copy the example overlays and adapt them to your machine instead of turning the public-safe base files back into private state.
-
-For remote coding, I keep separate SSH host aliases for interactive tmux sessions and non-tmux tool/editor sessions. In practice that means a normal host for terminal work and a `*-notmux` or `*-codex` host for tools like Codex or Zed that should not land inside tmux automatically.
+- tracked: editor and terminal defaults
+- local-only: machine-specific overrides and secrets
 
 ## Prerequisites
 
 - **macOS**: `brew install stow`
-- **Arch Linux**: `sudo pacman -S stow`
-- **Ubuntu/Debian**: `sudo apt install stow`
-- **Other**: Check your package manager
+- **Debian**: `sudo apt install stow`
 
 ### Package Convention
 
@@ -39,22 +34,18 @@ package-name/
 └── .local/                   # Local files
 ```
 
-## Multi-Host Deployment
+## Current Host Layout
 
-Different hosts use different subsets of packages:
+The current setup is simple:
 
 ```bash
 # macOS
 just stow-macos
-# → aerospace alacritty borders btop karabiner git nvim omp opencode ssh tmux zed zsh ghostty claude codex
+# → aerospace btop karabiner git nvim omp ssh tmux zed zsh ghostty
 
-# DS423Plus NAS
-just stow-ds423plus
-# → btop claude git nvim omp opencode ssh tmux zsh
-
-# Ubuntu server
-just stow-ubuntu
-# → btop claude git nvim omp opencode ssh tmux zsh
+# Debian VM
+just stow-debian
+# → btop git nvim omp ssh tmux zsh
 ```
 
 Additional packages can be stowed manually as needed:
@@ -66,13 +57,12 @@ stow -t ~ macos
 
 ```bash
 # Clone the repository
-git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
-cd ~/github/dotfiles
+git clone https://github.com/raphhgg/dotfiles.git "$HOME/dotfiles"
+cd "$HOME/dotfiles"
 
 # Install packages for your host
 just stow-macos        # macOS
-just stow-ds423plus    # NAS
-just stow-ubuntu       # Ubuntu
+just stow-debian       # Debian VM
 
 # Install Homebrew packages (macOS only)
 just brew-install
@@ -82,16 +72,16 @@ just brew-install
 ## Public Repo Notes
 
 - Real host inventories and internal SSH targets live in `~/.ssh/config.local`, not in the tracked SSH config.
-- AI-tooling packages such as Codex and OpenCode are published as my setup, but machine-specific trust lists and internal endpoints are sanitized.
-- You should expect to adapt usernames, trusted project paths, and local model endpoints if you borrow these configs.
+- AI-specific Claude, Codex, and OpenCode configs live in the separate `dotfiles-ai` repo.
+- You should expect to adapt usernames, host aliases, and machine-local overrides if you borrow these configs.
 
 ## Fresh Mac Setup
 
 If you are bootstrapping a new Mac, do not run the steps by hand one by one unless you need to debug something. Use the bootstrap script:
 
 ```bash
-git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
-cd ~/github/dotfiles
+git clone https://github.com/raphhgg/dotfiles.git "$HOME/dotfiles"
+cd "$HOME/dotfiles"
 ./bootstrap-macos.sh
 ```
 
@@ -127,7 +117,7 @@ Since stow creates symlinks, just edit files normally:
 nvim ~/.zshrc
 
 # Or edit in the repo
-nvim ~/github/dotfiles/zsh/.zshrc
+nvim "$HOME/dotfiles/zsh/.zshrc"
 ```
 
 ### Removing packages
@@ -143,39 +133,6 @@ rm -rf zsh/
 ```bash
 ./scripts/sync.sh
 ```
-
-For Codex and the shared harness, one repo is not enough. Your remote machine needs both `dotfiles` and `agent-standards` current before you start work:
-
-```bash
-just sync-codex
-```
-
-That command:
-
-- updates `~/dotfiles`
-- updates `~/agent-standards`
-- stops if either repo has uncommitted changes
-- stops if the remote machine has local commits you have not pushed yet
-
-Recommended workflow:
-
-1. Make changes locally in `dotfiles` or `agent-standards`.
-2. Commit and push them.
-3. On the remote machine, run `just sync-codex` before starting Codex.
-
-Do not rely on syncing `~/.codex` wholesale. Keep auth, logs, sessions, and other machine-local state local.
-
-Codex uses a split setup in this repo:
-
-- shared Codex files are stowed from `dotfiles/codex/.codex/`
-- machine-local `~/.codex/config.toml` is generated from an OS-specific source file
-- macOS uses `dotfiles/codex/.codex/config.macos.toml`
-- Debian/Ubuntu uses `dotfiles/codex/.codex/config.debian.toml`
-- optional machine-specific additions live in `~/.codex/config.local.toml`
-- example overlays live in `codex/.codex/config.macos.local.example.toml` and `codex/.codex/config.debian.local.example.toml`
-- remote SSH targets for Codex should use a non-tmux host alias from your local SSH overlay
-
-This keeps shared harness files versioned in dotfiles without forcing one host's paths, MCP servers, or sandbox settings onto another host.
 
 ## Brewfile Management
 
@@ -204,8 +161,8 @@ just brew-cleanup
 
 ### New Mac Setup
 ```bash
-git clone https://github.com/raaphhh/dotfiles.git ~/github/dotfiles
-cd ~/github/dotfiles
+git clone https://github.com/raphhgg/dotfiles.git "$HOME/dotfiles"
+cd "$HOME/dotfiles"
 
 # Bootstrap the machine
 ./bootstrap-macos.sh
