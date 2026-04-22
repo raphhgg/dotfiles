@@ -21,6 +21,8 @@ Examples of that split:
 
 If you borrow these configs, copy the example overlays and adapt them to your machine instead of turning the public-safe base files back into private state.
 
+For remote coding, I keep separate SSH host aliases for interactive tmux sessions and non-tmux tool/editor sessions. In practice that means a normal host for terminal work and a `*-notmux` or `*-codex` host for tools like Codex or Zed that should not land inside tmux automatically.
+
 ## Prerequisites
 
 - **macOS**: `brew install stow`
@@ -171,6 +173,7 @@ Codex uses a split setup in this repo:
 - Debian/Ubuntu uses `dotfiles/codex/.codex/config.debian.toml`
 - optional machine-specific additions live in `~/.codex/config.local.toml`
 - example overlays live in `codex/.codex/config.macos.local.example.toml` and `codex/.codex/config.debian.local.example.toml`
+- remote SSH targets for Codex should use a non-tmux host alias from your local SSH overlay
 
 This keeps shared harness files versioned in dotfiles without forcing one host's paths, MCP servers, or sandbox settings onto another host.
 
