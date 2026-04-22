@@ -93,9 +93,9 @@
     "provider": {
         "local-llama": {
             "npm": "@ai-sdk/openai-compatible",
-            "name": "Llama Server (RTX 3090)",
+            "name": "Llama Server",
             "options": {
-                "baseURL": "http://10.10.1.111:8081/v1",
+                "baseURL": "http://127.0.0.1:8081/v1",
                 "apiKey": "x"
             },
             "models": {

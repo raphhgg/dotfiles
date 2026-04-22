@@ -4,20 +4,10 @@ sandbox_mode = "danger-full-access"
 model = "gpt-5.4"
 model_reasoning_effort = "medium"
 
-[projects."/home/raphh/docker/compose"]
-trust_level = "trusted"
-
-[projects."/home/raphh/docker/appdata/kometa"]
-trust_level = "trusted"
-
-[projects."/home/raphh"]
-trust_level = "trusted"
-
-[projects."/home/raphh/docker/compose/services/media-server/heimdall"]
-trust_level = "trusted"
-
-[projects."/home/raphh/llm-workspace"]
-trust_level = "trusted"
+# Add trusted project paths that make sense on your machine.
+# Example:
+# [projects."/home/your-user/dotfiles"]
+# trust_level = "trusted"
 
 [plugins."github@openai-curated"]
 enabled = true
@@ -27,3 +17,6 @@ enabled = true
 
 [tui]
 status_line = ["model-with-reasoning", "context-remaining", "five-hour-limit", "weekly-limit", "context-window-size"]
+
+[features]
+workspace_dependencies = true

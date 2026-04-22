@@ -45,7 +45,7 @@ main() {
   fi
 
   mkdir -p "${HOME}/.codex"
-  cp "$source_config" "${HOME}/.codex/config.toml"
+  ln -sfn "$source_config" "${HOME}/.codex/config.toml"
 }
 
 main "${1:-}"

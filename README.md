@@ -2,6 +2,8 @@
 
 Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/), supporting multi-host deployment across macOS, Synology NAS, and Ubuntu.
 
+This repo is the public version of the setup I actually use across my machines. I am publishing it as "my dotfiles and workflows" rather than pretending it is a universal bootstrap system for everyone.
+
 ## Prerequisites
 
 - **macOS**: `brew install stow`
@@ -57,6 +59,12 @@ just stow-ubuntu       # Ubuntu
 just brew-install
 
 ```
+
+## Public Repo Notes
+
+- Real host inventories and internal SSH targets live in `~/.ssh/config.local`, not in the tracked SSH config.
+- AI-tooling packages such as Codex and OpenCode are published as my setup, but machine-specific trust lists and internal endpoints are sanitized.
+- You should expect to adapt usernames, trusted project paths, and local model endpoints if you borrow these configs.
 
 ## Fresh Mac Setup
 
