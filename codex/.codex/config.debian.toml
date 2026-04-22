@@ -4,10 +4,8 @@ sandbox_mode = "danger-full-access"
 model = "gpt-5.4"
 model_reasoning_effort = "medium"
 
-# Add trusted project paths that make sense on your machine.
-# Example:
-# [projects."/home/your-user/dotfiles"]
-# trust_level = "trusted"
+# Add machine-specific trusted project paths in ~/.codex/config.local.toml.
+# See codex/.codex/config.debian.local.example.toml for the shape.
 
 [plugins."github@openai-curated"]
 enabled = true

@@ -1,0 +1,15 @@
+{
+  "ssh_connections": [
+    {
+      "host": "homelab-vm",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/your-user/dotfiles"
+          ]
+        }
+      ]
+    }
+  ]
+}

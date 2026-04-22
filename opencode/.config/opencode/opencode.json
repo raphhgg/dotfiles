@@ -68,7 +68,7 @@
         "write": "ask",
         "external_directory": {
             "*": "ask",
-            "/home/raphh/docker/appdata/*": "allow"
+            "/path/to/docker/appdata/*": "allow"
         }
     },
     "instructions": ["CLAUDE.md", "AGENTS.md"],

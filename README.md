@@ -4,6 +4,23 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/), s
 
 This repo is the public version of the setup I actually use across my machines. I am publishing it as "my dotfiles and workflows" rather than pretending it is a universal bootstrap system for everyone.
 
+## Public vs Local
+
+This repo keeps a deliberate split between:
+
+- tracked base configs that show the shape of my setup
+- local-only machine overlays that contain real host inventories, trusted project lists, and private endpoints
+
+Examples of that split:
+
+- tracked: `ssh/.ssh/config`
+- local-only: `~/.ssh/config.local`
+- tracked: `codex/.codex/config.macos.toml`, `codex/.codex/config.debian.toml`
+- local-only: `~/.codex/config.local.toml`
+- tracked example: `zed/.config/zed/settings.local.example.json`
+
+If you borrow these configs, copy the example overlays and adapt them to your machine instead of turning the public-safe base files back into private state.
+
 ## Prerequisites
 
 - **macOS**: `brew install stow`
@@ -149,9 +166,11 @@ Do not rely on syncing `~/.codex` wholesale. Keep auth, logs, sessions, and othe
 Codex uses a split setup in this repo:
 
 - shared Codex files are stowed from `dotfiles/codex/.codex/`
-- machine-local `~/.codex/config.toml` is installed from an OS-specific source file
+- machine-local `~/.codex/config.toml` is generated from an OS-specific source file
 - macOS uses `dotfiles/codex/.codex/config.macos.toml`
 - Debian/Ubuntu uses `dotfiles/codex/.codex/config.debian.toml`
+- optional machine-specific additions live in `~/.codex/config.local.toml`
+- example overlays live in `codex/.codex/config.macos.local.example.toml` and `codex/.codex/config.debian.local.example.toml`
 
 This keeps shared harness files versioned in dotfiles without forcing one host's paths, MCP servers, or sandbox settings onto another host.
 

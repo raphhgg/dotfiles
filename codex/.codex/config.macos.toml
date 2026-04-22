@@ -11,10 +11,10 @@ persistence = "save-all"
 [sandbox_workspace_write]
 network_access = true
 writable_roots = [
-  "/Users/your-user/dotfiles/codex/.codex",
-  "/Users/your-user/agent-standards",
-  "/Users/your-user/Library/Caches/go-build",
-  "/Users/your-user/go/pkg/mod"
+  "__HOME__/dotfiles/codex/.codex",
+  "__HOME__/agent-standards",
+  "__HOME__/Library/Caches/go-build",
+  "__HOME__/go/pkg/mod"
 ]
 
 [tools]
@@ -26,8 +26,8 @@ args = ["-y", "xcodebuildmcp@latest", "mcp"]
 
 [shell]
 auto_approve = [
-  "cd /Users/your-user/dotfiles/codex/.codex",
-  "cd /Users/your-user/agent-standards",
+  "cd __HOME__/dotfiles/codex/.codex",
+  "cd __HOME__/agent-standards",
   "pwd",
   "ls",
   "cat",
@@ -51,10 +51,8 @@ auto_approve = [
 ]
 deny = ["rm -rf", "sudo"]
 
-# Add trusted project paths that make sense on your machine.
-# Example:
-# [projects."/Users/your-user/dotfiles"]
-# trust_level = "trusted"
+# Add machine-specific trusted project paths in ~/.codex/config.local.toml.
+# See codex/.codex/config.macos.local.example.toml for the shape.
 
 [tui]
 status_line = ["model-with-reasoning", "context-remaining", "current-dir", "git-branch", "five-hour-limit", "weekly-limit"]

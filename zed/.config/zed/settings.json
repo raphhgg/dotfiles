@@ -34,36 +34,8 @@
     "button": true,
   },
   "bottom_dock_layout": "contained",
-  "ssh_connections": [
-    {
-      "host": "debian-vm-zed",
-      "username": "raphh",
-      "args": [],
-      "projects": [
-        {
-          "paths": [
-            "/home/raphh/docker/compose"
-          ]
-        },
-        {
-          "paths": [
-            "/home/raphh/docker/compose/services/media-server/heimdall"
-          ]
-        },
-        {
-          "paths": [
-            "/home/raphh/dotfiles"
-          ]
-        }
-      ],
-      "nickname": "debian-vm"
-    },
-    {
-      "host": "debian-vm-zed",
-      "args": [],
-      "projects": []
-    }
-  ],
+  // Keep machine-specific SSH targets in a local-only settings file or add
+  // them manually on the machine that needs them.
 
   // Theme
   "theme": {

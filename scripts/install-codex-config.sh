@@ -45,7 +45,22 @@ main() {
   fi
 
   mkdir -p "${HOME}/.codex"
-  ln -sfn "$source_config" "${HOME}/.codex/config.toml"
+  local target_config="${HOME}/.codex/config.toml"
+  local local_overlay="${HOME}/.codex/config.local.toml"
+  local tmp_config
+  tmp_config="$(mktemp "${HOME}/.codex/config.XXXXXX.toml")"
+
+  sed "s#__HOME__#${HOME//\#/\\#}#g" "$source_config" > "$tmp_config"
+
+  if [[ -f "$local_overlay" ]]; then
+    {
+      printf '\n'
+      printf '# Local machine-specific additions\n'
+      sed "s#__HOME__#${HOME//\#/\\#}#g" "$local_overlay"
+    } >> "$tmp_config"
+  fi
+
+  mv "$tmp_config" "$target_config"
 }
 
 main "${1:-}"

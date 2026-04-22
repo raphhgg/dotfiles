@@ -15,6 +15,10 @@
 **/.secrets
 **/config.local
 **/*.local
+ssh/.ssh/config.local
+codex/.codex/config.*.local.toml
+zed/.config/zed/settings.local.json
+opencode/.config/opencode/opencode.local.json
 
 # Tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/
