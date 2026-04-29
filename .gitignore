@@ -12,6 +12,10 @@
 # Claude Code
 # Ignore project-specific .claude directory (at root)
 /.claude/
+
+# Local harness telemetry
+/.harness/
+
 **/.secrets
 **/config.local
 **/*.local

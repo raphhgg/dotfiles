@@ -25,6 +25,7 @@ This document outlines which applications use the hyper key (Caps Lock) and how 
 - `cmd+tab` → Next workspace with windows (overrides macOS app switcher)
 - `opt+tab` → Previous workspace with windows
 - `Hyper + Tab` → Toggle between current and previous workspace
+- `Hyper + Left/Right` → Focus previous/next monitor
 
 **Window Management**:
 - `Hyper + H/J/K/L` → Focus left/down/up/right window
@@ -36,6 +37,9 @@ This document outlines which applications use the hyper key (Caps Lock) and how 
 - cmd+tab completely overrides macOS application switcher
 - Only visits workspaces that contain windows
 - Automatic app-to-workspace assignments
+- Multi-monitor workspace pinning:
+  - Laptop/main display: workspaces 1, 2, 3, 4, 8
+  - External display: workspaces 5, 6, 7, 9
 - Belgian AZERTY keyboard fully supported
 
 - Look in `$HOME/dotfiles/aerospace/.config/aerospace/aerospace.toml` for more info.

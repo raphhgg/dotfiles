@@ -2,7 +2,7 @@
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
 	'exec-and-forget borders',
-	'layout tiles'
+	'layout accordion'
 ]
 
 # Start AeroSpace at login
@@ -17,7 +17,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 0
 
 # Possible values: tiles|accordion
-default-root-container-layout = 'tiles'
+default-root-container-layout = 'accordion'
 
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
@@ -54,6 +54,26 @@ outer.left =       12
 outer.bottom =     12
 outer.top =        12
 outer.right =      12
+
+# Workspaces are shared across monitors in AeroSpace, so pin the workspace groups
+# that belong together to their intended display.
+#
+# Current split:
+#   - Laptop/main display: focused work and comms
+#   - External display: Helium, calls, media, calendar, and spare space
+#
+# If the external monitor is set as the macOS primary display, replace these
+# monitor patterns with explicit names from `aerospace list-monitors`.
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'secondary'
+6 = 'secondary'
+7 = 'secondary'
+8 = 'main'
+9 = 'secondary'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -108,6 +128,10 @@ cmd-alt-ctrl-shift-k = 'focus up'
 cmd-alt-ctrl-shift-l = 'focus right'
 # Cycle through windows in the current workspace (works with fullscreen stacked windows)
 cmd-alt-ctrl-shift-w = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
+
+# Move focus between monitors
+cmd-alt-ctrl-shift-left = 'focus-monitor --wrap-around prev'
+cmd-alt-ctrl-shift-right = 'focus-monitor --wrap-around next'
 
 # See: https://nikitasbobko.github.io/AeroSpace/commands#resize
 # 'equal' is '-' in AZERTY keyboard
@@ -213,7 +237,15 @@ if.app-id = 'com.brave.Browser'
 run = ['move-node-to-workspace 1', 'layout accordion']
 
 [[on-window-detected]]
+if.app-id = 'net.imput.helium'
+run = ['move-node-to-workspace 5', 'layout tiles horizontal']
+
+[[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 2', 'layout accordion']
+
+[[on-window-detected]]
+if.app-id = 'com.openai.codex'
 run = ['move-node-to-workspace 2', 'layout accordion']
 
 [[on-window-detected]]
