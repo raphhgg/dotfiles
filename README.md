@@ -41,11 +41,11 @@ The current setup is simple:
 ```bash
 # macOS
 just stow-macos
-# → aerospace btop karabiner git nvim omp ssh tmux zed zsh ghostty
+# → aerospace btop karabiner git nvim oh-my-posh ssh tmux zed zsh ghostty
 
 # Debian VM
 just stow-debian
-# → btop git nvim omp ssh tmux zsh
+# → btop git nvim oh-my-posh ssh tmux zsh
 ```
 
 Additional packages can be stowed manually as needed:

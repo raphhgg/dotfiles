@@ -23,7 +23,7 @@ main() {
     nvim
     btop
     git
-    omp
+    oh-my-posh
     ssh
   )
 

@@ -2,15 +2,15 @@
 
 # Install dotfiles for macOS
 stow-macos:
-    stow -t ~ aerospace btop karabiner git nvim omp ssh tmux zed zsh ghostty
+    stow -t ~ aerospace btop karabiner git nvim oh-my-posh ssh tmux zed zsh ghostty
 
 # Install dotfiles for the Debian VM
 stow-debian:
-    stow -t ~ tmux omp git nvim zsh ssh btop
+    stow -t ~ tmux oh-my-posh git nvim zsh ssh btop
 
 # Remove all dotfiles symlinks
 unstow-all:
-    stow -t ~ -D aerospace alacritty borders btop karabiner git nvim omp ssh tmux zed zsh ghostty
+    stow -t ~ -D aerospace alacritty borders btop karabiner git nvim oh-my-posh ssh tmux zed zsh ghostty
 
 # Sync dotfiles from remote
 sync:
