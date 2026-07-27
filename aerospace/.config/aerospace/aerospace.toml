@@ -1,7 +1,7 @@
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-	'exec-and-forget borders',
+	'exec-and-forget borders style=round width=0.5 hidpi=on active_color=0xff1e1e2e inactive_color=0xff6c7086',
 	'layout accordion'
 ]
 
